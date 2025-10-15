@@ -13,11 +13,12 @@ public struct ProductionSlots
         {
             if (herbSlot.Count < 2)
             {
+                Debug.Log(value + " ¹èÄ¡µÊ");
                 herbSlot.Add(value);
             }
             else
             {
-                UnityEngine.Debug.LogWarning("½½·ÔÀÌ ²Ë Ã¡½À´Ï´Ù!");
+                Debug.LogWarning("½½·ÔÀÌ ²Ë Ã¡½À´Ï´Ù!");
             }
         }
 
@@ -44,7 +45,7 @@ public class ProductionTable : MonoBehaviour
 
     public void SetTheHerb(string HerbName)
     {
-        Debug.Log(HerbName + " ¹èÄ¡µÊ");
+       
         Slots.herbSlotContect = HerbName;
     }
 
