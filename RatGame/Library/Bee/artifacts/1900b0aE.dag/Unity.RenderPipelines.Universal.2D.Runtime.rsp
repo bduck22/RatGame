@@ -126,7 +126,9 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER
+-define:USING_SPRITESHAPE
 -define:USING_PHYSICS2D
+-define:USING_2DANIMATION
 -define:ENABLE_VR_MODULE
 -define:ENABLE_XR_MODULE
 -define:CSHARP_7_OR_LATER
@@ -387,6 +389,8 @@
 -r:"Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.Animation.Runtime.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.SpriteShape.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipeline.Universal.ShaderLibrary.ref.dll"
