@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e0c4babe4666643ac72e56109ad757, type: 3}
+  m_Name: Herb 2
+  m_EditorClassIdentifier: 
+  itemName: "\uC6B0\uB975"
+  itemImage: {fileID: 21300000, guid: f5142c0d9e63da542b1c317a569133e9, type: 3}
+  isProcessed: 0
+  itemProcessedWay: 000000000000000000000000
