@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Simulator
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 18
+  controlID: 91
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 37
+  controlID: 44
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -192,7 +192,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1036
-    height: 494.4
+    height: 375.2
   m_MinSize: {x: 202, y: 226}
   m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 11}
@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 494.4
+    y: 375.2
     width: 1036
-    height: 222.4
+    height: 341.59998
   m_MinSize: {x: 232, y: 276}
   m_MaxSize: {x: 10002, y: 10026}
   m_ActualView: {fileID: 16}
@@ -280,7 +280,7 @@ MonoBehaviour:
     x: 199.2
     y: 79.200005
     width: 1034
-    height: 468.4
+    height: 349.2
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
     pluginStates:
     - '{}'
     - '{}'
-    scale: 18
+    scale: 15
     fitToScreenEnabled: 0
     rotationDegree: 270
     highlightSafeAreaEnabled: 0
@@ -365,9 +365,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 40a9fcffbab2fcff76b60100
+      m_SelectedIDs: 982afeff8c29feff9626feffbc25feff
+      m_LastClickedID: -121412
+      m_ExpandedIDs: bc25feff0438feffea66feff8268feff6669feffde74feffe474feffe674feff9c81feff9cbcfeffa4bcfeff18bdfeff1ebdfeff8ebdfeff0ebefeff82befeff84befeff1eebfeff0a10ffff4e1effffc248ffff629fffffbca1ffffe4a4ffff18e7ffff1aeaffff08fbffffa2b4000016f500008e660100d2860300de91030088ab0300560304000a4d0400f2660400a0680400cabe04002acf040076260500fe3e0500285f050024cf050042cf0500
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -416,7 +416,7 @@ MonoBehaviour:
     x: 199.2
     y: 79.200005
     width: 1034
-    height: 468.4
+    height: 349.2
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
   m_Gizmos: 1
   m_OverrideSceneCullingMask: 6917529027641081856
-  m_SceneIsLit: 1
+  m_SceneIsLit: 0
   m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
@@ -1069,9 +1069,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 255.49435, y: 201.04868, z: -0.99064434}
+    m_Target: {x: 777.9591, y: 655.0672, z: -2.9484844}
     speed: 2
-    m_Value: {x: 255.49435, y: 201.04868, z: -0.99064434}
+    m_Value: {x: 842.96454, y: 665.8658, z: -2.5518255}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1121,9 +1121,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 372.008
+    m_Target: 921.1358
     speed: 2
-    m_Value: 372.008
+    m_Value: 881.46967
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1271,9 +1271,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 199.2
-    y: 573.60004
+    y: 454.4
     width: 1034
-    height: 196.4
+    height: 315.59998
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1296,7 +1296,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/SongHyeonWoon/Script
+    - Assets/Fantasy RPG Icons Pack/Alchemical Potions Icons/PNG/without background
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1306,30 +1306,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/SongHyeonWoon/Script
+  - Assets/Fantasy RPG Icons Pack/Alchemical Potions Icons/PNG/without background
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\GitHudMake\RatGame\RatGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 115.600006}
-    m_SelectedIDs: e2b50100
-    m_LastClickedID: 112098
-    m_ExpandedIDs: 000000009cb4010070b5010000ca9a3b
+    scrollPos: {x: 0, y: 24.400024}
+    m_SelectedIDs: 4a370300
+    m_LastClickedID: 210762
+    m_ExpandedIDs: 0000000040b500002cb700002eb7000038b700008eb7000090b7000092b7000098b700009ab700009eb70000a2b70000a4b70000a6b70000acb70000dcb70000deb70000e0b70000e2b70000e8b70000eeb7000010b8000012b8000014b8000016b8000018b8000086b8000088b8000000b9000004b90000f2b90000f6b90000fcb9000058ba000072360300443703003a3b0300303c03001e3d0300ec3d0300883f0300544003008043030018450300ae4603004a480300e0490300a24b0300704c0300084e0300024f0300284f0300dc50030000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Buttons
+      m_OriginalName: Buttons
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 47602
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 9}
@@ -1344,7 +1344,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009cb40100
+    m_ExpandedIDs: 0000000040b50000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1373,7 +1373,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000e0b4000084a500009aa50000c6b60000
+    m_ExpandedInstanceIDs: c6230000e0b4000084a500009aa50000c6b60000de3403003234030000000000ecb9000000ba0000a8340300
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
