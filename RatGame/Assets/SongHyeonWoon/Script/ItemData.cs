@@ -9,7 +9,6 @@ public class ItemData : ScriptableObject
     public bool isProcessed;
     public int[] itemProcessedWay; // 1 달이기, 2 빧기, 3 말리기
 
-
     public ItemData()
     {
         if (!isProcessed) itemProcessedWay = new int[3];
