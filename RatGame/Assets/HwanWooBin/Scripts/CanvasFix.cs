@@ -5,7 +5,7 @@ public class CanvasFix : MonoBehaviour
     private void Start()
     {
         
-        UpdateCamera();
+        //UpdateCamera();
     }
 
     private void Update()
