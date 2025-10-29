@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -6,11 +7,15 @@ public class UIManager : MonoBehaviour
 
     public Animator[] UIs;
 
+    [SerializeField]
+    Text roomName;
+
     public Transform touchVfx;
 
     void Start()
     {
         Fade = GetComponent<Animator>();
+        roomName = UIs[0].GetComponent<Text>();
     }
 
     void Update()
@@ -37,7 +42,6 @@ public class UIManager : MonoBehaviour
 
     public void CloseUi()
     {
-
         foreach ( Animator ani in UIs)
         {
             ani.SetTrigger("Play");
@@ -46,10 +50,16 @@ public class UIManager : MonoBehaviour
 
     public void OnUi()
     {
+        roomName.text = GameManager.Instance.room.ToString();
         foreach ( Animator ani in UIs)
         {
             ani.SetTrigger("Back");
         }
+    }
+
+    public void Refreshroom()
+    {
+        GameManager.Instance.RefreshBackground();
     }
 
     public void OnFade()
