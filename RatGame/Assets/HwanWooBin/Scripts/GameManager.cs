@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public Room room;
     public int nowRoom;
-
+    public float Money;
 
     void Awake()
     {
