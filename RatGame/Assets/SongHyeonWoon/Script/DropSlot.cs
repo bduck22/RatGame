@@ -14,19 +14,20 @@ public class DropSlot : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             draggedItem = eventData.pointerDrag.GetComponent<DragItem>();
-           
+
             if (draggedItem == null) return;
 
             originSlot = draggedItem.OriginalParent.GetComponentInParent<ItemSlot>();
-            targetSlot = transform;                 
+            targetSlot = transform;
 
 
 
-           
-            if (originSlot != targetSlot)      
+
+            if (originSlot != targetSlot)
             {
                 ItemExit();
             }
+
 
             ItemAdd();
 
@@ -35,17 +36,14 @@ public class DropSlot : MonoBehaviour, IDropHandler
 
     public virtual void ItemExit() // 아이템이 빠져 나갈 때
     {
-        // DropSlot originDropSlot = originSlot.GetComponent<DropSlot>();
-        //originSlot = null;
-        //targetSlot = null;
-        //draggedItem = null;
+    
     }
 
     public virtual void ItemAdd() // 아이템 추가 할 때
     {
 
-        // 드래그 아이템을 현재 슬롯에 배치
-        draggedItem.transform.SetParent(targetSlot.GetChild(0));
-        draggedItem.retPos.localPosition = Vector3.zero;
+      
     }
+
+    
 }

@@ -37,7 +37,7 @@ public class ItemSlot : MonoBehaviour
     public ItemData item;
     public int count;
     public SlotUI slotUI = new SlotUI();
-
+    public int MaxCount;
 
     public bool IsEmpty => item == null;
 
@@ -50,6 +50,8 @@ public class ItemSlot : MonoBehaviour
 
     public void AddItem(ItemData newitem, int amount = 1)
     {
+        if (count >= MaxCount) { Debug.Log("추가 불가능"); return; }
+
         if (item == null)
         {
             item = newitem;

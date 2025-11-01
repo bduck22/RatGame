@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e0c4babe4666643ac72e56109ad757, type: 3}
   m_Name: Herb 1
   m_EditorClassIdentifier: 
-  itemName: "\uC7A5\uBBF8"
-  itemImage: {fileID: 21300000, guid: 60f3b0705dd111e47a246af657bd1011, type: 3}
+  itemName: "\uC624\uBBF8\uC790"
+  itemImage: {fileID: 21300000, guid: 11ec753ebf994a14fbb3c04e030053e7, type: 3}
   isProcessed: 0
-  itemProcessedWay: 000000000000000000000000
+  itemProcessedWay: 020000000300000000000000

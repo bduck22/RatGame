@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65e0c4babe4666643ac72e56109ad757, type: 3}
-  m_Name: Herb 0
+  m_Name: "\uB300\uCD94 1 \uAC00\uACF5"
   m_EditorClassIdentifier: 
   itemName: "\uB300\uCD94"
   itemImage: {fileID: 21300000, guid: cea4788781dc4c746a6c78f60415dfa1, type: 3}
-  isProcessed: 0
-  itemProcessedWay: 010000000200000000000000
+  isProcessed: 1
+  itemProcessedWay: 01000000

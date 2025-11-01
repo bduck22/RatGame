@@ -39,9 +39,11 @@ public class InventoryManager : MonoBehaviour
         ItemSlot emptySlot = null;
         for(int i=0; i<inventoryCount; i++)
         {
-            if (inventorySlot[i].item == AdditemData) 
+            if (inventorySlot[i].item == AdditemData ) 
             {
                 inventorySlot[i].AddItem(AdditemData);
+                
+               
                 return;
             }
             if (emptySlot == null && inventorySlot[i].item == null)
@@ -53,6 +55,7 @@ public class InventoryManager : MonoBehaviour
         if(emptySlot != null)
         {
             emptySlot.AddItem(AdditemData);
+
         }
         else
         {

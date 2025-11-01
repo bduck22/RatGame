@@ -95,6 +95,7 @@ MonoBehaviour:
   targetSlot: {fileID: 0}
   draggedItem: {fileID: 0}
   invMan: {fileID: 0}
+  inventorySlot: {fileID: 0}
 --- !u!114 &7340903150265385826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   count: 0
+  slotUI:
+    countText: {fileID: 0}
+    slot: {fileID: 0}
+  MaxCount: 99
 --- !u!1 &5652148003070349317
 GameObject:
   m_ObjectHideFlags: 0

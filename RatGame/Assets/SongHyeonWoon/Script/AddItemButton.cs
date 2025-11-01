@@ -1,10 +1,11 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class AddItemButton : MonoBehaviour
 {
     public InventoryManager invMan;
-    public GameObject itemPrefab;
     public ItemData[] itemDatas;
+    public CreateItems CreateItem;
 
     private void Start()
     {
@@ -16,11 +17,10 @@ public class AddItemButton : MonoBehaviour
 
         if (itemDatas[itemIndex] != null)
         {
-            GameObject item = Instantiate(itemPrefab);
 
-            DragItem dragItem = item.GetComponent<DragItem>();
+            
 
-            dragItem.itemData = itemDatas[itemIndex];
+
 
 
             invMan.AddItem(itemDatas[itemIndex]);
@@ -32,7 +32,8 @@ public class AddItemButton : MonoBehaviour
                 //dragItem.SetPos(invMan.inventorySlot[itemIndex].transform.GetChild(0));
                 if (invMan.inventorySlot[i].item == itemDatas[itemIndex])
                 {
-                    dragItem.SetPos(invMan.inventorySlot[i].transform.GetChild(0));
+                    GameObject item = CreateItem.CreateItem(itemDatas[itemIndex], invMan.inventorySlot[i].transform.GetChild(0));
+                   
                     return;
                 }
                 else if (invMan.inventorySlot[i].item == null && saveNullSlot == null)
@@ -44,8 +45,7 @@ public class AddItemButton : MonoBehaviour
             }
 
             if (saveNullSlot == null) { Debug.Log("인벤토리의 빈공간이 없습니다"); return; }
-            dragItem.SetPos(saveNullSlot);
-            Debug.Log("아이템 넣음");
+ 
 
         }
 

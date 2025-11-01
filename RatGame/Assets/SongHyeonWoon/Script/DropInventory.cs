@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 
 public class DropInventory : DropSlot
 {
-    public InventoryManager invMan;
     public ItemSlot inventorySlot;
 
     private void Start()
@@ -26,13 +25,19 @@ public class DropInventory : DropSlot
 
 
 
-
-                if (originSlot != targetSlot)
+                if (inventorySlot.MaxCount > inventorySlot.count) // 아이템이 최대 저장 공간을 넘지 못하도록
                 {
-                    ItemExit();
-                }
+                    if (originSlot != targetSlot)
+                    {
+                        ItemExit();
+                    }
 
-                ItemAdd();
+                    ItemAdd();
+                }
+                else
+                {
+                    Debug.Log("저장 공간이 가득 한디예");
+                }
             }
 
         }
@@ -41,9 +46,22 @@ public class DropInventory : DropSlot
 
     public override void ItemAdd()
     {
-        base.ItemAdd();
-      
-        inventorySlot.AddItem(draggedItem.itemData);
+       
+            if (targetSlot.childCount > 0)
+            {
+                draggedItem.transform.SetParent(targetSlot.GetChild(0));
+            }
+            else
+            {
+                draggedItem.transform.SetParent(targetSlot);
+            }
+            draggedItem.retPos.localPosition = Vector3.zero;
+            inventorySlot.AddItem(draggedItem.itemData);
+
+            
+
+        
+
     }
 
     public override void ItemExit()
@@ -54,7 +72,6 @@ public class DropInventory : DropSlot
             
             if (originSlot != null)
             {
-                
                 originSlot.RemoveItem();
               
             }
@@ -63,5 +80,12 @@ public class DropInventory : DropSlot
 
         base.ItemExit();
      
+    }
+
+    public  void ReSet()
+    {
+        inventorySlot.count = 0;
+        inventorySlot.item = null;
+        
     }
 }
