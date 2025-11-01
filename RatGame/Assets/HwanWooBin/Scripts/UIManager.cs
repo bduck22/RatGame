@@ -64,6 +64,9 @@ public class UIManager : MonoBehaviour
 
     public void OnFade()
     {
-        Fade.SetTrigger("Play");
+        if (!GameManager.Instance.stopping)
+        {
+            Fade.SetTrigger("Play");
+        }
     }
 }
