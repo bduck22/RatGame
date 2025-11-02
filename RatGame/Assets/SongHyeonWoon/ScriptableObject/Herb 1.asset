@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e0c4babe4666643ac72e56109ad757, type: 3}
-  m_Name: Herb 1
-  m_EditorClassIdentifier: 
-  itemName: "\uC624\uBBF8\uC790"
-  itemImage: {fileID: 21300000, guid: 11ec753ebf994a14fbb3c04e030053e7, type: 3}
-  isProcessed: 0
-  itemProcessedWay: 020000000300000000000000
+  m_Script: {fileID: 0}
+  m_Name: herb 1
+  m_EditorClassIdentifier: Assembly-CSharp::HerbData
+  itemName: "\uC778\uC0BC"
+  itemImage: {fileID: 21300000, guid: 3b8e5cc8e668b6541b1ba274da09ef36, type: 3}
+  TopImage: {fileID: 5761464935121132091, guid: 29a5d2e291612ea4595f099f8497a887, type: 3}
+  itemType: 0
+  Explanation: 
+  IsProcessed: 0
+  itemProcessedWay: 010000000200000000000000

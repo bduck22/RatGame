@@ -4,7 +4,7 @@ using static UnityEditor.Progress;
 public class AddItemButton : MonoBehaviour
 {
     public InventoryManager invMan;
-    public ItemData[] itemDatas;
+    public ItemBase[] itemDatas;
     public CreateItems CreateItem;
 
     private void Start()

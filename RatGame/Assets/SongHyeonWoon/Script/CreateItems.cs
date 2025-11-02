@@ -25,10 +25,14 @@ public class CreateItems : MonoBehaviour
         ItemList.Add(item);
         return item;
     }
-    public GameObject CreateItem(ItemData itemData, Transform itemPos)
+    public GameObject CreateItem(ItemBase itemData, Transform itemPos)
     {
         GameObject itemPrefab = ListChick();
+        
+
         itemPrefab.GetComponent<Image>().sprite = itemData.itemImage;
+        itemPrefab.transform.GetChild(0).GetComponent<Image>().sprite = itemData.TopImage;
+        
         itemPrefab.name = itemData.itemName;
 
 

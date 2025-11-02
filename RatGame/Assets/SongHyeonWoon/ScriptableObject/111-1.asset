@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: herb 2
+  m_Name: 111-1
   m_EditorClassIdentifier: Assembly-CSharp::HerbData
-  itemName: "\uB2F9\uADC0"
-  itemImage: {fileID: 21300000, guid: 767f99cb2bb6a1c4cb71d0a43f52563f, type: 3}
-  TopImage: {fileID: 5761464935121132091, guid: 29a5d2e291612ea4595f099f8497a887, type: 3}
+  itemName: "\uC778\uC0BC"
+  itemImage: {fileID: 21300000, guid: 3b8e5cc8e668b6541b1ba274da09ef36, type: 3}
+  TopImage: {fileID: 21300000, guid: 9e953c698dd40ed4c95a508ba6485ad4, type: 3}
   itemType: 0
   Explanation: 
-  IsProcessed: 0
-  itemProcessedWay: 010000000000000003000000
+  IsProcessed: 1
+  itemProcessedWay: 01000000

@@ -34,7 +34,7 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public void AddItem(ItemData AdditemData)
+    public void AddItem(ItemBase AdditemData)
     {
         ItemSlot emptySlot = null;
         for(int i=0; i<inventoryCount; i++)

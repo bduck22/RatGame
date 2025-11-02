@@ -13,8 +13,8 @@ public class ItemProcessed
 }
 public class ProcessedManager : MonoBehaviour
 {
-    public ItemData[] itemDatas; // 가공된 아이템 데이터
-    public ItemData failedItem; // 가공 실패한 아이템
+    public HerbData[] itemDatas; // 가공된 아이템 데이터
+    public HerbData failedItem; // 가공 실패한 아이템
     public CreateItems CreateItems; // 아이템 제작 메서드
     public ItemProcessed[] itemProcessed;
  
@@ -23,11 +23,11 @@ public class ProcessedManager : MonoBehaviour
 
     public void ProcessedItem(int proceddedNum) // 아이템 가공 매서드
     {
-        ItemData item;
-        ItemData chickItem;
+        HerbData item;
+        HerbData chickItem;
 
-        item = itemProcessed[proceddedNum - 1].processedSlot.inventorySlot.item;
-        if (itemProcessed[proceddedNum - 1].processedSlot.inventorySlot.item != null && !itemProcessed[proceddedNum - 1].processedSlot.inventorySlot.item.isProcessed && itemProcessed[proceddedNum - 1].resulSlot.inventorySlot.item == null) // 아이템이 존재한다면 또한 아이템이 가공되지 않았다면, 또한 결과 창이 비어 있으면
+        item = itemProcessed[proceddedNum - 1].processedSlot.inventorySlot.item as HerbData;
+        if (item != null && !item.IsProcessed && itemProcessed[proceddedNum - 1].resulSlot.inventorySlot.item == null) // 아이템이 존재한다면 또한 아이템이 가공되지 않았다면, 또한 결과 창이 비어 있으면
         {
             int count = 0;
             for (int i = 0; i < 3; i++)
@@ -63,10 +63,10 @@ public class ProcessedManager : MonoBehaviour
         }
     }
 
-    public void ProcessedListChick(ItemData item,int processedNum, ItemProcessed process, bool isfailed) // 가공 리스트 확인
+    public void ProcessedListChick(HerbData item,int processedNum, ItemProcessed process, bool isfailed) // 가공 리스트 확인
     {
 
-        process.processedSlot.draggedItem.gameObject.SetActive(false); // 가종 슬롯 정리
+        process.processedSlot.draggedItem.gameObject.SetActive(false); // 가공 슬롯 정리
         process.processedSlot.ReSet();
 
         if (!isfailed) // 제작에 성공 했을 때

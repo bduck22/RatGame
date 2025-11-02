@@ -10,7 +10,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private CanvasGroup canvasGroup;
     private Image image;
 
-    public ItemData itemData;
+    public ItemBase itemData;
   
 
 
