@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
 
     public Transform SetOb;
 
+    public Transform Inventory;
+
     public void Objectin(Transform ob)
     {
         SetOb = ob;
@@ -78,6 +80,17 @@ public class GameManager : MonoBehaviour
         }
 
             RoomControler.gameObject.SetActive(nowscreen == ScreenType.가공전체 || nowscreen == ScreenType.실험전체);
+
+        Inventory.gameObject.SetActive(false);
+
+        switch (nowscreen)
+        {
+            case ScreenType.가공:
+            case ScreenType.제조:
+            case ScreenType.실험:
+                Inventory.gameObject.SetActive(true);
+                break;
+        }
 
         SetOb.gameObject.SetActive(!SetOb.gameObject.activeSelf);
 
