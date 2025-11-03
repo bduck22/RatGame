@@ -21,4 +21,13 @@ public class animeFunc : MonoBehaviour
     {
         GameManager.Instance.RealOnScreen();
     }
+
+    public void Dayplaying()
+    {
+        GameManager.Instance.playingday();
+    }
+    public void EndDay()
+    {
+        GameManager.Instance.NextDayEnd();
+    }
 }

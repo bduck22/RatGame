@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 
     public Transform touchVfx;
 
+    public Text Day;
+
     void Start()
     {
         Fade = GetComponent<Animator>();
@@ -68,5 +70,10 @@ public class UIManager : MonoBehaviour
         {
             Fade.SetTrigger("Play");
         }
+    }
+
+    public void UpdateDayText()
+    {
+        Day.text = (GameManager.Instance.Day+1).ToString()+"ÀÏÂ÷";
     }
 }
