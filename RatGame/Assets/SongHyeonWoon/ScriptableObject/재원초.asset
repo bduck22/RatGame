@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: 111-1
+  m_Name: "\uC7AC\uC6D0\uCD08"
   m_EditorClassIdentifier: Assembly-CSharp::HerbData
-  itemName: "\uC778\uC0BC"
-  itemImage: {fileID: 21300000, guid: 3b8e5cc8e668b6541b1ba274da09ef36, type: 3}
-  TopImage: {fileID: 21300000, guid: 9e953c698dd40ed4c95a508ba6485ad4, type: 3}
+  itemName: "\uC7AC\uC6D0\uCD08"
+  itemImage: {fileID: 21300000, guid: 81828fea93b6e10429fd16aac30977d0, type: 3}
   itemType: 0
   Explanation: 
-  IsProcessed: 1
-  itemProcessedWay: 01000000
+  itemProcessedWay: 

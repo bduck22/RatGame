@@ -29,9 +29,9 @@ public class CreateItems : MonoBehaviour
     {
         GameObject itemPrefab = ListChick();
         
-
+       
         itemPrefab.GetComponent<Image>().sprite = itemData.itemImage;
-        itemPrefab.transform.GetChild(0).GetComponent<Image>().sprite = itemData.TopImage;
+
         
         itemPrefab.name = itemData.itemName;
 

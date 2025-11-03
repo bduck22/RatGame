@@ -3,55 +3,34 @@ using static UnityEditor.Progress;
 
 public class AddItemButton : MonoBehaviour
 {
-    public InventoryManager invMan;
-    public ItemBase[] itemDatas;
-    public CreateItems CreateItem;
-
+    ItemDatas itemDatas;
     private void Start()
     {
-        invMan = InventoryManager.instance;
+        itemDatas = DataManager.instance.itemDatas;
     }
 
     public void Additem(int itemIndex)
     {
-
-        if (itemDatas[itemIndex] != null)
+        foreach(ItemClass iteml in DataManager.instance.inventory)
         {
-
-            
-
-
-
-
-            invMan.AddItem(itemDatas[itemIndex]);
-
-
-            Transform saveNullSlot = null;
-            for (int i = 0; i < invMan.inventoryCount; i++)
+            if(iteml.itemNumder == itemIndex)
             {
-                //dragItem.SetPos(invMan.inventorySlot[itemIndex].transform.GetChild(0));
-                if (invMan.inventorySlot[i].item == itemDatas[itemIndex])
-                {
-                    GameObject item = CreateItem.CreateItem(itemDatas[itemIndex], invMan.inventorySlot[i].transform.GetChild(0));
-                   
-                    return;
-                }
-                else if (invMan.inventorySlot[i].item == null && saveNullSlot == null)
-                {
-                    saveNullSlot = invMan.inventorySlot[i].transform.GetChild(0);
-                }
-
-
+                iteml.ItemCount++;
+                return;
             }
-
-            if (saveNullSlot == null) { Debug.Log("인벤토리의 빈공간이 없습니다"); return; }
- 
-
         }
 
+        ItemClass item = new ItemClass();
+        ItemBase itemdata = itemDatas.items[itemIndex];
 
-       
+        item.itemType = itemdata.itemType;
+        item.itemNumder = itemIndex;
+        item.ItemCount++;
+
         
+
+        DataManager.instance.inventory.Add(item);
+
         
     }
 

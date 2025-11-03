@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DropInventory : DropSlot
+public class DropInventory : MonoBehaviour, IDropHandler
 {
     public ItemSlot inventorySlot;
+    public ItemSlot originSlot;
+    public Transform targetSlot;
+    public DragItem draggedItem;
 
     private void Start()
     {
         inventorySlot = GetComponent<ItemSlot>();
     }
 
-    public override void OnDrop(PointerEventData eventData) // 드래그가 끝났을 때, 이 UI 오브젝트 위에 마우스가 있으면 자동으로 OnDrop() 이벤트를 실행
+    public void OnDrop(PointerEventData eventData) // 드래그가 끝났을 때, 이 UI 오브젝트 위에 마우스가 있으면 자동으로 OnDrop() 이벤트를 실행
     {
         if (eventData.pointerDrag != null)
         {
@@ -44,7 +47,7 @@ public class DropInventory : DropSlot
     }
 
 
-    public override void ItemAdd()
+    public void ItemAdd()
     {
        
             if (targetSlot.childCount > 0)
@@ -64,7 +67,7 @@ public class DropInventory : DropSlot
 
     }
 
-    public override void ItemExit()
+    public void ItemExit()
     {
 
         if (originSlot != null)
@@ -77,15 +80,13 @@ public class DropInventory : DropSlot
             }
         }
 
-
-        base.ItemExit();
      
     }
 
-    public  void ReSet()
+    public void ReSet()
     {
         inventorySlot.count = 0;
         inventorySlot.item = null;
-        
+        draggedItem.transform.SetParent(null);
     }
 }
