@@ -14,6 +14,7 @@ public class FacturingController : MonoBehaviour
 
     public Slider AmountSlider;
     public int Amount;
+    public Text AmountText;
 
     public bool NonWater;
     public Animator WaterSlider;
@@ -164,6 +165,7 @@ public class FacturingController : MonoBehaviour
     {
         AmountSlider.value = Mathf.RoundToInt(AmountSlider.value); //
         Amount = (int)AmountSlider.value;
+        AmountText.text = Amount.ToString() + ":"+(10-Amount).ToString();
         WillLoad();
     }
 
