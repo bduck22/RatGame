@@ -13,6 +13,10 @@ public class ProcessController : MonoBehaviour
     public Sprite ProcessTypeIcon;
     public Transform ProcessWindow;
 
+    public Sprite HerbCase;
+    public Sprite PotionCase;
+    public Sprite NeedLevel;
+
     public Image[] Slots = new Image[9];
     public Image[] slotProcessIcon = new Image[9];
     void Start()
@@ -34,7 +38,7 @@ public class ProcessController : MonoBehaviour
         {
             if (ProcessLevel[i % 3] >= i % 3) // 해당 칸이 해금되어있는가
             {
-                if (itemslots[i].itemNumder != -1 && itemtimes[i]!=0)
+                if (itemslots[i].itemNumber != -1 && itemtimes[i]!=0)
                 {
                     if (itemtimes[i] >0)
                     {
@@ -42,31 +46,7 @@ public class ProcessController : MonoBehaviour
                     }
                     else if(itemtimes[i] < 0)
                     {
-                        itemtimes[i] = 0;
-
-                        bool correct=false;
-                        HerbData herbData = ItemDatas.items[itemslots[i].itemNumder] as HerbData;
-                        foreach (int j in herbData.itemProcessedWay)
-                        {
-                            if(j == (i / 3))
-                            {
-                                correct = true;
-                                break;
-                            }
-                        }
-                        if (correct)
-                        {
-                            Slots[i].transform.parent.GetComponent<DropSlot>().Item.ProcessWay = (i / 3);
-                            slotProcessIcon[i].sprite = GameManager.Instance.ProcessIcon[i/3];
-                        }
-                        else
-                        {
-                            Slots[i].transform.parent.GetComponent<DropSlot>().Item.itemNumder = 7;
-                            Slots[i].sprite = ItemDatas.items[7].itemImage;
-                            slotProcessIcon[i].gameObject.SetActive(false);
-                        }
-
-                        slotProcessIcon[i].fillAmount = 1;
+                        Done(i);
                         continue;
                     }
                     slotProcessIcon[i].fillAmount = (itemtimes[i] / (10 - ProcessLevel[i / 3]));
@@ -77,7 +57,6 @@ public class ProcessController : MonoBehaviour
 
     public void UpdateHerb()
     {
-
         for (int i = 0; i < 9; i++)
         {
             itemslots[i] = new ItemClass();
@@ -85,18 +64,17 @@ public class ProcessController : MonoBehaviour
             {
                 itemslots[i] = Slots[i].transform.parent.GetComponent<DropSlot>().Item;
                 Slots[i].gameObject.SetActive(true);
-                if (itemslots[i].itemNumder != -1)
+                if (itemslots[i].itemNumber != -1)
                 {
-                    Slots[i].sprite = ItemDatas.items[itemslots[i].itemNumder].itemImage;
-                    slotProcessIcon[i].gameObject.SetActive(true);
-                    slotProcessIcon[i].sprite = ProcessTypeIcon;
-                    if (itemtimes[i] == -1)
+                    Slots[i].sprite = ItemDatas.items[itemslots[i].itemNumber].itemImage;
+                    if(itemslots[i].ProcessWay == -1)
                     {
-                        itemtimes[i] = 10 - ProcessLevel[i / 3];
-                    }
-                    else if (itemtimes[i] == 0)
-                    {
-                        //가공완료
+                        slotProcessIcon[i].gameObject.SetActive(true);
+                        slotProcessIcon[i].sprite = ProcessTypeIcon;
+                        if (itemtimes[i] == -1)
+                        {
+                            itemtimes[i] = 10 - ProcessLevel[i / 3];
+                        }
                     }
                 }
                 else
@@ -106,10 +84,47 @@ public class ProcessController : MonoBehaviour
             }
             else
             {
-                Slots[i].sprite = GameManager.Instance.NeedLevel;
+                Slots[i].sprite = NeedLevel;
                 slotProcessIcon[i].gameObject.SetActive(false);
                 continue;
             }
         }
+    }
+
+    public void Done(int number)
+    {
+        itemtimes[number] = -1;
+        bool correct = false;
+        HerbData herbData = ItemDatas.items[itemslots[number].itemNumber] as HerbData;
+        foreach (int j in herbData.itemProcessedWay)
+        {
+            if (j == (number / 3))
+            {
+                correct = true;
+                break;
+            }
+        }
+        DropSlot nowitem = Slots[number].transform.parent.GetComponent<DropSlot>();
+        ItemClass newitem = new ItemClass();
+        if (correct)
+        {
+            newitem.itemNumber = nowitem.Item.itemNumber;
+            newitem.itemType = nowitem.Item.itemType;
+            newitem.ProcessWay = (number / 3);
+            slotProcessIcon[number].sprite = GameManager.Instance.inventoryManager.ProcessIcon[number / 3];
+        }
+        else
+        {
+            newitem.itemNumber = 7;
+            newitem.itemType = ItemType.Herb;
+            newitem.ProcessWay = 3;
+            Slots[number].sprite = ItemDatas.items[7].itemImage;
+            slotProcessIcon[number].gameObject.SetActive(false);
+        }
+
+        newitem.ItemCount = 1;
+        nowitem.Get = true;
+        nowitem.Item = newitem;
+        slotProcessIcon[number].fillAmount = 1;
     }
 }

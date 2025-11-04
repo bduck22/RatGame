@@ -7,11 +7,30 @@ public class DropSlot : MonoBehaviour
 
     public Action Load;
 
-    public void Get()
+    public bool Get;
+
+    public bool Lock;
+
+    public void Getitem()
     {
-        if(Item.ProcessWay != -1)
+        if (Get)
         {
-            
+            Get = false;
+            GameManager.Instance.AddItem(Item);
+            Item = new ItemClass();
+            Load();
         }
+    }
+
+    public void BackItem()
+    {
+        GameManager.Instance.AddItem(Item);
+        Item = new ItemClass();
+        Load();
+    }
+
+    public void DeleteItem()
+    {
+        Item = new ItemClass();
     }
 }

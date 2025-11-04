@@ -16,4 +16,4 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 41fe968d2e896e0488f0b8244a1df3dc, type: 3}
   itemType: 0
   Explanation: 
-  itemProcessedWay: 
+  itemProcessedWay: 0000000001000000

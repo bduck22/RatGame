@@ -12,12 +12,14 @@ public class MoveItem : MonoBehaviour
     Transform OrigionPos;
     RectTransform retPos;
     public int itemIndex;
+    InventoryManger inventoryManager;
 
     void Start()
     {
       image = GetComponent<Image>();
       OrigionPos = transform.parent;
         retPos = GetComponent<RectTransform>();
+        inventoryManager = GameManager.Instance.inventoryManager;
     }
 
 
@@ -28,11 +30,6 @@ public class MoveItem : MonoBehaviour
 #if UNITY_EDITOR
 
             transform.position = Input.mousePosition; // 마우스 위치로 오브젝트 이동
-
-
-            
-
-
 #endif
             if (Input.touchCount > 0)
             {
@@ -93,14 +90,19 @@ public class MoveItem : MonoBehaviour
             if (selectUI.gameObject.GetComponent<DropSlot>())
             {
                 DropSlot dropSlot = selectUI.gameObject.GetComponent<DropSlot>();
+                if (dropSlot.Item.itemNumber == -1&&!dropSlot.Lock)
+                {
+                    inventoryManager.inventory[itemIndex].ItemCount--;
+                    dropSlot.Item = inventoryManager.inventory[itemIndex];
+                    if (inventoryManager.inventory[itemIndex].ItemCount <= 0)
+                    {
+                        inventoryManager.inventory.RemoveAt(itemIndex);
+                    }
 
-                GameManager.Instance.inventory[itemIndex].ItemCount--;
-                dropSlot.Item = GameManager.Instance.inventory[itemIndex];
-
-                GameManager.Instance.UpdateInventory();
-                dropSlot.Load();
+                    inventoryManager.UpdateInventory();
+                    dropSlot.Load();
+                }
             }
-            transform.localPosition = Vector3.zero;
         }
         transform.SetParent(OrigionPos);
         retPos.localPosition = Vector3.zero;

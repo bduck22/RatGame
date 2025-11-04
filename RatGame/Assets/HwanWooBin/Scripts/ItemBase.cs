@@ -17,6 +17,8 @@ public class ItemBase : ScriptableObject
 
     public ItemType itemType;
     public string Explanation;
+
+    public float Price;
 }
 
 

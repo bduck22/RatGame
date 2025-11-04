@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[SerializeField]
+[DefaultExecutionOrder(-100)]
 public class ItemDatas : MonoBehaviour
 {
     public ItemBase[] items;

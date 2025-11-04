@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62e04aec333bb641b1be87df4bf0501, type: 3}
+  m_Name: "\uBB34\uC1E0\uB2E8"
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemImage: {fileID: 21300000, guid: 77a6ec77656ab6d409fa2022817a32e0, type: 3}
+  itemType: 1
+  Explanation: 
+  Price: 0
+  Herb1: {fileID: 11400000, guid: 954da53f9699ca747ba5e5deaef11eaa, type: 2}
+  process1: 2
+  Herb2: {fileID: 11400000, guid: c39f3b624d5498a4082789c02c0a0630, type: 2}
+  process2: 0
+  HerbAmount1: 6
+  HerbAmount2: 4
+  itemLevel: 2
+  NonWater: 1
+  NonShapeImage: {fileID: 21300000, guid: 6c66ba5e9beea8a4f948077404936699, type: 3}

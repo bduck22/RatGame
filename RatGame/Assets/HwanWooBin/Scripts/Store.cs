@@ -8,7 +8,13 @@ public class Store : MonoBehaviour
     {
         if (GameManager.Instance.IsBuyed(Prices[number]))
         {
-            GameManager.Instance.AddItem(number, -1, -1, false);
+            ItemClass itemdummy = new ItemClass();
+            itemdummy.itemNumber = number;
+            itemdummy.ItemCount = 1;
+            itemdummy.shap = false;
+            itemdummy.ProcessWay = -1;
+            itemdummy.itemType = ItemType.Herb;
+            GameManager.Instance.AddItem(itemdummy);
         }
     }
 }

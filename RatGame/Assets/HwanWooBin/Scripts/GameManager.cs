@@ -22,6 +22,7 @@ public enum ScreenType
     침대
 }
 
+[DefaultExecutionOrder(-51)]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -36,27 +37,15 @@ public class GameManager : MonoBehaviour
 
     public int Day;
 
-    [Header("인벤토리")]
+    [Header("하위 관리스크립트")]
     public ItemDatas itemDatas;
 
-    public List<ItemClass> inventory = new List<ItemClass>();
-    public Transform InvenPos;
-    public GameObject InvenPre;
-
-    public Sprite HerbCase;
-    public Sprite PotionCase;
-    public Sprite NeedLevel;
-
-    public Sprite[] ProcessIcon;
+    public InventoryManger inventoryManager;
 
     public ProcessController ProcessController;
 
-    public bool Sawherb;
-    public bool SawProcessed;
-    public bool SawPotion;
+    public DicManager dicManager;
 
-
-    public int bannedItemCount = 0;
     [Header("UI")]
 
     public UIManager uimanager;
@@ -86,40 +75,38 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void AddItem(int Itemnumber, int process, float complete, bool shape)
+    public void AddItem(ItemClass Item)
     {
         ItemClass item = new ItemClass();
-        item.itemNumder = Itemnumber;
-        if (itemDatas.items[Itemnumber].itemType == ItemType.Potion)
+        item.itemNumber = Item.itemNumber;
+        item.shap = Item.shap;
+        item.Completeness = Item.Completeness;
+        item.ProcessWay = Item.ProcessWay;
+        item.itemType = Item.itemType;
+        item.ItemCount = Item.ItemCount;
+        if (itemDatas.items[item.itemNumber].itemType == ItemType.Potion)
         {
-            item.ItemCount = 1;
-            item.shap = shape;
-            item.Completeness = complete;
-
-            inventory.Add(item);
+            inventoryManager.inventory.Add(item);
         }
         else
         {
-            for (int i = 0; i < inventory.Count; i++)
+            for (int i = 0; i < inventoryManager.inventory.Count; i++)
             {
-                if (inventory[i].itemNumder == Itemnumber)
+                if (inventoryManager.inventory[i].itemNumber == item.itemNumber)
                 {
-                    if (inventory[i].ProcessWay == process)
+                    if (inventoryManager.inventory[i].ProcessWay == item.ProcessWay)
                     {
-                        inventory[i].ItemCount++;
+                        inventoryManager.inventory[i].ItemCount+= Item.ItemCount;
 
-                        UpdateInventory();
+                        inventoryManager.UpdateInventory();
                         return;
                     }
                 }
             }
 
-            item.ProcessWay = process;
-            item.ItemCount = 1;
-
-            inventory.Add(item);
+            inventoryManager.inventory.Add(item);
         }
-        UpdateInventory();
+        inventoryManager.UpdateInventory();
     }
 
     public bool IsBuyed(int price)
@@ -187,24 +174,24 @@ public class GameManager : MonoBehaviour
         switch (nowscreen)
         {
             case ScreenType.가공:
-                SawPotion = false;
-                SawProcessed = false;
-                Sawherb = true;
-                UpdateInventory();
+                inventoryManager.SawPotion = false;
+                inventoryManager.SawProcessed = false;
+                inventoryManager.Sawherb = true;
+                inventoryManager.UpdateInventory();
                 InventoryUI.gameObject.SetActive(true);
                 break;
             case ScreenType.제조:
-                SawPotion = false;
-                Sawherb = false;
-                SawProcessed = true;
-                UpdateInventory();
+                inventoryManager.SawPotion = false;
+                inventoryManager.Sawherb = false;
+                inventoryManager.SawProcessed = true;
+                inventoryManager.UpdateInventory();
                 InventoryUI.gameObject.SetActive(true);
                 break;
             case ScreenType.실험:
-                Sawherb=false;
-                SawProcessed = false;
-                SawPotion = true;
-                UpdateInventory();
+                inventoryManager.Sawherb =false;
+                inventoryManager.SawProcessed = false;
+                inventoryManager.SawPotion = true;
+                inventoryManager.UpdateInventory();
                 InventoryUI.gameObject.SetActive(true);
                 break;
         }
@@ -254,84 +241,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateInventory()
-    {
-        bannedItemCount = 0;
-        for (int i = 0; i < InvenPos.childCount; i++)
-        {
-            InvenPos.GetChild(i).gameObject.SetActive(false);
-        }
-
-        for(int i = 0; i < inventory.Count; i++)//4
-        {
-            GameObject slot;
-            if (InvenPos.childCount <= i - bannedItemCount)
-            {
-                //생성
-                slot = Instantiate(InvenPre, InvenPos);
-            }
-            else
-            {
-                slot = InvenPos.GetChild(i-bannedItemCount).gameObject;
-                slot.SetActive(true);
-                //true
-            }
-
-            ItemBase itemdata = itemDatas.items[inventory[i].itemNumder];
-
-            if (!Sawherb)
-            {
-                if (itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay == -1)
-                {
-                    bannedItemCount++;
-                    slot.SetActive(false);
-                    continue;
-                }
-            }
-
-            if (!SawPotion)
-            {
-                if(itemdata.itemType == ItemType.Potion)
-                {
-                    bannedItemCount++;
-                    slot.SetActive(false);
-                    continue;
-                }
-            }
-
-            if (!SawProcessed)
-            {
-                if(itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay != -1)
-                {
-                    bannedItemCount++;
-                    slot.SetActive(false);
-                    continue;
-                }
-            }
-
-            slot.gameObject.name = (i).ToString();
-            slot.GetComponent<Image>().sprite = itemdata.itemType==ItemType.Potion?PotionCase:HerbCase;
-            slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
-            slot.transform.GetChild(1).GetComponent<Text>().text = (inventory[i].ItemCount<=1?"": inventory[i].ItemCount.ToString("#,###"));
-
-            if (itemdata.itemType == ItemType.Herb)
-            {
-                if (inventory[i].ProcessWay != -1)
-                {
-                    slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-                    slot.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = ProcessIcon[inventory[i].ProcessWay];
-                }
-                else
-                {
-                    slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-            }
-
-            //slot.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = 
-        }
-    }
+    
 }
