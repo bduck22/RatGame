@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: "\uC7AC\uC6D0\uCD08"
+  m_Script: {fileID: 11500000, guid: 984c2973d8523bb4fbd4e8342c59992c, type: 3}
+  m_Name: "\uC791\uC57D"
   m_EditorClassIdentifier: Assembly-CSharp::HerbData
-  itemName: "\uC7AC\uC6D0\uCD08"
-  itemImage: {fileID: 21300000, guid: 81828fea93b6e10429fd16aac30977d0, type: 3}
+  itemName: "\uC791\uC57D"
+  itemImage: {fileID: 21300000, guid: 2afe3211cdf9b044188651189ec8a159, type: 3}
   itemType: 0
   Explanation: 
   itemProcessedWay: 
