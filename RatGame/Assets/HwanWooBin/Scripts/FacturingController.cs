@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,9 @@ public class FacturingController : MonoBehaviour
 
     public Slider AmountSlider;
     public int Amount;
-    public Text AmountText;
+    public TextMeshProUGUI AmountText;
+
+    public TextMeshProUGUI WaterText;
 
     public bool NonWater;
     public Animator WaterSlider;
@@ -158,7 +161,15 @@ public class FacturingController : MonoBehaviour
     {
         NonWater = !NonWater;
         WaterSlider.SetBool("water", NonWater);
-        WillLoad();
+        if (NonWater)
+        {
+            WaterText.text = "고체";
+        }
+        else
+        {
+            WaterText.text = "액체";
+        }
+            WillLoad();
     }
 
     public void ChangeAmount()
@@ -180,7 +191,30 @@ public class FacturingController : MonoBehaviour
         {
             return;
         }
+        /*
+        PotionData potion = ItemDatas.items[WillPotion.itemNumber] as PotionData;
 
+
+        switch (potion.itemLevel)
+        {
+            case 1:
+                bool isoneOk = (WillPotion.herb1 == potion.Herb1);
+                bool istwoOk = (WillPotion.herb2 == potion.Herb2);
+                bool twoherbsame = ((WillPotion.herb1 == potion.Herb1 && WillPotion.herb2 == potion.Herb2) || (WillPotion.herb1 == potion.Herb2 && WillPotion.herb2 == potion.Herb1));
+                bool oneamountsame = (isoneOk && (WillPotion.amount1 == potion.HerbAmount1))||(istwoOk && (WillPotion.amount2 == potion.HerbAmount1));
+                bool sameeverything = (WillPotion.amount1 == potion.HerbAmount1 || WillPotion.amount1 )
+                
+                //50 + (재료 2개가 같은가?)*15 + (특정 약초의 비율이 같은가?)*15 + (모든 약초의 비율이 같은가?)*20
+                WillPotion.Completeness = 50;
+                break;
+            case 2:
+                //50 + (1번재료와 2번재료의 각각의 비율의 차이의 합이 5이하인가?)*10 + (1번재료의 비율이 같은가?)*20 + (2번재료의 비율이 같은가?)*20
+                break;
+            case 3:
+                //50 + (1번재료의 비율이 같은가?) *10+(2번재료의 비율이 같은가?)*20+(모든 재료의 비율이 같은가?)*20
+                break;
+        }
+        */
         Herb1.DeleteItem();
         Herb2.DeleteItem();
 
@@ -195,13 +229,13 @@ public class FacturingController : MonoBehaviour
     {
         Transform slot = Result.transform.GetChild(0);
         slot.gameObject.SetActive(true);
-        if (ItemDatas.items[Result.Item.itemNumber] == Result.Item.shap)
+        var itemdata = ItemDatas.items[Result.Item.itemNumber] as PotionData;
+        if (itemdata.NonWater == Result.Item.shap)
         {
             slot.GetComponent<Image>().sprite = ItemDatas.items[Result.Item.itemNumber].itemImage;
         }
         else
         {
-            var itemdata = ItemDatas.items[Result.Item.itemNumber] as PotionData;
             slot.GetComponent<Image>().sprite = itemdata.NonShapeImage;
         }
     }

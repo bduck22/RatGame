@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Progress;
-
 public class AddItemButton : MonoBehaviour
 {
     //ItemDatas itemDatas;

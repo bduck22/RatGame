@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,16 +9,16 @@ public class UIManager : MonoBehaviour
     public Animator[] UIs;
 
     [SerializeField]
-    Text roomName;
+    TextMeshProUGUI roomName;
 
     public Transform touchVfx;
 
-    public Text Day;
+    public TextMeshProUGUI Day;
 
     void Start()
     {
         Fade = GetComponent<Animator>();
-        roomName = UIs[0].GetComponent<Text>();
+        roomName = UIs[0].GetComponent<TextMeshProUGUI>();
     }
 
     void Update()

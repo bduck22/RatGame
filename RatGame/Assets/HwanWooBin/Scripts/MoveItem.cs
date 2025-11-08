@@ -84,9 +84,6 @@ public class MoveItem : MonoBehaviour
     {
         moving = false;
         image.raycastTarget = true;
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-
             if (selectUI.gameObject.GetComponent<DropSlot>())
             {
                 DropSlot dropSlot = selectUI.gameObject.GetComponent<DropSlot>();
@@ -103,7 +100,6 @@ public class MoveItem : MonoBehaviour
                     dropSlot.Load();
                 }
             }
-        }
         transform.SetParent(OrigionPos);
         retPos.localPosition = Vector3.zero;
     }

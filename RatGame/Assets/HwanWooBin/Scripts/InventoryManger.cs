@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -78,8 +79,10 @@ public class InventoryManger : MonoBehaviour
 
             slot.gameObject.name = (i).ToString();
             slot.GetComponent<Image>().sprite = itemdata.itemType == ItemType.Potion ? PotionCase : HerbCase;
-            if(itemdata.itemType == ItemType.Potion)
+            if (itemdata.itemType == ItemType.Potion)
             {
+                slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+
                 var Itemdata = itemdata as PotionData;
                 if (Itemdata.NonWater == inventory[i].shap)
                 {
@@ -90,11 +93,10 @@ public class InventoryManger : MonoBehaviour
                     slot.transform.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
                 }
             }
-            slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
-            slot.transform.GetChild(1).GetComponent<Text>().text = (inventory[i].ItemCount <= 1 ? "" : inventory[i].ItemCount.ToString("#,###"));
-
-            if (itemdata.itemType == ItemType.Herb)
+            else
             {
+                slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
+
                 if (inventory[i].ProcessWay != -1 && inventory[i].ProcessWay != 3)
                 {
                     slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
@@ -105,12 +107,7 @@ public class InventoryManger : MonoBehaviour
                     slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                 }
             }
-            else
-            {
-                slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-            }
-
-            //slot.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = 
+            slot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (inventory[i].ItemCount <= 1 ? "" : inventory[i].ItemCount.ToString("#,###"));
         }
     }
 }

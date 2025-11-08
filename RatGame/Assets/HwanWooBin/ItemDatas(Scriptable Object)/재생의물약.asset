@@ -26,3 +26,4 @@ MonoBehaviour:
   itemLevel: 1
   NonWater: 0
   NonShapeImage: {fileID: 21300000, guid: b4d53b2ae87af1d4796b56db7668b10b, type: 3}
+  Persents: 280000001e0000000a0000000f000000

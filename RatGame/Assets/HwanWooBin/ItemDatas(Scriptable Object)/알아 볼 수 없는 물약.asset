@@ -18,9 +18,9 @@ MonoBehaviour:
   Explanation: 
   Price: 0
   Herb1: {fileID: 11400000, guid: 029570075bc037744a6966353531bce0, type: 2}
-  process1: -1
+  process1: 3
   Herb2: {fileID: 11400000, guid: 029570075bc037744a6966353531bce0, type: 2}
-  process2: -1
+  process2: 3
   HerbAmount1: 0
   HerbAmount2: 0
   itemLevel: 0
