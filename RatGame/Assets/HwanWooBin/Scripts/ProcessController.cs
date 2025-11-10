@@ -13,10 +13,6 @@ public class ProcessController : MonoBehaviour
     public Sprite ProcessTypeIcon;
     public Transform ProcessWindow;
 
-    public Sprite HerbCase;
-    public Sprite PotionCase;
-    public Sprite NeedLevel;
-
     public Image[] Slots = new Image[9];
     public Image[] slotProcessIcon = new Image[9];
     void Start()
@@ -84,7 +80,7 @@ public class ProcessController : MonoBehaviour
             }
             else
             {
-                Slots[i].sprite = NeedLevel;
+                Slots[i].sprite = GameManager.Instance.inventoryManager.NeedLevel;
                 slotProcessIcon[i].gameObject.SetActive(false);
                 continue;
             }

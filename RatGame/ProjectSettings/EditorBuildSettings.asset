@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/HwanWooBin/Scene/MainScene.unity
+    guid: 2f6ace2fb8cf9bb4ea07d9212f833e7f
+  - enabled: 1
     path: Assets/HwanWooBin/Scene/1.unity
     guid: 67b7488292f66684bbf5bad9cfcb4d0b
   m_configObjects:

@@ -16,6 +16,7 @@ public class ItemBase : ScriptableObject
     public Sprite itemImage;
 
     public ItemType itemType;
+    [TextArea]
     public string Explanation;
 
     public float Price;

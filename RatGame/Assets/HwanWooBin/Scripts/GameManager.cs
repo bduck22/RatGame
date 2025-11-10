@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -30,10 +32,44 @@ public class GameManager : MonoBehaviour
     [Header("±â´É")]
     public Room room;
     public int nowRoom;
-    public float Money;
+    public float Money
+    {
+        get
+        {
+            return money;
+        }
+        set
+        {
+            money = value;
+            MoneyText.text = money.ToString("#,##0");
+        }
+    }
+    private float money;
+
     public ScreenType nowscreen;
 
-    public int MouseCount;
+    public int MouseCount
+    {
+        get
+        {
+            return usingMouse;
+        }
+        set
+        {
+            if(value > mouseCount)
+            {
+                mouseCount = value;
+            }
+            else
+            {
+                usingMouse = value;
+            }
+            MouseText.text = usingMouse.ToString() + "/" + mouseCount.ToString();
+        }
+    }
+    public int mouseCount;
+
+    private int usingMouse;
 
     public int Day;
 
@@ -47,6 +83,9 @@ public class GameManager : MonoBehaviour
     public DicManager dicManager;
 
     [Header("UI")]
+
+    public TextMeshProUGUI MoneyText;
+    public TextMeshProUGUI MouseText;
 
     public UIManager uimanager;
 
@@ -68,11 +107,68 @@ public class GameManager : MonoBehaviour
             Destroy(Instance);
         }
         Instance = this;
+
+        InitGame();
     }
 
-    void Update()
+    public void InitGame()
     {
+        Money = 100000000;
+        MouseCount = 5;
+
+        StartDay();
+    }
+
+    public Transform EndGame;
+    public void StartDay()
+    {
+        MouseCount = mouseCount;
+        Day++;
+
+        for (int i = 0; i < inventoryManager.deliverycounts.Length; i++)
+        {
+            int count = inventoryManager.deliverycounts[i];
+            AddItem(i, count);
+            inventoryManager.deliverycounts[i] = 0;
+        }
+
+        uimanager.UpdateDayText();
         
+        if(Day == 6)
+        {
+            EndGame.gameObject.SetActive(true);
+        }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void AddItem(int number, int count)
+    {
+        ItemClass item = new ItemClass();
+        item.itemNumber = number;
+        item.ItemCount = count;
+        for (int i = 0; i < inventoryManager.inventory.Count; i++)
+        {
+            if (inventoryManager.inventory[i].itemNumber == number)
+            {
+                if (inventoryManager.inventory[i].ProcessWay == item.ProcessWay)
+                {
+                    inventoryManager.inventory[i].ItemCount += count;
+
+                    inventoryManager.UpdateInventory();
+                    return;
+                }
+            }
+        }
+
+        if(count <= 0)
+        {
+            return;
+        }
+        inventoryManager.inventory.Add(item);
     }
 
     public void AddItem(ItemClass Item)
@@ -113,6 +209,7 @@ public class GameManager : MonoBehaviour
     {
         if(Money >= price)
         {
+            Money -= price;
             return true;
         }
         else
@@ -124,8 +221,7 @@ public class GameManager : MonoBehaviour
     public void playingday()
     {
         OnScreen(5);
-        Day++;
-        uimanager.UpdateDayText();
+        StartDay();
     }
     public void NextDay()
     {

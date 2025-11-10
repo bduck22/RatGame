@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: "\uC778\uC0BC"
   itemImage: {fileID: 21300000, guid: 41fe968d2e896e0488f0b8244a1df3dc, type: 3}
   itemType: 0
-  Explanation: 
+  Explanation: "\uBE48 \uC124\uBA85\n\n"
+  Price: 0
   itemProcessedWay: 0000000001000000

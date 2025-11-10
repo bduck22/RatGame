@@ -191,30 +191,26 @@ public class FacturingController : MonoBehaviour
         {
             return;
         }
-        /*
+        
         PotionData potion = ItemDatas.items[WillPotion.itemNumber] as PotionData;
 
-
+        bool issameherb = ((potion.Herb1 == WillPotion.herb1 && potion.Herb2 == WillPotion.herb2) || (potion.Herb2 == WillPotion.herb1 && potion.Herb1 == WillPotion.herb2));
+        bool issameshape = (WillPotion.shap == potion.NonWater);
+        bool issameamount = ((potion.HerbAmount1 == WillPotion.amount1 && potion.HerbAmount2 == WillPotion.amount2) || (potion.HerbAmount2 == WillPotion.amount1 && potion.HerbAmount1 == WillPotion.amount2));
+        bool issamewid = (potion.Herb1 == WillPotion.herb1 && potion.Herb2 == WillPotion.herb2);
         switch (potion.itemLevel)
         {
             case 1:
-                bool isoneOk = (WillPotion.herb1 == potion.Herb1);
-                bool istwoOk = (WillPotion.herb2 == potion.Herb2);
-                bool twoherbsame = ((WillPotion.herb1 == potion.Herb1 && WillPotion.herb2 == potion.Herb2) || (WillPotion.herb1 == potion.Herb2 && WillPotion.herb2 == potion.Herb1));
-                bool oneamountsame = (isoneOk && (WillPotion.amount1 == potion.HerbAmount1))||(istwoOk && (WillPotion.amount2 == potion.HerbAmount1));
-                bool sameeverything = (WillPotion.amount1 == potion.HerbAmount1 || WillPotion.amount1 )
-                
-                //50 + (재료 2개가 같은가?)*15 + (특정 약초의 비율이 같은가?)*15 + (모든 약초의 비율이 같은가?)*20
-                WillPotion.Completeness = 50;
+                WillPotion.Completeness = 50 + (issameherb?15:0) + (issameshape?15:0) + (issameamount?20:0);
                 break;
             case 2:
-                //50 + (1번재료와 2번재료의 각각의 비율의 차이의 합이 5이하인가?)*10 + (1번재료의 비율이 같은가?)*20 + (2번재료의 비율이 같은가?)*20
+                WillPotion.Completeness = 50 + (issameshape?10:0) + (issamewid?20:0) + (issameamount ? 20 : 0);
                 break;
             case 3:
-                //50 + (1번재료의 비율이 같은가?) *10+(2번재료의 비율이 같은가?)*20+(모든 재료의 비율이 같은가?)*20
+                WillPotion.Completeness = 50 + (issameamount?10:0) + (issamewid?20:0) + (issameshape ? 20 : 0);
                 break;
         }
-        */
+        
         Herb1.DeleteItem();
         Herb2.DeleteItem();
 

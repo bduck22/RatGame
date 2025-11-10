@@ -14,11 +14,11 @@ public class DayText : MonoBehaviour
     {
         if (tomorrow)
         {
-            daytext.text = (GameManager.Instance.Day + 1).ToString();
+            daytext.text = (GameManager.Instance.Day).ToString();
         }
         else
         {
-            daytext.text = GameManager.Instance.Day.ToString();
+            daytext.text = (GameManager.Instance.Day-1).ToString();
         }
     }
 }

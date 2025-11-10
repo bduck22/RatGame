@@ -22,6 +22,8 @@ public class InventoryManger : MonoBehaviour
     public Sprite NeedLevel;
 
     public Sprite[] ProcessIcon;
+
+    public int[] deliverycounts = new int[5];
     public void UpdateInventory()
     {
         bannedItemCount = 0;
@@ -109,5 +111,19 @@ public class InventoryManger : MonoBehaviour
             }
             slot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (inventory[i].ItemCount <= 1 ? "" : inventory[i].ItemCount.ToString("#,###"));
         }
+    }
+
+    public int ItemCount(int itemnumber)
+    {
+        int count = 0;
+        foreach(ItemClass item in inventory)
+        {
+            if (item.itemNumber == itemnumber&&item.ProcessWay==-1)
+            {
+                count+=item.ItemCount;
+            }
+        }
+
+        return count;
     }
 }

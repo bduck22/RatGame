@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class animeFunc : MonoBehaviour
 {
@@ -29,5 +30,10 @@ public class animeFunc : MonoBehaviour
     public void EndDay()
     {
         GameManager.Instance.NextDayEnd();
+    }
+
+    public void GoGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

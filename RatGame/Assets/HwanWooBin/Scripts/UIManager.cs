@@ -11,8 +11,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI roomName;
 
-    public Transform touchVfx;
-
     public TextMeshProUGUI Day;
 
     void Start()
@@ -21,27 +19,6 @@ public class UIManager : MonoBehaviour
         roomName = UIs[0].GetComponent<TextMeshProUGUI>();
     }
 
-    void Update()
-    {
-#if UNITY_EDITOR
-        if (Input.GetMouseButtonUp(0))
-        {
-            touchVfx.position = Input.mousePosition;
-            touchVfx.GetComponent<Animator>().SetTrigger("Play");
-            //touchVfx.GetComponent<ParticleSystem>().Play();
-        }
-#endif
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Ended)
-            {
-                touchVfx.position = touch.position;
-                touchVfx.GetComponent<Animator>().SetTrigger("Play");
-                //touchVfx.GetComponent<ParticleSystem>().Play();
-            }
-        }
-    }
 
     public void CloseUi()
     {
@@ -75,6 +52,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateDayText()
     {
-        Day.text = (GameManager.Instance.Day+1).ToString()+"일차";
+        Day.text = (GameManager.Instance.Day).ToString()+"일차";
     }
 }
