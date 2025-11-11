@@ -16,6 +16,7 @@ public class InventoryManger : MonoBehaviour
     public bool Sawherb;
     public bool SawProcessed;
     public bool SawPotion;
+    public bool NotFaildPotion;
 
     public Sprite HerbCase;
     public Sprite PotionCase;
@@ -49,34 +50,15 @@ public class InventoryManger : MonoBehaviour
 
             ItemBase itemdata = GameManager.Instance.itemDatas.items[inventory[i].itemNumber];
 
-            if (!Sawherb)
+            if ((!Sawherb&& itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay == -1)|| // 아이템 밴하기
+                (!SawPotion&& itemdata.itemType == ItemType.Potion)||
+                (!SawProcessed&& itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay != -1) ||
+                (NotFaildPotion&& inventory[i].itemNumber == 12)
+                )
             {
-                if (itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay == -1)
-                {
                     bannedItemCount++;
                     slot.SetActive(false);
                     continue;
-                }
-            }
-
-            if (!SawPotion)
-            {
-                if (itemdata.itemType == ItemType.Potion)
-                {
-                    bannedItemCount++;
-                    slot.SetActive(false);
-                    continue;
-                }
-            }
-
-            if (!SawProcessed)
-            {
-                if (itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay != -1)
-                {
-                    bannedItemCount++;
-                    slot.SetActive(false);
-                    continue;
-                }
             }
 
             slot.gameObject.name = (i).ToString();

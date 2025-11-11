@@ -44,11 +44,13 @@ public class Store : MonoBehaviour
         {
             if(number == 3)
             {
+                GameManager.Instance.mouseCount++;
                 GameManager.Instance.MouseCount++;
             }
             else
             {
                 GameManager.Instance.ProcessController.ProcessLevel[number]++;
+                GameManager.Instance.ProcessController.SetProcessTime(1, true, number);
             }
             uis.Reload();
         }
@@ -65,5 +67,7 @@ public class Store : MonoBehaviour
         
         GameManager.Instance.Money += (selectPotion.Completeness * 0.01f) * GameManager.Instance.itemDatas.items[selectPotion.itemNumber].Price;
         GameManager.Instance.inventoryManager.inventory.RemoveAt(selectpotionnumber);
+
+        uis.Reload();
     }
 }

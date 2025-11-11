@@ -16,7 +16,7 @@ public class DropSlot : MonoBehaviour
         if (Get)
         {
             Get = false;
-            GameManager.Instance.AddItem(Item);
+            GameManager.Instance.AddItem(Item, true);
             Item = new ItemClass();
             Load();
         }
@@ -24,7 +24,7 @@ public class DropSlot : MonoBehaviour
 
     public void BackItem()
     {
-        GameManager.Instance.AddItem(Item);
+        GameManager.Instance.AddItem(Item, false);
         Item = new ItemClass();
         Load();
     }

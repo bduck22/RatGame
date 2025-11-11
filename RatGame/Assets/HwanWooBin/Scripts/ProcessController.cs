@@ -15,6 +15,8 @@ public class ProcessController : MonoBehaviour
 
     public Image[] Slots = new Image[9];
     public Image[] slotProcessIcon = new Image[9];
+
+    public float ProcessTime;
     void Start()
     {
         ItemDatas = GameManager.Instance.itemDatas;
@@ -32,20 +34,20 @@ public class ProcessController : MonoBehaviour
     {
         for (int i = 0; i < 9; i++)
         {
-            if (ProcessLevel[i % 3] >= i % 3) // 해당 칸이 해금되어있는가
+            if (ProcessLevel[i / 3] >= i % 3 && itemtimes[i] != 1) // 해당 칸이 해금되어있는가 0 0 0 >= 0 1 2
             {
-                if (itemslots[i].itemNumber != -1 && itemtimes[i]!=0)
+                if (itemslots[i].itemNumber != -1)
                 {
                     if (itemtimes[i] >0)
                     {
                         itemtimes[i] -= Time.deltaTime;
                     }
-                    else if(itemtimes[i] < 0)
+                    else if(itemtimes[i] <= 0)
                     {
                         Done(i);
                         continue;
                     }
-                    slotProcessIcon[i].fillAmount = (itemtimes[i] / (10 - ProcessLevel[i / 3]));
+                    slotProcessIcon[i].fillAmount = (itemtimes[i] / (ProcessTime - ProcessLevel[i / 3]));
                 }
             }
         }
@@ -69,7 +71,7 @@ public class ProcessController : MonoBehaviour
                         slotProcessIcon[i].sprite = ProcessTypeIcon;
                         if (itemtimes[i] == -1)
                         {
-                            itemtimes[i] = 10 - ProcessLevel[i / 3];
+                            itemtimes[i] = ProcessTime - ProcessLevel[i / 3];
                         }
                     }
                 }
@@ -83,6 +85,35 @@ public class ProcessController : MonoBehaviour
                 Slots[i].sprite = GameManager.Instance.inventoryManager.NeedLevel;
                 slotProcessIcon[i].gameObject.SetActive(false);
                 continue;
+            }
+        }
+    }
+
+    public void SetProcessTime(float Time, bool onetype, int type)
+    {
+        for(int i=0;i<itemtimes.Length; i++)
+        {            
+            if (itemtimes[i] != -1)
+            {
+                if (onetype)
+                {
+                    if(i/ 3 == type)
+                    {
+                        itemtimes[i] -= Time;
+                        if (itemtimes[i] <= 0)
+                        {
+                            Done(i);
+                        }
+                    }
+                }
+                else
+                {
+                    itemtimes[i] -= Time;
+                    if (itemtimes[i] <= 0)
+                    {
+                        Done(i);
+                    }
+                }
             }
         }
     }

@@ -23,7 +23,7 @@ public class LabController : MonoBehaviour
         dicManager = GameManager.Instance.dicManager;
     }
 
-    
+
 
     public void LoadImage()
     {
@@ -58,31 +58,36 @@ public class LabController : MonoBehaviour
 
     public void Confirm()
     {
-        if (GameManager.Instance.MouseCount > 0)
+        if (GameManager.Instance.MouseCount > 0&& Slot.Item.itemNumber!=-1)
         {
             GameManager.Instance.MouseCount--;
-            int DictioNum = Slot.Item.itemNumber - 12;
+            int DictioNum = Slot.Item.itemNumber - 13;
 
-            if (DictioNum == 6)
+            if (DictioNum == 5)
             {
-                dicManager.OpenedPer[Random.Range(0, dicManager.OpenedPer.Count)] += 5;
+                int num = Random.Range(0, dicManager.OpenedPer.Count);
+                dicManager.OpenedPer[num] += 5;
+                if (dicManager.OpenedPer[num] > 100)
+                {
+                    dicManager.OpenedPer[num] = 100;
+                }
             }
-
-            if (DictioNum > 0)
+            else
             {
                 PotionData potion = ItemDatas.items[Slot.Item.itemNumber] as PotionData;
 
-                dicManager.OpenedPer[DictioNum - 1] += potion.Persents[nowtype];
+                dicManager.OpenedPer[DictioNum] += potion.Persents[nowtype];
                 if (potion.NonWater == Slot.Item.shap)
                 {
-                    dicManager.OpenedPer[DictioNum - 1] += 10;
+                    dicManager.OpenedPer[DictioNum] += 10;
                 }
 
-                if (dicManager.OpenedPer[DictioNum - 1] > 100)
+                if (dicManager.OpenedPer[DictioNum] > 100)
                 {
-                    dicManager.OpenedPer[DictioNum - 1] = 100;
+                    dicManager.OpenedPer[DictioNum] = 100;
                 }
             }
+
             Slot.DeleteItem();
             LoadImage();
         }

@@ -68,6 +68,7 @@ public class StoreUI : MonoBehaviour
 
     public void Reload()
     {
+        potioninfo.gameObject.SetActive(false);
         bannedItemCount = 0;
         switch (tabnumber)
         {
@@ -101,7 +102,7 @@ public class StoreUI : MonoBehaviour
                     }
                     if (i == 3)
                     {
-                        levels[i].text += GameManager.Instance.MouseCount.ToString("#,##0")+"마리";
+                        levels[i].text += GameManager.Instance.mouseCount.ToString("#,##0")+"마리";
                     }
                     else
                     {
@@ -171,13 +172,16 @@ public class StoreUI : MonoBehaviour
         if (itemdata.NonWater == store.selectPotion.shap)
         {
             PotionInfoSlot.sprite = itemdata.itemImage;
+            PotionInfoSlot.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.name;
         }
         else
         {
             PotionInfoSlot.sprite = itemdata.NonShapeImage;
+            PotionInfoSlot.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.NonShapeName;
         }
 
-        PotionInfoSlot.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.name;
-        PotionInfoSlot.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "등급 : "+(itemdata.itemLevel==3?"전설":itemdata.itemLevel==2?"희귀":"일반")+"\n완성도 : "+store.selectPotion.Completeness.ToString("##0%")+"\n\n가격 : <color=\"yellow\">"+(itemdata.Price*(store.selectPotion.Completeness*0.01f))+"치즈코인</color>";
+
+        PotionInfoSlot.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "등급 : "+(itemdata.itemLevel==3?"전설":
+            itemdata.itemLevel==2?"희귀":itemdata.itemLevel==1?"일반":"??")+"\n완성도 : "+store.selectPotion.Completeness.ToString()+"%\n\n가격 : <color=\"yellow\">"+(itemdata.Price*(store.selectPotion.Completeness*0.01f))+"치즈코인</color>";
     }
 }

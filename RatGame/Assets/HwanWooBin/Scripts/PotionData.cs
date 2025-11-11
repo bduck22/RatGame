@@ -15,6 +15,7 @@ public class PotionData : ItemBase
 
     public bool NonWater;
     public Sprite NonShapeImage;
+    public string NonShapeName;
 
     public int[] Persents = new int[4];
 }
