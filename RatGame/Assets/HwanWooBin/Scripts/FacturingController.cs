@@ -209,6 +209,12 @@ public class FacturingController : MonoBehaviour
             case 3:
                 WillPotion.Completeness = 50 + (issameamount?10:0) + (issamewid?20:0) + (issameshape ? 20 : 0);
                 break;
+            case 0:
+                WillPotion.Completeness = Random.Range(1, 101);
+                break;
+            case 4:
+                WillPotion.Completeness = 100;
+                break;
         }
         
         Herb1.DeleteItem();

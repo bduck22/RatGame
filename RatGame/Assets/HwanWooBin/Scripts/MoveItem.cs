@@ -16,8 +16,8 @@ public class MoveItem : MonoBehaviour
 
     void Start()
     {
-      image = GetComponent<Image>();
-      OrigionPos = transform.parent;
+        image = GetComponent<Image>();
+        OrigionPos = transform.parent;
         retPos = GetComponent<RectTransform>();
         inventoryManager = GameManager.Instance.inventoryManager;
     }
@@ -43,13 +43,13 @@ public class MoveItem : MonoBehaviour
     Transform LastParent;
     public void MoveOn()
     {
-         // 최상위 캔버스로 이동
-         // 맨 앞 레이어로 보이기
+        // 최상위 캔버스로 이동
+        // 맨 앞 레이어로 보이기
         moving = true;
         image.raycastTarget = false;
 
 
-                itemIndex = int.Parse(transform.parent.name);
+        itemIndex = int.Parse(transform.parent.name);
         LastParent = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -84,10 +84,21 @@ public class MoveItem : MonoBehaviour
     {
         moving = false;
         image.raycastTarget = true;
+        if (selectUI.gameObject.GetComponent<DropSlot>()||(selectUI.gameObject.transform.parent&&selectUI.gameObject.transform.parent.GetComponent<DropSlot>()))
+        {
+            DropSlot dropSlot;
             if (selectUI.gameObject.GetComponent<DropSlot>())
             {
-                DropSlot dropSlot = selectUI.gameObject.GetComponent<DropSlot>();
-                if (dropSlot.Item.itemNumber == -1&&!dropSlot.Lock)
+                dropSlot = selectUI.gameObject.GetComponent<DropSlot>();
+            }
+            else
+            {
+                dropSlot = selectUI.gameObject.transform.parent.GetComponent<DropSlot>();
+            }
+
+            if (dropSlot.Item.itemNumber == -1)
+            {
+                if (!dropSlot.Lock)
                 {
                     inventoryManager.inventory[itemIndex].ItemCount--;
                     dropSlot.Item = inventoryManager.inventory[itemIndex];
@@ -100,6 +111,21 @@ public class MoveItem : MonoBehaviour
                     dropSlot.Load();
                 }
             }
+            else if (!dropSlot.Lock)
+            {
+                dropSlot.BackItem();
+
+                inventoryManager.inventory[itemIndex].ItemCount--;
+                dropSlot.Item = inventoryManager.inventory[itemIndex];
+                if (inventoryManager.inventory[itemIndex].ItemCount <= 0)
+                {
+                    inventoryManager.inventory.RemoveAt(itemIndex);
+                }
+
+                inventoryManager.UpdateInventory();
+                dropSlot.Load();
+            }
+        }
         transform.SetParent(OrigionPos);
         retPos.localPosition = Vector3.zero;
     }

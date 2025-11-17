@@ -15,8 +15,10 @@ MonoBehaviour:
   itemName: "\uC7AC\uC0DD\uC758 \uBB3C\uC57D"
   itemImage: {fileID: 21300000, guid: 2f576d0b9a572d546975c6d431e6eb1f, type: 3}
   itemType: 1
-  Explanation: 
-  Price: 0
+  Explanation: "\uBA39\uC73C\uBA74 \uAE08\uBC29 \uC0C1\uCC98\uAC00 \uD68C\uBCF5\uB418\uB294
+    \uC57D, \uD6A8\uACFC\uAC00 \uADF8\uB9AC \uD06C\uC9C0\uB294 \uC54A\uC544 \uC808\uB2E8\uB418\uBA74
+    \uD68C\uBCF5\uC774 \uB354\uB38C\uC9C4\uB2E4."
+  Price: 1000
   Herb1: {fileID: 11400000, guid: 954da53f9699ca747ba5e5deaef11eaa, type: 2}
   process1: 0
   Herb2: {fileID: 11400000, guid: bfe899d7e626ddf4c9039afa6bc61b99, type: 2}
@@ -26,4 +28,5 @@ MonoBehaviour:
   itemLevel: 1
   NonWater: 0
   NonShapeImage: {fileID: 21300000, guid: b4d53b2ae87af1d4796b56db7668b10b, type: 3}
+  NonShapeName: "\uC7AC\uC0DD\uC758 \uD658"
   Persents: 280000001e0000000a0000000f000000

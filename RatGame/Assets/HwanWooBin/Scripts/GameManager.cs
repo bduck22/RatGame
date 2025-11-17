@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-        Money = 100000000;
+        Money = 5000;
         mouseCount = 5;
 
         StartDay();
@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
                 Potioninfo.gameObject.SetActive(true);
 
                 Potioninfo.GetComponentInChildren<TextMeshProUGUI>().text = "µî±Þ : <color=" + (Itemdata.itemLevel == 3 ? "red>Àü¼³" :
-                Itemdata.itemLevel == 2 ? "blue>Èñ±Í" : Itemdata.itemLevel == 1 ? "ÀÏ¹Ý" : "black>??") +
+                Itemdata.itemLevel == 2 ? "blue>Èñ±Í" : Itemdata.itemLevel == 1 ? "#DA9659>ÀÏ¹Ý" : "black>??") +
                 "</color>\n¿Ï¼ºµµ : " + item.Completeness.ToString() + "%\n\n" +
                 "<size=80>Á¦ÀÛ¹ý</size>\n" +
                 item.herb1.name + "(" + (item.process1 == 0 ? "´Þ" : item.process1 == 1 ? "»¨" : item.process1 == 2 ? "¸»" : "?") + ") " + item.amount1.ToString() + " : " +

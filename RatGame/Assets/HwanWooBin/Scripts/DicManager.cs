@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,7 +37,8 @@ public class DicManager : MonoBehaviour
     public void LoadDictionary()
     {
         int j = 0;
-        for(int i = 0; i < DictionaryPos.childCount; i++)
+        DictionaryInfo.gameObject.SetActive(false);
+        for (int i = 0; i < DictionaryPos.childCount; i++)
         {
             if(DictionaryPos.GetChild(i).GetComponent<TextMeshProUGUI>()||!DictionaryPos.GetChild(i).gameObject.activeSelf)
             {
@@ -59,9 +59,11 @@ public class DicManager : MonoBehaviour
 
     public void ViewInfo(int number)
     {
+        Vector3 itemViewportPos= Vector3.zero;
+            Vector3 mouseP = Vector3.zero;
 #if UNITY_EDITOR
-        Vector3 itemViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 mouseP = Input.mousePosition;
+        itemViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        mouseP = Input.mousePosition;
 #endif
         if (Input.touchCount > 0)
         {
@@ -87,7 +89,7 @@ public class DicManager : MonoBehaviour
 
         if (OpenedPer[number] >= 30)
         {
-            DictionaryInfo.GetChild(1).gameObject.SetActive(true);
+            DictionaryInfo.GetChild(1).GetChild(0).gameObject.SetActive(true);
             DictionaryInfo.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.HerbAmount1.ToString();
             DictionaryInfo.GetChild(1).GetComponentInChildren<Image>().sprite = data.Herb1.itemImage;
             if (data.process1 != -1 && data.process1 != 3)
@@ -102,13 +104,13 @@ public class DicManager : MonoBehaviour
         }
         else
         {
-            DictionaryInfo.GetChild(1).gameObject.SetActive(false);
+            DictionaryInfo.GetChild(1).GetChild(0).gameObject.SetActive(false);
             DictionaryInfo.GetChild(1).GetComponent<TextMeshProUGUI>().text = "30% 필요";
         }
 
         if (OpenedPer[number] >= 60)
         {
-            DictionaryInfo.GetChild(2).gameObject.SetActive(true);
+            DictionaryInfo.GetChild(2).GetChild(0).gameObject.SetActive(true);
             DictionaryInfo.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.HerbAmount2.ToString();
             DictionaryInfo.GetChild(2).GetComponentInChildren<Image>().sprite = data.Herb2.itemImage;
             if (data.process1 != -1 && data.process1 != 3)
@@ -123,7 +125,7 @@ public class DicManager : MonoBehaviour
         }
         else
         {
-            DictionaryInfo.GetChild(2).gameObject.SetActive(false);
+            DictionaryInfo.GetChild(2).GetChild(0).gameObject.SetActive(false);
             DictionaryInfo.GetChild(2).GetComponent<TextMeshProUGUI>().text = "60% 필요";
         }
 
