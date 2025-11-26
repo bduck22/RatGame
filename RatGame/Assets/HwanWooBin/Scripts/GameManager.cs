@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public enum Room // 이게 한글도 되네???
+public enum Room
 {
     약초방,
     실험실,
@@ -23,7 +23,7 @@ public enum ScreenType
     침대
 }
 
-[DefaultExecutionOrder(-51)] // 다른 스크립트보다 먼저 실행되야죠!!!
+[DefaultExecutionOrder(-51)]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("기능")]
     public Room room;
     public int nowRoom;
-    public float Money // 소지금
+    public float Money
     {
         get
         {
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public ScreenType nowscreen;
 
-    public int MouseCount // 쥐
+    public int MouseCount
     {
         get
         {
@@ -67,13 +67,13 @@ public class GameManager : MonoBehaviour
     public int Day;
 
     [Header("하위 관리스크립트")]
-    public ItemDatas itemDatas; // 여기에서 모든 아이템의 데이터가 나오는 구만
+    public ItemDatas itemDatas;
 
-    public InventoryManger inventoryManager; // 인벤토리 매니저
+    public InventoryManger inventoryManager;
 
-    public ProcessController ProcessController; // 가공 매니저
+    public ProcessController ProcessController;
 
-    public DicManager dicManager; // 사전 매니저?
+    public DicManager dicManager;
 
     [Header("UI")]
 
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void AddItem(int number, int count) // numder가 아이템 번호?
+    public void AddItem(int number, int count)
     {
         ItemClass item = new ItemClass();
         item.itemNumber = number;
