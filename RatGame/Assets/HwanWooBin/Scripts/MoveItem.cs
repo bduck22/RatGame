@@ -51,8 +51,11 @@ public class MoveItem : MonoBehaviour
 
         itemIndex = int.Parse(transform.parent.name);
 <<<<<<< HEAD
+<<<<<<< HEAD
         LastParent = transform.parent;      // 현재 부모 저장 -> 이미지 위치 복귀용
 =======
+=======
+>>>>>>> df3f6d5584789f7cc3980050d125a99ada8bb00c
         LastParent = transform.parent;
 >>>>>>> df3f6d5584789f7cc3980050d125a99ada8bb00c
         transform.SetParent(transform.root);
@@ -89,6 +92,7 @@ public class MoveItem : MonoBehaviour
         moving = false;
         image.raycastTarget = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (selectUI.gameObject.GetComponent<DropSlot>()) // DropSlot타입인지 확인
         {
                 DropSlot dropSlot = selectUI.gameObject.GetComponent<DropSlot>();
@@ -98,6 +102,8 @@ public class MoveItem : MonoBehaviour
                     dropSlot.Item = inventoryManager.inventory[itemIndex]; // dropSlot에 아이템 할당
                 if (inventoryManager.inventory[itemIndex].ItemCount <= 0) // 인벤토리에 남은 아이템이 없다면
 =======
+=======
+>>>>>>> df3f6d5584789f7cc3980050d125a99ada8bb00c
         if (selectUI.gameObject.GetComponent<DropSlot>()||(selectUI.gameObject.transform.parent&&selectUI.gameObject.transform.parent.GetComponent<DropSlot>()))
         {
             DropSlot dropSlot;
@@ -126,11 +132,14 @@ public class MoveItem : MonoBehaviour
                     dropSlot.Load(); // dropSlot UI 업데이트?
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
         transform.SetParent(OrigionPos);     // 원래 부모로 복귀-> 즉 이미지를 선택된 슬롯의 자식 이미지로 이동하지 않고
                                              // 선택된 슬롯에 있는 moveImage와 Data와 UI만 변경하는 방식이구나!!!!!
 
 =======
+=======
+>>>>>>> df3f6d5584789f7cc3980050d125a99ada8bb00c
             else if (!dropSlot.Lock)
             {
                 dropSlot.BackItem();
