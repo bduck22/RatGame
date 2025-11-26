@@ -6529,7 +6529,7 @@ MonoBehaviour:
     itemNumber: 13
     ItemCount: 1
     ProcessWay: 0
-    Completeness: 17.26
+    Completeness: 0
     shap: 0
     amount1: 0
     amount2: 0
@@ -6538,10 +6538,10 @@ MonoBehaviour:
     herb2: {fileID: 0}
     process2: 0
   - itemType: 1
-    itemNumber: 14
+    itemNumber: 13
     ItemCount: 1
     ProcessWay: 0
-    Completeness: 17.26
+    Completeness: 0
     shap: 0
     amount1: 0
     amount2: 0
@@ -6550,262 +6550,10 @@ MonoBehaviour:
     herb2: {fileID: 0}
     process2: 0
   - itemType: 1
-    itemNumber: 14
+    itemNumber: 13
     ItemCount: 1
     ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 14
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 14
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemNumber: 18
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 17.26
+    Completeness: 0
     shap: 0
     amount1: 0
     amount2: 0
@@ -7879,7 +7627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12808,7 +12556,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -17418,8 +17166,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287809023
-  m_fontColor: {r: 1, g: 0.77254903, b: 0.57254905, a: 1}
+    rgba: 4282408947
+  m_fontColor: {r: 0.9547169, g: 0.37220687, b: 0.25038794, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18494,7 +18242,7 @@ MonoBehaviour:
   - -1
   - -1
   - -1
-  ProcessLevel: 1e0000001e0000001e000000
+  ProcessLevel: 000000000000000000000000
   ProcessTypeIcon: {fileID: -928672902828632633, guid: 0eb42c215da9ebc47b9bf719ce1fdfb4, type: 3}
   ProcessWindow: {fileID: 227584625}
   Slots:
@@ -18517,7 +18265,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ProcessTime: 30
+  ProcessTime: 15
 --- !u!4 &887911561
 Transform:
   m_ObjectHideFlags: 0
@@ -23677,8 +23425,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289374890
-  m_fontColor: {r: 0.6679245, g: 0.6679245, b: 0.6679245, a: 1}
+    rgba: 4284506234
+  m_fontColor: {r: 0.4792453, g: 0.37525812, b: 0.37525812, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -24214,10 +23962,10 @@ MonoBehaviour:
   store: {fileID: 1117988015}
   PotionInfoSlot: {fileID: 410050675}
   Exs:
-  - "\uC124\uBA85\n\n"
-  - "\uC124\uBA85\n\n"
-  - "\uC124\uBA85\n\n"
-  - "\uC124\uBA85\n\n"
+  - "\uC2AC\uB86F + 1(\uCD5C\uB3003)\n\uAC00\uACF5 \uC2DC\uAC04 - 1\uCD08\n"
+  - "\uC2AC\uB86F + 1(\uCD5C\uB3003)\n\uAC00\uACF5 \uC2DC\uAC04 - 1\uCD08\n"
+  - "\uC2AC\uB86F + 1(\uCD5C\uB3003)\n\uAC00\uACF5 \uC2DC\uAC04 - 1\uCD08\n"
+  - "\uD558\uB8E8 \uC2E4\uD5D8 \uD69F\uC218\n\uC950 \uC218 + 1\n"
 --- !u!1 &1214388126
 GameObject:
   m_ObjectHideFlags: 0
@@ -26282,6 +26030,7 @@ GameObject:
   - component: {fileID: 1319689117}
   - component: {fileID: 1319689119}
   - component: {fileID: 1319689118}
+  - component: {fileID: 1319689120}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -26347,6 +26096,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319689116}
   m_CullTransparentMesh: 1
+--- !u!114 &1319689120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319689116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.6150943, g: 0.6150943, b: 0.6150943, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1319689118}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1667444927}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Objectin
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 92259851}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1667444927}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnScreen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1336290485
 GameObject:
   m_ObjectHideFlags: 0
@@ -26751,7 +26568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC57D\uCD08 \uB369\uC5B4\uB9AC"
+  m_text: "\uC54C\uC544 \uBCFC \uC218 \uC5C6\uB294 \uBB3C\uC57D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c525d26c08743194e9d7ec9dd886fd1b, type: 2}
   m_sharedMaterial: {fileID: 3076490065020741225, guid: c525d26c08743194e9d7ec9dd886fd1b, type: 2}
@@ -37059,7 +36876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -39017,7 +38834,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -41682,7 +41499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -42362,7 +42179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100.75217}
+  m_AnchoredPosition: {x: 0, y: -100.75195}
   m_SizeDelta: {x: 0, y: -201.5041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4172725614172988872

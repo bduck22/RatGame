@@ -58,7 +58,7 @@ public class ProcessController : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             itemslots[i] = new ItemClass();
-            if (ProcessLevel[i % 3] >= i % 3) // 해당 칸이 해금되어있는가
+            if (ProcessLevel[i / 3] >= i % 3) // 해당 칸이 해금되어있는가
             {
                 itemslots[i] = Slots[i].transform.parent.GetComponent<DropSlot>().Item;
                 Slots[i].gameObject.SetActive(true);

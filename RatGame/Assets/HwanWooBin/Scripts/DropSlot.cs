@@ -11,7 +11,7 @@ public class DropSlot : MonoBehaviour
 
     public bool Lock;
 
-    public void Getitem()
+    public void Getitem() // æ∆¿Ã≈€ »πµÊ
     {
         if (Get)
         {

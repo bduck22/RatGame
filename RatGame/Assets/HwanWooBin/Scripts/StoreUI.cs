@@ -112,6 +112,10 @@ public class StoreUI : MonoBehaviour
                 }
                 break;
             case 2:
+                for(int i = 0; i < InvenPos.childCount; i++)
+                {
+                    InvenPos.GetChild(i).gameObject.SetActive(false);
+                }
                 for (int i = 0; i < inventoryManager.inventory.Count; i++)//4
                 {
                     GameObject slot;
@@ -181,7 +185,7 @@ public class StoreUI : MonoBehaviour
         }
 
 
-        PotionInfoSlot.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "등급 : "+(itemdata.itemLevel==3?"전설":
-            itemdata.itemLevel==2?"희귀":itemdata.itemLevel==1?"일반":"??")+"\n완성도 : "+store.selectPotion.Completeness.ToString()+"%\n\n가격 : <color=\"yellow\">"+(itemdata.Price*(store.selectPotion.Completeness*0.01f))+"치즈코인</color>";
+        PotionInfoSlot.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "등급 : <color="+(itemdata.itemLevel==3?"red>전설":
+            itemdata.itemLevel==2?"blue>희귀":itemdata.itemLevel==1?"white>일반": "black>??") +"</color>\n완성도 : "+store.selectPotion.Completeness.ToString()+"%\n\n가격 : <color=\"yellow\">"+(itemdata.Price*(store.selectPotion.Completeness*0.01f)).ToString("#,##0")+"치즈코인</color>";
     }
 }

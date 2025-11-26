@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: "\uAC10\uCD08"
   itemImage: {fileID: 21300000, guid: ca1a36892168af14d95b23996c5e51b2, type: 3}
   itemType: 0
-  Explanation: "\uBE48 \uC124\uBA85\n\n"
-  Price: 0
+  Explanation: "\uD2BC\uD2BC\uD55C \uBD84\uC704\uAE30\uC758 \uAE38\uCB49\uD55C \uBFCC\uB9AC\n"
+  Price: 300
   itemProcessedWay: 0100000002000000

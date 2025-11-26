@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public enum Room
+public enum Room // 이게 한글도 되네???
 {
     약초방,
     실험실,
@@ -23,7 +23,7 @@ public enum ScreenType
     침대
 }
 
-[DefaultExecutionOrder(-51)]
+[DefaultExecutionOrder(-51)] // 다른 스크립트보다 먼저 실행되야죠!!!
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("기능")]
     public Room room;
     public int nowRoom;
-    public float Money
+    public float Money // 소지금
     {
         get
         {
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public ScreenType nowscreen;
 
-    public int MouseCount
+    public int MouseCount // 쥐
     {
         get
         {
@@ -67,13 +67,13 @@ public class GameManager : MonoBehaviour
     public int Day;
 
     [Header("하위 관리스크립트")]
-    public ItemDatas itemDatas;
+    public ItemDatas itemDatas; // 여기에서 모든 아이템의 데이터가 나오는 구만
 
-    public InventoryManger inventoryManager;
+    public InventoryManger inventoryManager; // 인벤토리 매니저
 
-    public ProcessController ProcessController;
+    public ProcessController ProcessController; // 가공 매니저
 
-    public DicManager dicManager;
+    public DicManager dicManager; // 사전 매니저?
 
     [Header("UI")]
 
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-        Money = 100000000;
+        Money = 5000;
         mouseCount = 5;
 
         StartDay();
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void AddItem(int number, int count)
+    public void AddItem(int number, int count) // numder가 아이템 번호?
     {
         ItemClass item = new ItemClass();
         item.itemNumber = number;
@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
                 Potioninfo.gameObject.SetActive(true);
 
                 Potioninfo.GetComponentInChildren<TextMeshProUGUI>().text = "등급 : <color=" + (Itemdata.itemLevel == 3 ? "red>전설" :
-                Itemdata.itemLevel == 2 ? "blue>희귀" : Itemdata.itemLevel == 1 ? "일반" : "black>??") +
+                Itemdata.itemLevel == 2 ? "blue>희귀" : Itemdata.itemLevel == 1 ? "#DA9659>일반" : "black>??") +
                 "</color>\n완성도 : " + item.Completeness.ToString() + "%\n\n" +
                 "<size=80>제작법</size>\n" +
                 item.herb1.name + "(" + (item.process1 == 0 ? "달" : item.process1 == 1 ? "빻" : item.process1 == 2 ? "말" : "?") + ") " + item.amount1.ToString() + " : " +
