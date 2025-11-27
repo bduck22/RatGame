@@ -50,6 +50,9 @@ public class InventoryManger : MonoBehaviour
 
             ItemBase itemdata = GameManager.Instance.itemDatas.items[inventory[i].itemNumber];
 
+            inventory[i].itemName = itemdata.itemName;
+            inventory[i].itemDescription = itemdata.Explanation;
+
             if ((!Sawherb&& itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay == -1)|| // 아이템 밴하기
                 (!SawPotion&& itemdata.itemType == ItemType.Potion)||
                 (!SawProcessed&& itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay != -1) ||
@@ -68,6 +71,8 @@ public class InventoryManger : MonoBehaviour
                 slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
 
                 var Itemdata = itemdata as PotionData;
+                
+
                 if (Itemdata.NonWater == inventory[i].shap)
                 {
                     slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
@@ -79,6 +84,7 @@ public class InventoryManger : MonoBehaviour
             }
             else
             {
+
                 slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
 
                 if (inventory[i].ProcessWay != -1 && inventory[i].ProcessWay != 3)

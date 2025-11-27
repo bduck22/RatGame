@@ -1,26 +1,49 @@
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[Serializable]
+public class ExampleBoad
+{
+    public Image Image;
+    public TextMeshProUGUI[] text = new TextMeshProUGUI[2]; // 약초 이름, 설명
+    public Material boadMaterial;
+
+}
 public class MoveItem : MonoBehaviour
 {
+    [SerializeField] ExampleBoad exampleBoad; // 설명 보드
     [SerializeField] bool moving;
     Image image;
+    Coroutine cc;
     RaycastResult selectUI;
     Transform OrigionPos;
+    Transform LastParent;
     RectTransform retPos;
     public int itemIndex;
     InventoryManger inventoryManager;
 
     void Start()
     {
+       
         image = GetComponent<Image>();
         OrigionPos = transform.parent;
         retPos = GetComponent<RectTransform>();
         inventoryManager = GameManager.Instance.inventoryManager;
+        exampleBoad.boadMaterial = exampleBoad.Image.material;
+
     }
+
+    private void OnEnable()
+    {
+        itemIndex = int.Parse(transform.parent.name);
+    }
+
 
 
     void Update()
@@ -39,20 +62,34 @@ public class MoveItem : MonoBehaviour
 
 
     }
+    public void OnClick()
+    {
+        //Debug.Log("--클릭 시작--");
+        if (cc != null) StopCoroutine(cc);
+        cc = StartCoroutine(WaitActiveTime());
+    }
 
-    Transform LastParent;
+    public void OnExit()
+    {
+        //Debug.Log("--클릭 종료--");
+        if(LastParent != null)
+        exampleBoad.Image.transform.SetParent(LastParent);
+        if (cc != null) StopCoroutine(cc);
+        exampleBoad.Image.gameObject.SetActive(false);
+    }
+
     public void MoveOn()
     {
         // 최상위 캔버스로 이동
         // 맨 앞 레이어로 보이기
         moving = true;
         image.raycastTarget = false;
-
-
         itemIndex = int.Parse(transform.parent.name);
         LastParent = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+
+        OnExit();   // 설명창 보이지 않게 하기
 
     }
     public void MoveOff()
@@ -128,5 +165,20 @@ public class MoveItem : MonoBehaviour
         }
         transform.SetParent(OrigionPos);
         retPos.localPosition = Vector3.zero;
+    }
+
+    IEnumerator WaitActiveTime()
+    {
+        yield return new WaitForSeconds(0.8f);
+        exampleBoad.Image.gameObject.SetActive(true); // 설명창 보이기
+        exampleBoad.text[0].text = "<color=orange>" + (inventoryManager.inventory[itemIndex].itemName)+ "</color>";
+        exampleBoad.text[1].text = inventoryManager.inventory[itemIndex].itemDescription;
+
+        exampleBoad.boadMaterial.SetFloat("_OnAnima", inventoryManager.inventory[itemIndex].itemType == ItemType.Potion ? 1 : 0);
+
+       LastParent = transform.parent;
+        exampleBoad.Image.transform.SetParent(transform.root);
+        exampleBoad.Image.transform.SetAsLastSibling(); // 맨앞으로
+        //Debug.Log("손닿음");
     }
 }

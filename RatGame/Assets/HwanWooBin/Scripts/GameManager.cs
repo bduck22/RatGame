@@ -144,15 +144,26 @@ public class GameManager : MonoBehaviour
 
     public void AddItem(int number, int count)
     {
+        ItemBase data = itemDatas.items[number];
+
         ItemClass item = new ItemClass();
         item.itemNumber = number;
         item.ItemCount = count;
+
+        item.itemName = data.itemName;
+        item.itemDescription = data.Explanation;  
+
+
         for (int i = 0; i < inventoryManager.inventory.Count; i++)
         {
             if (inventoryManager.inventory[i].itemNumber == number)
             {
+               
+                
+
                 if (inventoryManager.inventory[i].ProcessWay == item.ProcessWay)
                 {
+             
                     inventoryManager.inventory[i].ItemCount += count;
 
                     inventoryManager.UpdateInventory();
@@ -171,7 +182,11 @@ public class GameManager : MonoBehaviour
 
     public void AddItem(ItemClass Item, bool isnewget)
     {
+
+      
         ItemClass item = new ItemClass();
+        item.itemName = Item.itemName;
+        item.itemDescription = Item.itemDescription;
         item.itemNumber = Item.itemNumber;
         item.shap = Item.shap;
         item.Completeness = Item.Completeness;
@@ -215,7 +230,7 @@ public class GameManager : MonoBehaviour
 
                 //허브 전용 데이터 출력
                 Potioninfo.gameObject.SetActive(true);
-
+              
                 Potioninfo.GetComponentInChildren<TextMeshProUGUI>().text = "등급 : <color=" + (Itemdata.itemLevel == 3 ? "red>전설" :
                 Itemdata.itemLevel == 2 ? "blue>희귀" : Itemdata.itemLevel == 1 ? "#DA9659>일반" : "black>??") +
                 "</color>\n완성도 : " + item.Completeness.ToString() + "%\n\n" +
@@ -241,6 +256,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 HerbInfo.gameObject.SetActive(true);
+              
                 HerbInfo.GetComponentInChildren<TextMeshProUGUI>().text = "가공 상태 : " + (item.ProcessWay == 0 ? "달이기" : item.ProcessWay == 1 ? "빻기" : item.ProcessWay == 2 ? "말리기" : "X");
             }
             Icon.GetComponentInChildren<TextMeshProUGUI>().text = (item.ItemCount <= 1 ? "" : item.ItemCount.ToString("#,###"));
