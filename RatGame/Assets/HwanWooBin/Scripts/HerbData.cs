@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "Herb")]
 public class HerbData : ItemBase
 {
-    public int[] itemProcessedWay;
+    public List<int> itemProcessedWay;
 }

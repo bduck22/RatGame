@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -115,7 +116,7 @@ public class GameManager : MonoBehaviour
     }
 
     public Transform EndGame;
-    public void StartDay()
+    public void StartDay() // 시작할 때
     {
         MouseCount = mouseCount;
         Day++;
@@ -142,8 +143,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void AddItem(int number, int count)
+    public void AddItem(int number, int count) // 처음 시작 and 배달한 아이템 획득
     {
+        //Debug.Log("AddItem함수 실행됨 - 아이템 번호: " + number + ", 개수: " + count);
         ItemBase data = itemDatas.items[number];
 
         ItemClass item = new ItemClass();
@@ -180,10 +182,10 @@ public class GameManager : MonoBehaviour
         inventoryManager.UpdateInventory();
     }
 
-    public void AddItem(ItemClass Item, bool isnewget)
+    public void AddItem(ItemClass Item, bool isnewget) // 가공 된 아이템 획득
     {
 
-      
+       // Debug.Log("AddItem함수 실행됨 - 아이템 번호: " + Item + ", 개수: " + isnewget);
         ItemClass item = new ItemClass();
         item.itemName = Item.itemName;
         item.itemDescription = Item.itemDescription;

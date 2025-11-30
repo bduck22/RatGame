@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40bcd0a531ec5840be25650b1016a2f, type: 3}
+  m_Name: PoitionLocalizationData
+  m_EditorClassIdentifier: 
+  fileName: PotionData
+  jsonData: 'https://docs.google.com/spreadsheets/d/12ySXSPmoPGviS77qalcyy8uaErrQIG8cDsZ8s2wm6TE/export?format=csv&gid=1697337768
+
+'
+  previewData: "Key,Level,Herb1,Herb2,Amount1,Amount2,State\r\n\uC7AC\uC0DD\uC758
+    \uBB3C\uC57D,\uC77C\uBC18,\uC778\uC0BC(\uB2EC),\uC791\uC57D(\uBE7B),7,3,\r\n\uC2DC\uB825\uAC15\uD654\uBB3C\uC57D,\uC77C\uBC18,\uAD6C\uAE30\uC790(\uB2EC),\uC624\uBBF8\uC790(\uAC74),3,7,\r\n\uD1B5\uC99D\uC644\uD654\uC815,\uC77C\uBC18,\uAC10\uCD08(\uBE7B),\uC0DD\uAC15(\uAC74),4,6,\r\n\uCCB4\uC628\uC870\uC808\uBB3C\uC57D,\uC77C\uBC18,\uD669\uAE30(\uB2EC),\uAC10\uCD08(\uBE7B),8,2,\r\n\uD53C\uB85C\uD574\uC18C\uC815,\uC77C\uBC18,\uB2F9\uADC0(\uAC74),\uC778\uC0BC(\uBE7B),5,5,\r\n\uAC10\uAC01\uC99D\uD3ED\uC758\uBB3C\uC57D,\uC77C\uBC18,\uC624\uBBF8\uC790(\uB2EC),\uCC9C\uAD81(\uAC74),4,6,\r\n\uC601\uC591\uC758\uD658,\uC77C\uBC18,\uB300\uCD94(\uB2EC),\uD558\uC218\uC624(\uAC74),3,7,\r\n\uBB34\uC1E0\uB2E8,\uD76C\uADC0,\uC778\uC0BC(\uBE7B),\uD669\uAE30(\uB2EC),6,4,\r\n\uCCAD\uC6D0\uC218,\uD76C\uADC0,\uC624\uBBF8\uC790(\uAC74),\uAD6C\uAE30\uC790(\uB2EC),2,8,\r\n\uC601\uBBFC\uD658,\uD76C\uADC0,\uCC9C\uAD81(\uBE7B),\uAD6C\uAE30\uC790(\uB2EC),5,5,\r\n\uD574\uB3C5\uC815,\uD76C\uADC0,\uAC10\uCD08(\uBE7B),\uB2F9\uADC0(\uAC74),3,7,\r\n\uBABD\uD658\uC218,\uD76C\uADC0,\uC624\uBBF8\uC790(\uB2EC),\uCC9C\uAD81(\uAC74),6,4,\r\n\uB9CC\uBCD1\uC2E0\uC8FC(\u842C\u75C5\u795E\u9152),\uC804\uC124,\uC778\uC0BC(\uB2EC),\uB2F9\uADC0(\uBE7B),7,3,\r\n\uC601\uC6D0\uBD88\uD6C4
+    \uB9CC\uADFC\uBAA8\uADF9 \uD65C\uC0DD\uAD81\uC815(\u6C38\u9060\u4E0D\u673D \u842C\u6839\u6BDB\u6975
+    \u6D3B\u751F\u5BAE\u7CBE),\uC804\uC124,\uD669\uADC0(\uB2EC),\uD558\uC218\uC624(\uAC74),4,6,\r\n\uC54C\uC544\uBCFC
+    \uC218 \uC5C6\uB294 \uBB3C\uC57D,???,\uC57D\uCD08 \uB369\uC5B4\uB9AC,\uC57D\uCD08
+    \uB369\uC5B4\uB9AC,,,"
