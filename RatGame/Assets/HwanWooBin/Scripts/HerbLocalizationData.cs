@@ -15,7 +15,7 @@ public class HerbLocalizationData : GoogleLocalizationData
         {
             if (!string.IsNullOrEmpty(itemdata[j]) && itemdata[j].Trim() != "null")
             {
-                Debug.Log(itemdata[j]);
+
                 herb.itemProcessedWay.Add(int.Parse(itemdata[j].Trim()));
               
             }

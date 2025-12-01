@@ -16,7 +16,6 @@ public class GoogleLocalizationData : ScriptableObject
     [TextArea(5, 10)]
     public string previewData;
 
-    public Dictionary<int, string> data = new Dictionary<int, string>();
     public ItemBase[] items;
 
 
@@ -66,19 +65,27 @@ public class GoogleLocalizationData : ScriptableObject
     {
         string[] lines = previewData.Split('\n');
 
+        if (lines == null) return;
+
         for (int i = 1; i < lines.Length; i++)
         {
             string[] attribute = lines[i].Split(',');
-            data[i - 1] = lines[i];
 
+            for (int ii = 0; ii < items.Length; ii++)
+            {
+                if (items[ii] == null) return;
+
+                if (items[ii].name == attribute[0])
+                {
+                    SetData(ii, attribute);
+                    break;
+                }
+
+            }
 
         }
 
-        for (int i = 0; i < items.Length; i++)
-        {
-            string[] itemdata = data[i].Split(',');
-            SetData(i, itemdata);
-        }
+        
 
     }
 
