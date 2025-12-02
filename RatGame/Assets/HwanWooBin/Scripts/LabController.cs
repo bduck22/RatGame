@@ -61,6 +61,7 @@ public class LabController : MonoBehaviour
         if (GameManager.Instance.MouseCount > 0&& Slot.Item.itemNumber!=-1)
         {
             GameManager.Instance.MouseCount--;
+            GameManager.Instance.report.RatTestCount++;
             int DictioNum = Slot.Item.itemNumber - 13;
 
             if (DictioNum == 5)

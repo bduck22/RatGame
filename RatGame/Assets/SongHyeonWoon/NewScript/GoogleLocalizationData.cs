@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GoogleLocalizationData : ScriptableObject
+public class GoogleLocalizationData : MonoBehaviour
 {
     [Header("파일 이름")]
     public string fileName;
@@ -16,7 +16,8 @@ public class GoogleLocalizationData : ScriptableObject
     [TextArea(5, 10)]
     public string previewData;
 
-    public ItemBase[] items;
+    public ItemDatas Datas;
+
 
 
     [ContextMenu("DownLoad Data")]
@@ -71,13 +72,14 @@ public class GoogleLocalizationData : ScriptableObject
         {
             string[] attribute = lines[i].Split(',');
 
-            for (int ii = 0; ii < items.Length; ii++)
+            for (int ii = 0; ii < Datas.items.Length; ii++)
             {
-                if (items[ii] == null) return;
+                if (Datas.items[ii] == null) continue;
 
-                if (items[ii].name == attribute[0])
+                if (Datas.items[ii].name == attribute[0])
                 {
                     SetData(ii, attribute);
+                    Debug.Log($"{attribute[0]} 데이터 적용 완료");
                     break;
                 }
 
@@ -89,13 +91,45 @@ public class GoogleLocalizationData : ScriptableObject
 
     }
 
-    public virtual void SetData(int i, string[] itemdata)
+    public void SetData(int i, string[] itemdata)
     {
 
-        items[i].itemName = itemdata[0];
+        Datas.items[i].itemName = itemdata[0];
         //items[i].itemImage = itemdata[1];
-        items[i].itemType = (ItemType)System.Enum.Parse(typeof(ItemType), itemdata[2].Trim());
-        items[i].Explanation = itemdata[3];
+        Datas.items[i].itemType = (ItemType)System.Enum.Parse(typeof(ItemType), itemdata[2].Trim());
+
+        if (Datas.items[i].itemType == ItemType.Herb)
+        {
+            SetHerbData(i, itemdata);
+        }
+        else
+        {
+
+        }
+
+            Datas.items[i].Explanation = itemdata[3];
+        Datas.items[i].Price = float.Parse(itemdata[4]);
     }
 
+    public void SetHerbData(int i, string[] itemdata)
+    {
+        HerbData herb = Datas.items[i] as HerbData;
+        herb.itemProcessedWay = new List<int>();
+
+        for (int j = 5; j < itemdata.Length; j++)
+        {
+            if (!string.IsNullOrEmpty(itemdata[j]) && itemdata[j].Trim() != "null")
+            {
+
+                herb.itemProcessedWay.Add(int.Parse(itemdata[j].Trim()));
+
+            }
+        }
+    }
+
+    public void SetPotionData()
+    {
+
+    }
+  
 }

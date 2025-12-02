@@ -26,6 +26,7 @@ public class Store : MonoBehaviour
         if (GameManager.Instance.IsBuyed((int)data.Price))
         {
             GameManager.Instance.inventoryManager.deliverycounts[number]++;
+            GameManager.Instance.report.UseCheeseCoin(data.itemName, (int)data.Price);
 
             //ItemClass itemdummy = new ItemClass();
             //itemdummy.itemNumber = number;

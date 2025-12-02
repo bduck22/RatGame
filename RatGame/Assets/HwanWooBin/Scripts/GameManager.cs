@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
 
     public DicManager dicManager;
 
+    public ProjectReport report;
+
     [Header("UI")]
 
     public TextMeshProUGUI MoneyText;

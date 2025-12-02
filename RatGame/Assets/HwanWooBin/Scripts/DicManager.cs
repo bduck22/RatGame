@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class DicManager : MonoBehaviour
 {
     public List<float> OpenedPer;
+    public List<int> PotionData;
+
 
     ItemDatas itemDatas;
 
+    
     public Transform DictionaryPos;
 
     public RectTransform DictionaryInfo;
@@ -18,8 +21,9 @@ public class DicManager : MonoBehaviour
     {
         itemDatas = GameManager.Instance.itemDatas;
 
-        foreach (var item in itemDatas.items)
+        for(int i=0; i < itemDatas.items.Length; i++)
         {
+            ItemBase item = itemDatas.items[i];
             if (item == null)
             {
                 continue;
@@ -30,6 +34,7 @@ public class DicManager : MonoBehaviour
                 if(Item.itemLevel > 0)
                 {
                     OpenedPer.Add(0f);
+                    PotionData.Add(i);
                 }
             }
         }
