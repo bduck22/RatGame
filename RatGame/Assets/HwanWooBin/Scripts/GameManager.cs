@@ -134,10 +134,10 @@ public class GameManager : MonoBehaviour
 
         uimanager.UpdateDayText();
 
-        if (Day == 6)
-        {
-            EndGame.gameObject.SetActive(true);
-        }
+        //if (Day == 6)
+        //{
+        //    EndGame.gameObject.SetActive(true);
+        //}
     }
 
     public void RestartGame()
@@ -311,7 +311,20 @@ public class GameManager : MonoBehaviour
     public void playingday()
     {
         OnScreen(5);
+        AddDayData();
         StartDay();
+
+
+    }
+
+    public void AddDayData()
+    {
+        DayList reportList = new DayList();
+        reportList.DayNumder = Day;
+        reportList.UseMoney = (int)Money;
+        Debug.Log("¥Ÿ¿Ω≥Ø");
+        report.SetDayList = reportList;
+        report.GenerateReport();
     }
     public void NextDay()
     {

@@ -67,7 +67,9 @@ public class Store : MonoBehaviour
     {
         
         GameManager.Instance.Money += (selectPotion.Completeness * 0.01f) * GameManager.Instance.itemDatas.items[selectPotion.itemNumber].Price;
+        GameManager.Instance.report.SellPotion.Add(GameManager.Instance.inventoryManager.inventory[selectpotionnumber]);
         GameManager.Instance.inventoryManager.inventory.RemoveAt(selectpotionnumber);
+       
 
         uis.Reload();
     }

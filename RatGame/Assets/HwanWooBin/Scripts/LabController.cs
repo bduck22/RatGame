@@ -64,6 +64,8 @@ public class LabController : MonoBehaviour
             GameManager.Instance.report.RatTestCount++;
             int DictioNum = Slot.Item.itemNumber - 13;
 
+            
+
             if (DictioNum == 5)
             {
                 int num = Random.Range(0, dicManager.OpenedPer.Count);

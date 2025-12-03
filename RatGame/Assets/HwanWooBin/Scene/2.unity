@@ -2865,9 +2865,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292662fbe88d36d47bb85f3d9e13b955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayLists:
+  - DayNumder: 0
+    UseMoney: 0
+  - DayNumder: 0
+    UseMoney: 0
+  - DayNumder: 0
+    UseMoney: 0
+  - DayNumder: 0
+    UseMoney: 0
+  - DayNumder: 0
+    UseMoney: 0
+  - DayNumder: 0
+    UseMoney: 0
+  - DayNumder: 0
+    UseMoney: 0
   RatTestCount: 0
   DicManager: {fileID: 1347348889}
+  SellPotion: []
   ProjectReportText: 
+  money: 0
 --- !u!4 &150620884
 Transform:
   m_ObjectHideFlags: 0
@@ -18359,7 +18376,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ProcessTime: 15
+  ProcessTime: 3
 --- !u!4 &887911561
 Transform:
   m_ObjectHideFlags: 0
@@ -26915,6 +26932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenedPer: []
+  PotionData: 
   DictionaryPos: {fileID: 1336290486}
   DictionaryInfo: {fileID: 1841425080}
 --- !u!4 &1347348890
