@@ -2867,24 +2867,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayLists:
   - DayNumder: 0
-    UseMoney: 0
+    UseMoney: -1
   - DayNumder: 0
-    UseMoney: 0
+    UseMoney: -1
   - DayNumder: 0
-    UseMoney: 0
+    UseMoney: -1
   - DayNumder: 0
-    UseMoney: 0
+    UseMoney: -1
   - DayNumder: 0
-    UseMoney: 0
+    UseMoney: -1
   - DayNumder: 0
-    UseMoney: 0
+    UseMoney: -1
   - DayNumder: 0
-    UseMoney: 0
+    UseMoney: -1
   RatTestCount: 0
   DicManager: {fileID: 1347348889}
   SellPotion: []
+  SeccessfulExperiments: 0
   ProjectReportText: 
-  money: 0
+  StoreCheese: []
+  BestStoreAmount: 0
+  DarkStoreCheese: []
+  BestDarkAmount: 0
 --- !u!4 &150620884
 Transform:
   m_ObjectHideFlags: 0
@@ -6598,39 +6602,11 @@ MonoBehaviour:
   InvenPos: {fileID: 3772335492463741904}
   InvenPre: {fileID: 3127558147954117072, guid: c61473a65299ebd4e9e17096ba52818e, type: 3}
   inventory:
-  - itemType: 1
+  - itemType: 0
     itemName: 
     itemDescription: 
-    itemNumber: 13
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 0
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemName: 
-    itemDescription: 
-    itemNumber: 13
-    ItemCount: 1
-    ProcessWay: 0
-    Completeness: 0
-    shap: 0
-    amount1: 0
-    amount2: 0
-    herb1: {fileID: 0}
-    process1: 0
-    herb2: {fileID: 0}
-    process2: 0
-  - itemType: 1
-    itemName: 
-    itemDescription: 
-    itemNumber: 13
-    ItemCount: 1
+    itemNumber: 0
+    ItemCount: 0
     ProcessWay: 0
     Completeness: 0
     shap: 0
@@ -10699,7 +10675,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1117988015}
         m_TargetAssemblyTypeName: Store, Assembly-CSharp
-        m_MethodName: Sell
+        m_MethodName: DarkStore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22208,7 +22184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11aa672266f3f24bb0055521d4edb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prices: e8030000e8030000e803000088130000
+  Prices: e8030000e8030000e8030000b80b0000
   uis: {fileID: 1211465693}
   selectPotion:
     itemType: 0
@@ -32816,6 +32792,9 @@ MonoBehaviour:
   stopping: 0
   dayani: {fileID: 1146650350}
   GetItem: {fileID: 661249067}
+  darkstoreRisk: 0
+  OpenProbably: 40
+  DarkstoreConfirmedDay: 3
   EndGame: {fileID: 2113156855}
   SetOb: {fileID: 0}
   InventoryUI: {fileID: 4716204020729783351}

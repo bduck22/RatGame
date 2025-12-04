@@ -31,17 +31,26 @@ public class StoreUI : MonoBehaviour
 
     public Image PotionInfoSlot;
 
+   
+
     [TextArea]
     public string[] Exs;
     private void Awake()
     {
         inventoryManager = GameManager.Instance.inventoryManager;
         ItemDatas = GameManager.Instance.itemDatas;
+    }
+
+    private void OnEnable()
+    {
         movetab(0);
     }
 
     public void movetab(int number)
     {
+
+        if (number==2&&!GameManager.Instance.DarkStoreIsOpen) { Debug.Log("ø¿¥√¿∫ ≥Ø¿Ã æ∆¥’¥œ¥Ÿ!"); return; }
+
         tabnumber = number;
         if (tabs[tabnumber].gameObject.activeSelf)
         {
@@ -52,12 +61,15 @@ public class StoreUI : MonoBehaviour
             potioninfo.gameObject.SetActive(false);
         }
 
+
             for (int i = 0; i < 3; i++)
             {
                 buttons[i].interactable = true;
                 tabs[i].gameObject.SetActive(false);
                 buttons[i].GetComponent<Image>().color = Color.white;
             }
+
+
 
         buttons[tabnumber].interactable=false;
         tabs[tabnumber].gameObject.SetActive(true);

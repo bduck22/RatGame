@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Store : MonoBehaviour
@@ -9,6 +10,8 @@ public class Store : MonoBehaviour
 
     public ItemClass selectPotion;
     public int selectpotionnumber;
+
+
     private void Start()
     {
         ItemDatas = GameManager.Instance.itemDatas;
@@ -26,7 +29,7 @@ public class Store : MonoBehaviour
         if (GameManager.Instance.IsBuyed((int)data.Price))
         {
             GameManager.Instance.inventoryManager.deliverycounts[number]++;
-            GameManager.Instance.report.UseCheeseCoin(data.itemName, (int)data.Price);
+            GameManager.Instance.report.UseCoinInStore(data, true);
 
             //ItemClass itemdummy = new ItemClass();
             //itemdummy.itemNumber = number;
@@ -51,6 +54,7 @@ public class Store : MonoBehaviour
             else
             {
                 GameManager.Instance.ProcessController.ProcessLevel[number]++;
+                GameManager.Instance.darkstoreRisk += 10;
                 GameManager.Instance.ProcessController.SetProcessTime(1, true, number);
             }
             uis.Reload();
@@ -63,14 +67,19 @@ public class Store : MonoBehaviour
         selectPotion = GameManager.Instance.inventoryManager.inventory[selectpotionnumber];
     }
 
-    public void Sell()
+    public void DarkStore()
     {
-        
+
+
         GameManager.Instance.Money += (selectPotion.Completeness * 0.01f) * GameManager.Instance.itemDatas.items[selectPotion.itemNumber].Price;
+        GameManager.Instance.darkstoreRisk += 5;
         GameManager.Instance.report.SellPotion.Add(GameManager.Instance.inventoryManager.inventory[selectpotionnumber]);
         GameManager.Instance.inventoryManager.inventory.RemoveAt(selectpotionnumber);
        
 
         uis.Reload();
     }
+
+
+
 }

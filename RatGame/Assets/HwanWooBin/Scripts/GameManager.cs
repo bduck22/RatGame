@@ -56,8 +56,8 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-                usingMouse = value;
-            
+            usingMouse = value;
+
             MouseText.text = usingMouse.ToString() + "/" + mouseCount.ToString();
         }
     }
@@ -97,6 +97,36 @@ public class GameManager : MonoBehaviour
 
     public Animator GetItem;
 
+
+    [Header("암시장 스폰 확률")]
+    public int darkstoreRisk = 0;
+    public int OpenProbably = 40;           // 기본 확률 40%
+    int DarkstoreConfirmedDayCount = 0;
+    public int DarkstoreConfirmedDay = 3;       // 반드시 암시장 오픈되는 날
+    public bool DarkStoreIsOpen {
+        get { return darkStoreIsOpen; }
+        set
+        {
+            darkStoreIsOpen = value;
+            if (darkStoreIsOpen)
+            {
+                DarkstoreConfirmedDayCount = 0;
+            }
+            else
+            {
+                DarkstoreConfirmedDayCount++;
+                if (DarkstoreConfirmedDayCount >= DarkstoreConfirmedDay)
+                {
+                    darkStoreIsOpen = true;
+                    DarkstoreConfirmedDayCount = 0;
+                }
+            }
+        }
+    
+    
+    }
+    bool darkStoreIsOpen;
+
     void Awake()
     {
         nowRoom = 0;
@@ -122,6 +152,8 @@ public class GameManager : MonoBehaviour
     {
         MouseCount = mouseCount;
         Day++;
+        DarkStoreIsOpen = (Random.RandomRange(0, 101) <= OpenProbably);
+        
 
         ProcessController.SetProcessTime(30, false, 0);
 
@@ -155,19 +187,19 @@ public class GameManager : MonoBehaviour
         item.ItemCount = count;
 
         item.itemName = data.itemName;
-        item.itemDescription = data.Explanation;  
+        item.itemDescription = data.Explanation;
 
 
         for (int i = 0; i < inventoryManager.inventory.Count; i++)
         {
             if (inventoryManager.inventory[i].itemNumber == number)
             {
-               
-                
+
+
 
                 if (inventoryManager.inventory[i].ProcessWay == item.ProcessWay)
                 {
-             
+
                     inventoryManager.inventory[i].ItemCount += count;
 
                     inventoryManager.UpdateInventory();
@@ -187,7 +219,7 @@ public class GameManager : MonoBehaviour
     public void AddItem(ItemClass Item, bool isnewget) // 가공 된 아이템 획득
     {
 
-       // Debug.Log("AddItem함수 실행됨 - 아이템 번호: " + Item + ", 개수: " + isnewget);
+        // Debug.Log("AddItem함수 실행됨 - 아이템 번호: " + Item + ", 개수: " + isnewget);
         ItemClass item = new ItemClass();
         item.itemName = Item.itemName;
         item.itemDescription = Item.itemDescription;
@@ -234,7 +266,7 @@ public class GameManager : MonoBehaviour
 
                 //허브 전용 데이터 출력
                 Potioninfo.gameObject.SetActive(true);
-              
+
                 Potioninfo.GetComponentInChildren<TextMeshProUGUI>().text = "등급 : <color=" + (Itemdata.itemLevel == 3 ? "red>전설" :
                 Itemdata.itemLevel == 2 ? "blue>희귀" : Itemdata.itemLevel == 1 ? "#DA9659>일반" : "black>??") +
                 "</color>\n완성도 : " + item.Completeness.ToString() + "%\n\n" +
@@ -260,7 +292,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 HerbInfo.gameObject.SetActive(true);
-              
+
                 HerbInfo.GetComponentInChildren<TextMeshProUGUI>().text = "가공 상태 : " + (item.ProcessWay == 0 ? "달이기" : item.ProcessWay == 1 ? "빻기" : item.ProcessWay == 2 ? "말리기" : "X");
             }
             Icon.GetComponentInChildren<TextMeshProUGUI>().text = (item.ItemCount <= 1 ? "" : item.ItemCount.ToString("#,###"));
@@ -310,21 +342,43 @@ public class GameManager : MonoBehaviour
 
     public void playingday()
     {
-        OnScreen(5);
         AddDayData();
+        if ((Day - 2) % 7 == 0)
+        {
+            CreateReport();
+            return;
+        }
+
+        OnScreen(5);
         StartDay();
 
+    }
 
+    public void CreateReport()
+    {
+        Debug.Log("리포트 생성");
+        report.GenerateReport();
+       
+        SkipReport();
+    }
+
+    public void SkipReport() // 나중에는 button으로
+    {
+        report.ResetReport();
+        OnScreen(5);
+        StartDay();
     }
 
     public void AddDayData()
     {
+
+
         DayList reportList = new DayList();
         reportList.DayNumder = Day;
         reportList.UseMoney = (int)Money;
         Debug.Log("다음날");
         report.SetDayList = reportList;
-        report.GenerateReport();
+        
     }
     public void NextDay()
     {

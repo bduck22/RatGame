@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
+
 
 [Serializable]
 public class DayList
@@ -16,10 +18,33 @@ public class DayList
     }
 }
 
+[Serializable]
+public class CheeseMoneyUse
+{
+    public string FromItemName;
+    public int ItemCount = 0;
+
+    public void Reset()
+    {
+        ItemCount = -1;
+        ItemCount = 0;
+    }
+
+    public void BuyOrSelle(ItemBase useFrom)
+    { 
+        FromItemName = useFrom.itemName;
+        ItemCount = 1;
+    }
+    public void MoreBuyOrSelle(ItemBase useFrom)
+    {
+        ItemCount++;
+    }
+
+}
+
 public class ProjectReport : MonoBehaviour
 {
-    Dictionary<string, int[]> CheeseSave;
-
+    // 7일 간의 보고 ----------------------------------------------------------------
     [Header("날짜 내역")]
     public DayList SetDayList
     {
@@ -33,7 +58,6 @@ public class ProjectReport : MonoBehaviour
                 {
                     dayLists[i].DayNumder = value.DayNumder;
                     dayLists[i].UseMoney = value.UseMoney;
-                    SeccessfulExperiments += value.UseMoney;
                     return;
                 }
             }
@@ -44,12 +68,12 @@ public class ProjectReport : MonoBehaviour
                 dayLists[i - 1].UseMoney = dayLists[i].UseMoney;
             }
             dayLists[dayLists.Length - 1] = value;
-            SeccessfulExperiments += value.UseMoney;
 
         }
     }
     public DayList[] dayLists = new DayList[7];
-    
+
+
     [Header("실험 횟수")]
     public int RatTestCount;
 
@@ -63,55 +87,38 @@ public class ProjectReport : MonoBehaviour
     [Header("성과")]
     public int SeccessfulExperiments;
 
+
     [Header("보고서")]
     public string ProjectReportText;
 
 
+    // 매일 아침 내역서 ----------------------------------------------------------------
+
+    // 상점
+    public List<CheeseMoneyUse> StoreCheese;
+    public int BestStoreAmount;
+    // 암시장
+    public List<CheeseMoneyUse> DarkStoreCheese;
+    public int BestDarkAmount;
+
     private void Start()
     {
-        CheeseSave = new Dictionary<string, int[]>();
-        
-        for(int i =0; i < 7; i++)
+
+        for (int i = 0; i < 7; i++)
         {
             dayLists[i].Reset();
         }
+
+        StoreCheese = new List<CheeseMoneyUse>();
+        DarkStoreCheese = new List<CheeseMoneyUse>();
     }
 
-
-    public void UseCheeseCoin(string useFrom, int pay)
-    {
-
-        if (!CheeseSave.ContainsKey(useFrom))
-        {
-            CheeseSave[useFrom] = new int[2];
-            CheeseSave[useFrom][0] = 1;
-            CheeseSave[useFrom][1] = pay;
-        }
-        else
-        {
-            CheeseSave[useFrom][0]++;
-            CheeseSave[useFrom][1] += pay;
-        }
-    }
+    // 성과 보고, 7일에 한번 ----------------------------------------------------------------
 
     [ContextMenu("보고서 생성")]
     public void GenerateReport()
     {
-        if ((GameManager.Instance.Day - 2) % 7 != 0) return; // 7일마다 반복
-
-
-        // 치즈 내역서----------------------------------------------------------------
-
-
-        //var key = new List<string>(CheeseSave.Keys);
-        //var pay = new List<int[]>(CheeseSave.Values);
-
-
-        //for (int i = 0; i < CheeseSave.Count; i++)
-        //{
-
-        //    ProjectReportText += $"{key[i]}           {pay[i][0]}   {pay[i][1]}\n";
-        //}
+        if ((GameManager.Instance.Day - 2) % 7 == 0) return; // 7일마다 반복
 
 
         // 실험 횟수------------------------------------------------------------------
@@ -146,6 +153,7 @@ public class ProjectReport : MonoBehaviour
                     ProjectReportText += $"제출한 물약 : {GameManager.Instance.itemDatas.items[DicManager.PotionData[ii]].itemName} 금액 : (도감 완성도[{Mathf.RoundToInt(ii - 1 <= -1 ? DicManager.OpenedPer[DicManager.OpenedPer.Count - 1] * 10 : DicManager.OpenedPer[ii - 1] * 10)}] * 약물 가격[{GameManager.Instance.itemDatas.items[DicManager.PotionData[ii]].Price}])\n";
                     string moneyText = nowMoney.ToString("#,##0");
                     ProjectReportText += "총 금액 : " + moneyText + "\n";
+                    SeccessfulExperiments += nowMoney;
                     break;
                 }
 
@@ -154,19 +162,88 @@ public class ProjectReport : MonoBehaviour
         }
         Debug.Log("보고서 체출 완료");
 
-
-
     }
 
     public void ResetReport()
     {
 
-        CheeseSave.Clear();
+
         RatTestCount = 0;
         SellPotion.Clear();
-        
         ProjectReportText = null;
+        SeccessfulExperiments = 0;
     }
+
+
+    // 아침 보고, 매일 아침 구매한 목록들 표시 ----------------------------------------------------------------
+
+    public void UseCoinInStore(ItemBase useFrom, bool isLegal)
+    {
+
+        CheeseMoneyUse ss = new CheeseMoneyUse();
+
+        if (isLegal)
+        {
+            for(int i =0; i < StoreCheese.Count; i++)
+            {
+                if (StoreCheese[i].FromItemName == useFrom.itemName)
+                {
+                    StoreCheese[i].MoreBuyOrSelle(useFrom);
+                    BestStoreAmount += (int)useFrom.Price;
+                    return;
+                }
+            }
+            ss.BuyOrSelle(useFrom);
+            BestStoreAmount += (int)useFrom.Price;
+            StoreCheese.Add(ss);
+        }
+        else
+        {
+            for (int i = 0; i < DarkStoreCheese.Count; i++)
+            {
+                if (DarkStoreCheese[i].FromItemName == useFrom.itemName)
+                {
+                    DarkStoreCheese[i].MoreBuyOrSelle(useFrom);
+                    BestDarkAmount += (int)useFrom.Price;
+                    return;
+                }
+            }
+            
+            ss.BuyOrSelle(useFrom);
+            BestDarkAmount += (int)useFrom.Price;
+            DarkStoreCheese.Add(ss);
+        }
+
+
+    }
+
+
+    [ContextMenu("아침 보고서 생성")] // UI 적용시 추가할 예정-----------------------------------------------------------------------
+    public void CheeseListReport()
+    {
+
+
+        // 치즈 내역서----------------------------------------------------------------
+        if (StoreCheese == null) return;
+
+        Debug.Log($"최종 자산 : {BestStoreAmount}\n");
+        for (int i = 0; i < StoreCheese.Count; i++)
+        {
+            Debug.Log($"{StoreCheese[i].FromItemName} / {StoreCheese[i].ItemCount}\n");
+        }
+
+
+        if (DarkStoreCheese == null) return;
+
+        Debug.Log($"\n최종 자산 : {BestDarkAmount}\n");
+
+        for (int i = 0; i < DarkStoreCheese.Count; i++)
+        {
+            Debug.Log($"{DarkStoreCheese[i].FromItemName} / {DarkStoreCheese[i].ItemCount}\n");
+        }
+
+    }
+
 
 
 
