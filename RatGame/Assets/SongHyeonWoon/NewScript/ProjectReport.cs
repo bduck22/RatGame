@@ -120,7 +120,7 @@ public class ProjectReport : MonoBehaviour
     {
         if ((GameManager.Instance.Day - 2) % 7 == 0) return; // 7일마다 반복
 
-
+        
         // 실험 횟수------------------------------------------------------------------
         ProjectReportText += $"\n실험 횟수: {RatTestCount}회\n";
 
@@ -160,14 +160,13 @@ public class ProjectReport : MonoBehaviour
             }
 
         }
-        Debug.Log("보고서 체출 완료");
-
     }
 
-    public void ResetReport()
+    public void ResetReport() // 보고서 확인 버튼을 누르면 자동으로 초기화
     {
 
 
+        Debug.Log("보고서 체출 완료");
         RatTestCount = 0;
         SellPotion.Clear();
         ProjectReportText = null;
@@ -181,7 +180,7 @@ public class ProjectReport : MonoBehaviour
     {
 
         CheeseMoneyUse ss = new CheeseMoneyUse();
-
+        //Debug.Log($"{useFrom.itemName} 구매/판매 기록 추가");
         if (isLegal)
         {
             for(int i =0; i < StoreCheese.Count; i++)

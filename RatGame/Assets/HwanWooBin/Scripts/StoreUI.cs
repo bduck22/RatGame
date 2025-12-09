@@ -1,6 +1,7 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class StoreUI : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class StoreUI : MonoBehaviour
     public ItemDatas ItemDatas;
 
     public Transform InvenPos;
+    public Transform DropInvenPos;
 
     public GameObject InvenPre;
 
@@ -80,7 +82,7 @@ public class StoreUI : MonoBehaviour
 
     public void Reload()
     {
-        potioninfo.gameObject.SetActive(false);
+        //potioninfo.gameObject.SetActive(false); // 아이템 설명 보이는 창
         bannedItemCount = 0;
         switch (tabnumber)
         {
@@ -135,6 +137,7 @@ public class StoreUI : MonoBehaviour
                     {
                         //생성
                         slot = Instantiate(InvenPre, InvenPos);
+                       // Debug.Log("생성");
                     }
                     else
                     {
@@ -143,12 +146,14 @@ public class StoreUI : MonoBehaviour
                         //true
                     }
 
+
+
                     ItemBase itemdata = GameManager.Instance.itemDatas.items[inventoryManager.inventory[i].itemNumber];
 
 
                         if (itemdata.itemType != ItemType.Potion)
                         {
-                        bannedItemCount++;
+                            bannedItemCount++;
                             slot.SetActive(false);
                             continue;
                         }
@@ -156,9 +161,21 @@ public class StoreUI : MonoBehaviour
 
                     slot.gameObject.name = (i).ToString();
                     slot.GetComponent<Image>().sprite = inventoryManager.PotionCase;
-                    int index = i;
-                    slot.GetComponent<Button>().onClick.AddListener(() => store.Setpotion(index));
-                    slot.GetComponent<Button>().onClick.AddListener(openinfo);
+                   // int index = i;
+
+                    slot.GetComponent<Button>().onClick.RemoveAllListeners(); // 모든 호출 삭제
+                    // 정보를 입력
+                    //slot.GetComponent<Button>().onClick.AddListener(() => store.Setpotion(index));
+                
+                    ItemClass itemdataindex = inventoryManager.inventory[i];
+                    slot.GetComponent<Button>().onClick.AddListener(() => DropSellPotion(slot, itemdataindex));
+
+                    //slot.GetComponent<Button>().onClick.AddListener(openinfo);
+
+
+                 
+
+
                         slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
 
                         var Itemdata = itemdata as PotionData;
@@ -177,27 +194,73 @@ public class StoreUI : MonoBehaviour
         }
     }
 
-    public void openinfo()
+    public void DropSellPotion(GameObject slot, ItemClass item)
     {
-        potioninfo.gameObject.SetActive(true);
-        //포션 정보 출력
+        slot.transform.SetParent(DropInvenPos);
+        store.selectPotionList.Add(item);
 
-        PotionData itemdata = GameManager.Instance.itemDatas.items[store.selectPotion.itemNumber] as PotionData;
-
-
-        if (itemdata.NonWater == store.selectPotion.shap)
+        for (int i = 0; i < inventoryManager.inventory.Count; i++)
         {
-            PotionInfoSlot.sprite = itemdata.itemImage;
-            PotionInfoSlot.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.name;
-        }
-        else
-        {
-            PotionInfoSlot.sprite = itemdata.NonShapeImage;
-            PotionInfoSlot.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.NonShapeName;
+            if (inventoryManager.inventory[i] == item)
+            {
+                inventoryManager.inventory.Remove(item); // 인벤토리에서 제거
+                Debug.Log("포션 판매창으로 이동");
+            }
         }
 
-
-        PotionInfoSlot.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "등급 : <color="+(itemdata.itemLevel==3?"red>전설":
-            itemdata.itemLevel==2?"blue>희귀":itemdata.itemLevel==1?"white>일반": "black>??") +"</color>\n완성도 : "+store.selectPotion.Completeness.ToString()+"%\n\n가격 : <color=\"yellow\">"+(itemdata.Price*(store.selectPotion.Completeness*0.01f)).ToString("#,##0")+"치즈코인</color>";
+        slot.GetComponent<Button>().onClick.RemoveAllListeners();
+        slot.GetComponent<Button>().onClick.AddListener(() => ReturenPotion(slot, item));
+        Reload();
     }
+
+    public void ReturenPotion(GameObject slot, ItemClass index)
+    {
+        slot.transform.SetParent(InvenPos);
+        int ind = 0;
+        inventoryManager.inventory.Add(index); // 인벤토리에 다시 추가
+
+        for(int i=0; i< inventoryManager.inventory.Count; i++)
+        {
+            if (inventoryManager.inventory[i] == index)
+            {
+                ind = i;
+                break;
+            }
+        }
+
+        store.selectPotionList.Remove(index);
+      
+
+        //slot.GetComponent<Button>().onClick.AddListener(() => store.Setpotion(ii));
+
+        slot.GetComponent<Button>().onClick.AddListener(() => DropSellPotion(slot, index));
+
+        //slot.GetComponent<Button>().onClick.AddListener(openinfo);
+        Reload();
+    }
+
+
+    //public void openinfo()
+    //{
+    //    potioninfo.gameObject.SetActive(true);
+    //    //포션 정보 출력
+
+    //    PotionData itemdata = GameManager.Instance.itemDatas.items[store.selectPotion.itemNumber] as PotionData;
+
+
+    //    if (itemdata.NonWater == store.selectPotion.shap)
+    //    {
+    //        PotionInfoSlot.sprite = itemdata.itemImage;
+    //        PotionInfoSlot.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.name;
+    //    }
+    //    else
+    //    {
+    //        PotionInfoSlot.sprite = itemdata.NonShapeImage;
+    //        PotionInfoSlot.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.NonShapeName;
+    //    }
+
+
+    //    PotionInfoSlot.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "등급 : <color="+(itemdata.itemLevel==3?"red>전설":
+    //        itemdata.itemLevel==2?"blue>희귀":itemdata.itemLevel==1?"white>일반": "black>??") +"</color>\n완성도 : "+store.selectPotion.Completeness.ToString()+"%\n\n가격 : <color=\"yellow\">"+(itemdata.Price*(store.selectPotion.Completeness*0.01f)).ToString("#,##0")+"치즈코인</color>";
+    //}
 }
