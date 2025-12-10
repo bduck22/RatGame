@@ -18,6 +18,7 @@ public class Store : MonoBehaviour
     private void Start()
     {
         ItemDatas = GameManager.Instance.itemDatas;
+        GameManager.Instance.store = this;
     }
 
     private void OnEnable()
@@ -74,7 +75,7 @@ public class Store : MonoBehaviour
 
     public void DarkStore()
     {
-
+       
 
        // GameManager.Instance.Money += (selectPotion.Completeness * 0.01f) * GameManager.Instance.itemDatas.items[selectPotion.itemNumber].Price * Random.Range(0.5f, 2f); // 약마다 랜덤한 가격으로 판매 가능
        // GameManager.Instance.darkstoreRisk += 5;

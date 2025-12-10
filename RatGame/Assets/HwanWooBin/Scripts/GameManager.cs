@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
     public int OpenProbably = 40;           // 기본 확률 40%
     int DarkstoreConfirmedDayCount = 0;
     public int DarkstoreConfirmedDay = 3;       // 반드시 암시장 오픈되는 날
+    public Store store;
     public bool DarkStoreIsOpen {
         get { return darkStoreIsOpen; }
         set
@@ -153,7 +154,9 @@ public class GameManager : MonoBehaviour
         MouseCount = mouseCount;
         Day++;
         DarkStoreIsOpen = (Random.RandomRange(0, 101) <= OpenProbably);
-        
+
+        if (store != null)  store.DarkStore(); // 암시장의 아이템 판매
+       
 
         ProcessController.SetProcessTime(30, false, 0);
 
@@ -343,7 +346,7 @@ public class GameManager : MonoBehaviour
     public void playingday()
     {
         AddDayData();
-        if ((Day - 2) % 7 == 0)
+        if ((Day - 1) % 7 == 0)
         {
             CreateReport();
             return;
@@ -358,13 +361,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("리포트 생성");
         report.GenerateReport();
-       
-        SkipReport();
+        dayani.SetTrigger("ReportDay"); // ----------
+        //SkipReport();
     }
 
+    [ContextMenu("리포트 스킵")]
     public void SkipReport() // 나중에는 button으로
     {
         report.ResetReport();
+        dayani.SetTrigger("ReoprtQuit");
         OnScreen(5);
         StartDay();
     }

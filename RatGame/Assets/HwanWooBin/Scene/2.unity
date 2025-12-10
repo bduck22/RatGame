@@ -4600,7 +4600,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4290164406
   m_fontColor: {r: 0.7137255, g: 0.7137255, b: 0.7137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -18352,7 +18352,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ProcessTime: 3
+  ProcessTime: 8
 --- !u!4 &887911561
 Transform:
   m_ObjectHideFlags: 0
@@ -22186,21 +22186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prices: e8030000e8030000e8030000b80b0000
   uis: {fileID: 1211465693}
-  selectPotion:
-    itemType: 0
-    itemName: 
-    itemDescription: 
-    itemNumber: -1
-    ItemCount: 0
-    ProcessWay: -1
-    Completeness: 0
-    shap: 0
-    amount1: -1
-    amount2: -1
-    herb1: {fileID: 0}
-    process1: -1
-    herb2: {fileID: 0}
-    process2: -1
   selectpotionnumber: 0
   selectPotionList: []
 --- !u!1 &1125835826
@@ -23841,6 +23826,7 @@ RectTransform:
   - {fileID: 1146650347}
   - {fileID: 2113156855}
   - {fileID: 1834375163}
+  - {fileID: 1778171252}
   m_Father: {fileID: 233201204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -32858,6 +32844,7 @@ MonoBehaviour:
   darkstoreRisk: 0
   OpenProbably: 100
   DarkstoreConfirmedDay: 3
+  store: {fileID: 0}
   EndGame: {fileID: 2113156855}
   SetOb: {fileID: 0}
   InventoryUI: {fileID: 4716204020729783351}
@@ -34475,6 +34462,41 @@ MonoBehaviour:
     process2: 0
   Get: 0
   Lock: 0
+--- !u!1 &1778171251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1778171252}
+  m_Layer: 5
+  m_Name: ReportUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1778171252
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778171251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1203401739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1785888879
 GameObject:
   m_ObjectHideFlags: 0
