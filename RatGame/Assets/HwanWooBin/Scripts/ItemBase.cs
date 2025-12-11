@@ -10,7 +10,7 @@ public enum ItemType
 }
 
 [Serializable]
-public class ItemBase : ScriptableObject
+public abstract class ItemBase : ScriptableObject
 {
     public string itemName;
     public Sprite itemImage;
@@ -20,6 +20,14 @@ public class ItemBase : ScriptableObject
     public string Explanation;
 
     public float Price;
+
+    public virtual void SetValue(ItemBase item)
+    {
+        itemName = item.itemName;
+        itemType = item.itemType;
+        Explanation = item.Explanation;
+        Price = item.Price;
+    }
 }
 
 
