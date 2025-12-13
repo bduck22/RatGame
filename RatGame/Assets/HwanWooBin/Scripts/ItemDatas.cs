@@ -16,6 +16,8 @@ public class ItemDatas : MonoBehaviour
 
     public ItemBase[] items;
 
+    public int PotionIndex;
+
     public static readonly Regex CSV_SPLIT_REGEX = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
     [TextArea]
@@ -25,16 +27,17 @@ public class ItemDatas : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
 
-            downloadPath = Path.Combine(Application.persistentDataPath, "LocalItemData.csv");
+        downloadPath = Path.Combine(Application.persistentDataPath, "LocalItemData.csv");
     }
 
     private static readonly byte[] Utf8Bom = new byte[] { 0xEF, 0xBB, 0xBF };
@@ -83,6 +86,8 @@ public class ItemDatas : MonoBehaviour
 
             byte[] hashInputBytes = Encoding.UTF8.GetBytes(finalContent);
 
+            //Debug.Log($"[Unity] 최종 해시 입력 바이트 길이: {hashInputBytes.Length}");
+
             using (MD5 md5 = MD5.Create())
             {
                 byte[] hashBytes = md5.ComputeHash(hashInputBytes);
@@ -113,19 +118,26 @@ public class ItemDatas : MonoBehaviour
 
         string downloadHash = await DownloadHashAsync(sheetURL + "&range=A1:A1");
 
-        string localHash = GetLocalFileHash(downloadPath);
+        string localHash = null;
+        if (File.Exists(downloadPath))
+        {
+            localHash = GetLocalFileHash(downloadPath);
+        }
+
 
         //Debug.Log(downloadHash + "\n\n\n\n\n\n\n\n" + localHash);
+        
 
         if (localHash == null || localHash != downloadHash)
         {
-            Debug.Log("업데이트 필요 업데이트 진행합니다.");
+            Debug.LogWarning("업데이트 필요 업데이트 진행합니다.");
 
             DownSheet();
         }
         else
         {
             Debug.Log("최신 데이터입니다.");
+            LoadData();
         }
     }
 
@@ -137,7 +149,7 @@ public class ItemDatas : MonoBehaviour
         {
             using (HttpClient client = new HttpClient())
             {
-                string csvData = await client.GetStringAsync(sheetURL + "&range=A2:L");
+                string csvData = await client.GetStringAsync(sheetURL + "&range=A2:M");
                 if (string.IsNullOrEmpty(csvData))
                 {
                     Debug.LogError("시트가 비어있음");
@@ -148,7 +160,9 @@ public class ItemDatas : MonoBehaviour
 
 #if UNITY_EDITOR
                 Debug.Log($"다운로드 완료 '{downloadPath}'");
+
 #endif
+                LoadData();
             }
         }
         catch (System.Exception e)
@@ -176,14 +190,12 @@ public class ItemDatas : MonoBehaviour
                     {
                         ItemBase item = ReadData.analyData(line[i]);
 
-                        //if (item.itemType == ItemType.Potion)
-                        //{
-                        //    (items[i] as PotionData).SetValue(item);
-                        //}
-                        //else
-                        //{
-                        //    (items[i] as HerbData).SetValue(item);
-                        //}
+                        if (PotionIndex == -1&&item.itemType==ItemType.Potion)
+                        {
+                            PotionIndex = i;
+                        }
+
+                        items[i].SetValue(item);
                     }
                 }
 
@@ -199,56 +211,47 @@ public class ItemDatas : MonoBehaviour
 
 public enum Herbs
 {
-    약초덩어리,
+    인삼,
+    당귀,
+    구기자,
+    오미자,
+    감초,
+    생강,
+    작약,
+    황기,
+    대추,
+    천궁,
+    하수오,
+    약초덩어리
+}
+
+public enum Level
+{
+    미상,
+    일반,
+    희귀,
+    전설,
+    X
 }
 
 public static class ReadData
 {
     public static ItemBase analyData(string data)
     {
+
         string[] datas = ItemDatas.CSV_SPLIT_REGEX.Split(data);
 
         ItemType type;
 
         Enum.TryParse<ItemType>(datas[1], out type);
 
-        ItemBase item;
-
         if (type == ItemType.Potion) //약
         {
-            item = new PotionData();
-            if(item is PotionData item_P)
-            {
-                switch (datas[4])
-                {
-                    case "???":
-                        break;
-                    case "일반":
-                        break;
-                    case "희귀":
-                        break;
-                    case "전설":
-                        break;
-                }
-
-
-            }
+            return new PotionData().InitData(datas);
         }
         else // 허브
         {
-            item = new HerbData();
-            if (item is HerbData item_H)
-            {
-                for (int i = 4; i < 7; i++)
-                {
-                    item_H.itemProcessedWay[i-4] = int.Parse(datas[i]);
-                }
-            }
+            return new HerbData().InitData(datas);
         }
-        item.itemName = datas[0];
-        item.itemType = type;
-        item.Explanation = datas[2];
-        item.Price = int.Parse(datas[3]);
-        return null;
     }
 }

@@ -28,6 +28,15 @@ public abstract class ItemBase : ScriptableObject
         Explanation = item.Explanation;
         Price = item.Price;
     }
+
+    public virtual ItemBase InitData(string[] datas)
+    {
+        this.itemName = datas[0];
+        this.itemType = Enum.Parse<ItemType>(datas[1]);
+        this.Explanation = datas[2];
+        this.Price = int.Parse(datas[3]);
+        return this;
+    }
 }
 
 

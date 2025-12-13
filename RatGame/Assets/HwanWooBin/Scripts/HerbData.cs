@@ -16,4 +16,16 @@ public class HerbData : ItemBase
             itemProcessedWay = (int[])herb.itemProcessedWay.Clone();
         }
     }
+
+    public override ItemBase InitData(string[] datas)
+    {
+
+        base.InitData(datas);
+
+        for(int i = 0; i < 3; i++)
+        {
+            this.itemProcessedWay[i] = int.Parse(datas[i+4]);
+        }
+        return this;
+    }
 }

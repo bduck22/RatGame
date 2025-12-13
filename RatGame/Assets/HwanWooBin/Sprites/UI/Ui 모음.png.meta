@@ -297,10 +297,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -338,13 +338,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_0"
+      name: "\uD654\uC0B4\uD45C\uC67C\uCABD"
       rect:
         serializedVersion: 2
-        x: 2102
-        y: 4656
-        width: 209
-        height: 344
+        x: 4608
+        y: 1089
+        width: 291
+        height: 391
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,57 +360,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_1"
-      rect:
-        serializedVersion: 2
-        x: 2299
-        y: 4982
-        width: 20
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bb53c506666392400800000000000000
-      internalID: 299830663528068539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_2"
-      rect:
-        serializedVersion: 2
-        x: 2605
-        y: 4994
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 633d9863f303c89b0800000000000000
-      internalID: -5076629631897316554
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_3"
+      name: "\uB808\uBCA8\uC5C5\uD544\uC694"
       rect:
         serializedVersion: 2
         x: 2632
-        y: 4644
+        y: 4676
         width: 363
-        height: 356
+        height: 324
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,7 +382,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_4"
+      name: "\uC0C1\uC810"
       rect:
         serializedVersion: 2
         x: 3873
@@ -448,13 +404,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_5"
+      name: "\uCE58\uC988\uCF54\uC778"
       rect:
         serializedVersion: 2
         x: 2313
-        y: 4649
+        y: 4665
         width: 320
-        height: 337
+        height: 321
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,29 +426,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_6"
-      rect:
-        serializedVersion: 2
-        x: 2628
-        y: 4969
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99eecd8cc25ed94a0800000000000000
-      internalID: -6584855099634553191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_7"
+      name: "\uAC00\uACF5\uC9C4\uD589\uB3C4"
       rect:
         serializedVersion: 2
         x: 3545
@@ -514,11 +448,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_8"
+      name: "\uCF54\uC778\uBC30\uACBD"
       rect:
         serializedVersion: 2
         x: 74
-        y: 4680
+        y: 4683
         width: 1329
         height: 275
       alignment: 0
@@ -536,13 +470,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_9"
+      name: "\uC0BC\uAC01\uBC84\uD2BC\uC67C\uCABD"
       rect:
         serializedVersion: 2
-        x: 1470
-        y: 4725
-        width: 98
-        height: 189
+        x: 4650
+        y: 1580
+        width: 230
+        height: 374
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -558,13 +492,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_10"
+      name: "\uC0BC\uAC01\uBC84\uD2BC\uC624\uB978\uCABD"
       rect:
         serializedVersion: 2
-        x: 1699
-        y: 4732
-        width: 113
-        height: 187
+        x: 4996
+        y: 1580
+        width: 230
+        height: 374
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -580,13 +514,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_11"
+      name: "\uD654\uC0B4\uD45C\uC624\uB978\uCABD"
       rect:
         serializedVersion: 2
-        x: 1875
-        y: 4708
-        width: 167
-        height: 225
+        x: 4961
+        y: 1089
+        width: 291
+        height: 391
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -602,11 +536,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_12"
+      name: "\uC950"
       rect:
         serializedVersion: 2
-        x: 3040
-        y: 4729
+        x: 3041
+        y: 4728
         width: 478
         height: 207
       alignment: 0
@@ -624,73 +558,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_13"
-      rect:
-        serializedVersion: 2
-        x: 2633
-        y: 4703
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3719afb0f658e5a00800000000000000
-      internalID: 747181300178915699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_14"
-      rect:
-        serializedVersion: 2
-        x: 2298
-        y: 4685
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1105081a1bd307000800000000000000
-      internalID: 31593030519640081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_15"
-      rect:
-        serializedVersion: 2
-        x: 2311
-        y: 4672
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 43389e2b10ebfad60800000000000000
-      internalID: 7903744785564402484
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_16"
+      name: "\uC950\uBC30\uACBD"
       rect:
         serializedVersion: 2
         x: 90
@@ -712,57 +580,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_17"
+      name: "\uBA54\uB274"
       rect:
         serializedVersion: 2
-        x: 2577
-        y: 4651
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c8c422dd9ae7fa70800000000000000
-      internalID: 8860808755431131328
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_18"
-      rect:
-        serializedVersion: 2
-        x: 2586
-        y: 4657
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 107a251d277134a80800000000000000
-      internalID: -8483911491130317055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_19"
-      rect:
-        serializedVersion: 2
-        x: 869
-        y: 4410
-        width: 123
-        height: 112
+        x: 865
+        y: 4398
+        width: 265
+        height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -778,78 +602,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_20"
+      name: "\uB3C4\uAC10"
       rect:
         serializedVersion: 2
-        x: 871
-        y: 4521
-        width: 124
-        height: 113
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eab69bbfbedd8e850800000000000000
-      internalID: 6406614475544816558
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_21"
-      rect:
-        serializedVersion: 2
-        x: 1002
-        y: 4405
-        width: 119
-        height: 116
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dc7d072e1299676a0800000000000000
-      internalID: -6451801045349640243
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_22"
-      rect:
-        serializedVersion: 2
-        x: 1004
-        y: 4521
-        width: 121
-        height: 115
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0018a8ff4e9c84140800000000000000
-      internalID: 4704231796165476608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_23"
-      rect:
-        serializedVersion: 2
-        x: 1177
-        y: 4357
-        width: 224
+        x: 1150
+        y: 4361
+        width: 295
         height: 295
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -866,13 +624,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_24"
+      name: "\uC124\uC815"
       rect:
         serializedVersion: 2
         x: 1470
-        y: 4386
+        y: 4379
         width: 222
-        height: 208
+        height: 222
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -888,13 +646,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_25"
+      name: "\uAC00\uACF5\uC0C1\uD0DC"
       rect:
         serializedVersion: 2
         x: 1746
-        y: 4398
+        y: 4379
         width: 243
-        height: 191
+        height: 243
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -910,13 +668,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_26"
+      name: "\uB2EC\uC774\uAE30"
       rect:
         serializedVersion: 2
-        x: 2050
-        y: 4327
-        width: 361
-        height: 326
+        x: 2053
+        y: 4328
+        width: 330
+        height: 318
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -932,13 +690,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_27"
+      name: "\uB9D0\uB9AC\uAE30"
       rect:
         serializedVersion: 2
-        x: 2417
-        y: 4327
-        width: 342
-        height: 323
+        x: 2427
+        y: 4329
+        width: 330
+        height: 317
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -954,13 +712,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_28"
+      name: "\uBE7B\uAE30"
       rect:
         serializedVersion: 2
-        x: 2773
-        y: 4329
-        width: 358
-        height: 318
+        x: 2800
+        y: 4330
+        width: 328
+        height: 315
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -976,13 +734,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_29"
+      name: "\uC57D\uCD08\uC2AC\uB86F"
       rect:
         serializedVersion: 2
-        x: 3140
-        y: 4326
-        width: 322
-        height: 319
+        x: 3136
+        y: 4319
+        width: 332
+        height: 325
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -998,10 +756,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_30"
+      name: "\uC57D\uC2AC\uB86F"
       rect:
         serializedVersion: 2
-        x: 3474
+        x: 3476
         y: 4319
         width: 332
         height: 325
@@ -1020,12 +778,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_31"
+      name: "\uC608\uC0B0\uC11C"
       rect:
         serializedVersion: 2
         x: 47
         y: 4070
-        width: 253
+        width: 254
         height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1042,7 +800,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_32"
+      name: "\uC778\uBCA4\uD1A0\uB9AC\uC544\uC774\uCF58"
       rect:
         serializedVersion: 2
         x: 362
@@ -1064,7 +822,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_33"
+      name: "\uC57D\uBB3C\uC81C\uCD9C\uC544\uC774\uCF58"
       rect:
         serializedVersion: 2
         x: 614
@@ -1086,7 +844,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_34"
+      name: "\uC815\uB82C"
       rect:
         serializedVersion: 2
         x: 910
@@ -1108,7 +866,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_35"
+      name: "\uC815\uB82C-\uC7A0\uAE08-"
       rect:
         serializedVersion: 2
         x: 1354
@@ -1130,7 +888,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_36"
+      name: "\uD50C\uB77C\uC2A4\uD06C\uC544\uC774\uCF58"
       rect:
         serializedVersion: 2
         x: 1839
@@ -1152,7 +910,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_37"
+      name: "\uBC18\uD22C\uBA85\uC9C1\uC0AC\uAC01\uD615(\uB300"
       rect:
         serializedVersion: 2
         x: 2054
@@ -1174,7 +932,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_38"
+      name: "\uBC18\uD22C\uBA85\uC9C1\uC0AC\uAC01\uD615"
       rect:
         serializedVersion: 2
         x: 1778
@@ -1196,7 +954,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_39"
+      name: "\uB3C4\uAC10\uAE30\uC900\uC120"
       rect:
         serializedVersion: 2
         x: 2549
@@ -1218,7 +976,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_40"
+      name: "\uC0C1\uC810\uC2AC\uB86F"
       rect:
         serializedVersion: 2
         x: 3255
@@ -1240,12 +998,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_41"
+      name: "\uC124\uC815\uCC3D"
       rect:
         serializedVersion: 2
         x: 4657
         y: 3084
-        width: 781
+        width: 736
         height: 1043
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1262,7 +1020,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_42"
+      name: "\uADF8\uB798\uD504\uBC30\uACBD"
       rect:
         serializedVersion: 2
         x: 5604
@@ -1284,7 +1042,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_43"
+      name: "\uC778\uBCA4\uD1A0\uB9AC\uC774\uBBF8\uC9C0"
       rect:
         serializedVersion: 2
         x: 402
@@ -1306,7 +1064,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_44"
+      name: "\uACB0\uACFC\uC124\uBA85"
       rect:
         serializedVersion: 2
         x: 2253
@@ -1328,7 +1086,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_45"
+      name: "\uCE78"
       rect:
         serializedVersion: 2
         x: 5482
@@ -1350,7 +1108,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_46"
+      name: "\uAC00\uACF5\uC2AC\uB86F"
       rect:
         serializedVersion: 2
         x: 73
@@ -1372,7 +1130,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_47"
+      name: "\uC54C\uB9BC"
       rect:
         serializedVersion: 2
         x: 1215
@@ -1394,7 +1152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_48"
+      name: X
       rect:
         serializedVersion: 2
         x: 3207
@@ -1416,7 +1174,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_49"
+      name: "\uC815\uC0AC\uAC01\uD615-\uAFB8\uBC08-"
       rect:
         serializedVersion: 2
         x: 3681
@@ -1438,7 +1196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_50"
+      name: "\uC810"
       rect:
         serializedVersion: 2
         x: 5475
@@ -1460,7 +1218,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_51"
+      name: "\uC815\uC0AC\uAC01\uD615"
       rect:
         serializedVersion: 2
         x: 3207
@@ -1482,7 +1240,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_52"
+      name: "\uBCF4\uACE0\uC11C"
       rect:
         serializedVersion: 2
         x: 5602
@@ -1504,7 +1262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_53"
+      name: "\uC57D\uCD08\uC124\uBA85"
       rect:
         serializedVersion: 2
         x: 41
@@ -1526,7 +1284,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_54"
+      name: "\uCDE8\uC18C"
       rect:
         serializedVersion: 2
         x: 863
@@ -1548,7 +1306,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_55"
+      name: "\uD655\uC778"
       rect:
         serializedVersion: 2
         x: 1827
@@ -1570,7 +1328,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_56"
+      name: "\uC57D\uC124\uBA85"
       rect:
         serializedVersion: 2
         x: 2819
@@ -1592,7 +1350,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_57"
+      name: "\uC815\uC0AC\uAC01\uD6152"
       rect:
         serializedVersion: 2
         x: 3626
@@ -1614,7 +1372,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_58"
+      name: "\uC138\uB85C\uC9C1\uC0AC\uAC01\uD615-\uAFB8\uBC08-"
       rect:
         serializedVersion: 2
         x: 4072
@@ -1636,7 +1394,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_59"
+      name: "\uAC00\uACF5\uC9C4\uD589\uB3C4\uC2AC\uB86F"
       rect:
         serializedVersion: 2
         x: 4537
@@ -1658,7 +1416,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_60"
+      name: "\uD310\uB9E4"
       rect:
         serializedVersion: 2
         x: 870
@@ -1680,7 +1438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_61"
+      name: "\uCCB4\uD06C"
       rect:
         serializedVersion: 2
         x: 1830
@@ -1702,7 +1460,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_62"
+      name: "\uAD6C\uB9E4"
       rect:
         serializedVersion: 2
         x: 3561
@@ -1724,7 +1482,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_63"
+      name: "\uAC00\uACF5\uC5C5\uADF8\uB808\uC774\uB4DC"
       rect:
         serializedVersion: 2
         x: 48
@@ -1746,7 +1504,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_64"
+      name: "\uC554\uC2DC\uC7A5\uBC30\uACBD"
       rect:
         serializedVersion: 2
         x: 825
@@ -1768,7 +1526,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_65"
+      name: "\uBC84\uD2BC"
       rect:
         serializedVersion: 2
         x: 2625
@@ -1790,10 +1548,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_66"
+      name: "\uCCB4\uD06C\uC544\uC774\uCF58"
       rect:
         serializedVersion: 2
-        x: 3326
+        x: 3328
         y: 1716
         width: 259
         height: 228
@@ -1812,7 +1570,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_67"
+      name: "\uC2AC\uB77C\uC774\uB4DC\uC544\uC774\uCF58"
       rect:
         serializedVersion: 2
         x: 3701
@@ -1834,7 +1592,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_68"
+      name: "\uAD6C\uBD84\uC120\uC67C\uCABD"
       rect:
         serializedVersion: 2
         x: 3901
@@ -1856,7 +1614,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_69"
+      name: "\uAD6C\uBD84\uC120"
       rect:
         serializedVersion: 2
         x: 4011
@@ -1878,7 +1636,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_70"
+      name: "\uAD6C\uBD84\uC120\uC624\uB978\uCABD"
       rect:
         serializedVersion: 2
         x: 4415
@@ -1900,7 +1658,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_71"
+      name: "\uC2AC\uB77C\uC774\uB4DC\uBC30\uACBD"
       rect:
         serializedVersion: 2
         x: 2557
@@ -1922,7 +1680,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_72"
+      name: YES
       rect:
         serializedVersion: 2
         x: 4125
@@ -1944,7 +1702,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_73"
+      name: "\uC2AC\uB77C\uC774\uB4DC\uC774\uBBF8\uC9C0"
       rect:
         serializedVersion: 2
         x: 2554
@@ -1966,11 +1724,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_74"
+      name: NO
       rect:
         serializedVersion: 2
-        x: 4115
-        y: 1134
+        x: 4119
+        y: 1132
         width: 302
         height: 292
       alignment: 0
@@ -1988,7 +1746,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ui \uBAA8\uC74C_75"
+      name: "\uC608\uC0B0\uC0AC\uC6A9\uC11C"
       rect:
         serializedVersion: 2
         x: 780
@@ -2023,82 +1781,82 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Ui \uBAA8\uC74C_0": -2355298371489009316
+      NO: 5931019973640956605
       "Ui \uBAA8\uC74C_1": 299830663528068539
-      "Ui \uBAA8\uC74C_10": 8735465314714846366
-      "Ui \uBAA8\uC74C_11": 7865721658657743531
-      "Ui \uBAA8\uC74C_12": 2240633314778001084
       "Ui \uBAA8\uC74C_13": 747181300178915699
       "Ui \uBAA8\uC74C_14": 31593030519640081
       "Ui \uBAA8\uC74C_15": 7903744785564402484
-      "Ui \uBAA8\uC74C_16": -6711953765139739481
       "Ui \uBAA8\uC74C_17": 8860808755431131328
       "Ui \uBAA8\uC74C_18": -8483911491130317055
-      "Ui \uBAA8\uC74C_19": -7398702824084946636
       "Ui \uBAA8\uC74C_2": -5076629631897316554
       "Ui \uBAA8\uC74C_20": 6406614475544816558
       "Ui \uBAA8\uC74C_21": -6451801045349640243
       "Ui \uBAA8\uC74C_22": 4704231796165476608
-      "Ui \uBAA8\uC74C_23": -212319919852758858
-      "Ui \uBAA8\uC74C_24": 7336743008548351524
-      "Ui \uBAA8\uC74C_25": -2156087686047747542
-      "Ui \uBAA8\uC74C_26": -7857321759934069458
-      "Ui \uBAA8\uC74C_27": -2919830285101005366
-      "Ui \uBAA8\uC74C_28": 1979737419576894745
-      "Ui \uBAA8\uC74C_29": -2197703619188502768
-      "Ui \uBAA8\uC74C_3": 7046607874185157325
-      "Ui \uBAA8\uC74C_30": -7927314476877084345
-      "Ui \uBAA8\uC74C_31": 3022696988737212297
-      "Ui \uBAA8\uC74C_32": 4423804206199147830
-      "Ui \uBAA8\uC74C_33": -2350530900447279144
-      "Ui \uBAA8\uC74C_34": 7370458913016284265
-      "Ui \uBAA8\uC74C_35": -4126209906856660285
-      "Ui \uBAA8\uC74C_36": 7501793484455263232
-      "Ui \uBAA8\uC74C_37": -2711070341845448005
-      "Ui \uBAA8\uC74C_38": -2026885377795782577
-      "Ui \uBAA8\uC74C_39": 4312938542528013202
-      "Ui \uBAA8\uC74C_4": 6141261049128905881
-      "Ui \uBAA8\uC74C_40": -4748048867886407725
-      "Ui \uBAA8\uC74C_41": 8009351326386418371
-      "Ui \uBAA8\uC74C_42": -4984228335487686473
-      "Ui \uBAA8\uC74C_43": -8163932882542827135
-      "Ui \uBAA8\uC74C_44": 7038054855292636120
-      "Ui \uBAA8\uC74C_45": -6647637294350210700
-      "Ui \uBAA8\uC74C_46": -2339295939037514415
-      "Ui \uBAA8\uC74C_47": -3416478888483077776
-      "Ui \uBAA8\uC74C_48": 1220861568698287011
-      "Ui \uBAA8\uC74C_49": 5760692575119176712
-      "Ui \uBAA8\uC74C_5": -6610082652540784042
-      "Ui \uBAA8\uC74C_50": -855955125944945669
-      "Ui \uBAA8\uC74C_51": 3245028923088206266
-      "Ui \uBAA8\uC74C_52": 3590127411185555716
-      "Ui \uBAA8\uC74C_53": 6384409588949320671
-      "Ui \uBAA8\uC74C_54": -1803450462816011386
-      "Ui \uBAA8\uC74C_55": 3161891419586097544
-      "Ui \uBAA8\uC74C_56": -2141729782949482374
-      "Ui \uBAA8\uC74C_57": 1867339890765119793
-      "Ui \uBAA8\uC74C_58": -6422046175796602486
-      "Ui \uBAA8\uC74C_59": -5193457975674270707
       "Ui \uBAA8\uC74C_6": -6584855099634553191
-      "Ui \uBAA8\uC74C_60": -1470126741089768441
-      "Ui \uBAA8\uC74C_61": 6678366701647333668
-      "Ui \uBAA8\uC74C_62": 8689471352435296664
-      "Ui \uBAA8\uC74C_63": 6046443122189269513
-      "Ui \uBAA8\uC74C_64": -3507939178785347201
-      "Ui \uBAA8\uC74C_65": -9126974464518783012
-      "Ui \uBAA8\uC74C_66": 5940426672664590993
-      "Ui \uBAA8\uC74C_67": 7837528412577305048
-      "Ui \uBAA8\uC74C_68": -1937375791956821616
-      "Ui \uBAA8\uC74C_69": 1182074058841608703
-      "Ui \uBAA8\uC74C_7": 2938920977296452811
-      "Ui \uBAA8\uC74C_70": -9077603971635347780
-      "Ui \uBAA8\uC74C_71": 1786869704997609624
-      "Ui \uBAA8\uC74C_72": 489499098466271560
-      "Ui \uBAA8\uC74C_73": -1288658225009402232
-      "Ui \uBAA8\uC74C_74": 5931019973640956605
-      "Ui \uBAA8\uC74C_75": -54839948183967872
-      "Ui \uBAA8\uC74C_8": -4186025438053098752
-      "Ui \uBAA8\uC74C_9": 8771674850286741046
+      X: 1220861568698287011
+      YES: 489499098466271560
+      "\uAC00\uACF5\uC0C1\uD0DC": -2156087686047747542
+      "\uAC00\uACF5\uC2AC\uB86F": -2339295939037514415
+      "\uAC00\uACF5\uC5C5\uADF8\uB808\uC774\uB4DC": 6046443122189269513
+      "\uAC00\uACF5\uC9C4\uD589\uB3C4": 2938920977296452811
+      "\uAC00\uACF5\uC9C4\uD589\uB3C4\uC2AC\uB86F": -5193457975674270707
+      "\uACB0\uACFC\uC124\uBA85": 7038054855292636120
+      "\uAD6C\uB9E4": 8689471352435296664
+      "\uAD6C\uBD84\uC120": 1182074058841608703
+      "\uAD6C\uBD84\uC120\uC624\uB978\uCABD": -9077603971635347780
+      "\uAD6C\uBD84\uC120\uC67C\uCABD": -1937375791956821616
+      "\uADF8\uB798\uD504\uBC30\uACBD": -4984228335487686473
+      "\uB2EC\uC774\uAE30": -7857321759934069458
+      "\uB3C4\uAC10": -212319919852758858
+      "\uB3C4\uAC10\uAE30\uC900\uC120": 4312938542528013202
+      "\uB808\uBCA8\uC5C5\uD544\uC694": 7046607874185157325
+      "\uB9D0\uB9AC\uAE30": -2919830285101005366
+      "\uBA54\uB274": -7398702824084946636
+      "\uBC18\uD22C\uBA85\uC9C1\uC0AC\uAC01\uD615": -2026885377795782577
+      "\uBC18\uD22C\uBA85\uC9C1\uC0AC\uAC01\uD615(\uB300": -2711070341845448005
+      "\uBC84\uD2BC": -9126974464518783012
+      "\uBCF4\uACE0\uC11C": 3590127411185555716
+      "\uBE7B\uAE30": 1979737419576894745
+      "\uC0BC\uAC01\uBC84\uD2BC\uC624\uB978\uCABD": 8735465314714846366
+      "\uC0BC\uAC01\uBC84\uD2BC\uC67C\uCABD": 8771674850286741046
+      "\uC0C1\uC810": 6141261049128905881
+      "\uC0C1\uC810\uC2AC\uB86F": -4748048867886407725
+      "\uC124\uC815": 7336743008548351524
+      "\uC124\uC815\uCC3D": 8009351326386418371
+      "\uC138\uB85C\uC9C1\uC0AC\uAC01\uD615-\uAFB8\uBC08-": -6422046175796602486
+      "\uC2AC\uB77C\uC774\uB4DC\uBC30\uACBD": 1786869704997609624
+      "\uC2AC\uB77C\uC774\uB4DC\uC544\uC774\uCF58": 7837528412577305048
+      "\uC2AC\uB77C\uC774\uB4DC\uC774\uBBF8\uC9C0": -1288658225009402232
+      "\uC54C\uB9BC": -3416478888483077776
+      "\uC554\uC2DC\uC7A5\uBC30\uACBD": -3507939178785347201
+      "\uC57D\uBB3C\uC81C\uCD9C\uC544\uC774\uCF58": -2350530900447279144
+      "\uC57D\uC124\uBA85": -2141729782949482374
+      "\uC57D\uC2AC\uB86F": -7927314476877084345
+      "\uC57D\uCD08\uC124\uBA85": 6384409588949320671
+      "\uC57D\uCD08\uC2AC\uB86F": -2197703619188502768
+      "\uC608\uC0B0\uC0AC\uC6A9\uC11C": -54839948183967872
+      "\uC608\uC0B0\uC11C": 3022696988737212297
+      "\uC778\uBCA4\uD1A0\uB9AC\uC544\uC774\uCF58": 4423804206199147830
+      "\uC778\uBCA4\uD1A0\uB9AC\uC774\uBBF8\uC9C0": -8163932882542827135
+      "\uC810": -855955125944945669
+      "\uC815\uB82C": 7370458913016284265
+      "\uC815\uB82C-\uC7A0\uAE08-": -4126209906856660285
+      "\uC815\uC0AC\uAC01\uD615": 3245028923088206266
+      "\uC815\uC0AC\uAC01\uD615-\uAFB8\uBC08-": 5760692575119176712
+      "\uC815\uC0AC\uAC01\uD6152": 1867339890765119793
+      "\uC950": 2240633314778001084
+      "\uC950\uBC30\uACBD": -6711953765139739481
+      "\uCCB4\uD06C": 6678366701647333668
+      "\uCCB4\uD06C\uC544\uC774\uCF58": 5940426672664590993
+      "\uCDE8\uC18C": -1803450462816011386
+      "\uCE58\uC988\uCF54\uC778": -6610082652540784042
+      "\uCE78": -6647637294350210700
+      "\uCF54\uC778\uBC30\uACBD": -4186025438053098752
+      "\uD310\uB9E4": -1470126741089768441
+      "\uD50C\uB77C\uC2A4\uD06C\uC544\uC774\uCF58": 7501793484455263232
+      "\uD654\uC0B4\uD45C\uC624\uB978\uCABD": 7865721658657743531
+      "\uD654\uC0B4\uD45C\uC67C\uCABD": -2355298371489009316
+      "\uD655\uC778": 3161891419586097544
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

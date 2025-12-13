@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraResolusion : MonoBehaviour
 {
-    public float Width = 9;
-    public float Height = 16;
+    public float Width = 16;
+    public float Height = 9;
     void Start()
     {
         Camera camera = GetComponent<Camera>();

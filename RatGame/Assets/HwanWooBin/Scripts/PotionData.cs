@@ -1,3 +1,5 @@
+using System.Linq;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Potion")]
@@ -11,7 +13,7 @@ public class PotionData : ItemBase
     public int HerbAmount1;
     public int HerbAmount2;
 
-    public int itemLevel = 0; // 0 ±âº»°ª, 1 ÀÏ¹İ, 2 Èñ±Í, 3 Àü¼³
+    public int itemLevel = -1; // 0 ±âº»°ª, 1 ÀÏ¹İ, 2 Èñ±Í, 3 Àü¼³
 
     public bool NonWater;
     public Sprite NonShapeImage;
@@ -36,5 +38,34 @@ public class PotionData : ItemBase
             NonShapeName = potion.NonShapeName;
             Persents = (int[])potion.Persents.Clone();
         }
+    }
+
+    public override ItemBase InitData(string[] datas)
+    {
+        base.InitData(datas);
+
+        this.itemLevel = (int)(Level)Enum.Parse(typeof(Level), datas[4]);
+
+        this.Herb1 = ItemDatas.instance.items[(int)(Herbs)Enum.Parse(typeof(Herbs), datas[5])] as HerbData;
+        this.Herb2 = ItemDatas.instance.items[(int)(Herbs)Enum.Parse(typeof(Herbs), datas[7])] as HerbData;
+
+        this.process1 = int.Parse(datas[6]);
+        this.process2 = int.Parse(datas[8]);
+
+        this.HerbAmount1 = int.Parse(datas[9]);
+        this.HerbAmount2 = int.Parse(datas[10]);
+
+        if (datas[11] == "¾×Ã¼")
+        {
+            this.NonWater = false;
+        }
+        else
+        {
+            this.NonWater = true;
+        }
+
+        this.Persents = (int[])datas[12].Split('/').Select(s => int.Parse(s)).ToArray();
+
+        return this;
     }
 }
