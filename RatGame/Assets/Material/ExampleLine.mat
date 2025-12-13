@@ -47,7 +47,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _OnAnima: 0
+    - _OnAnima: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Rotate: 0.45

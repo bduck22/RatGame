@@ -339,14 +339,15 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            return false;
+            Money -= price;
+            return true;
         }
     }
 
     public void playingday()
     {
         AddDayData();
-        if ((Day - 1) % 7 == 0)
+        if ((Day - 2) % 7 == 0) // 리포트 날
         {
             CreateReport();
             return;
