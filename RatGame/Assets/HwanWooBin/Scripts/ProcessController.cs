@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,6 +73,10 @@ public class ProcessController : MonoBehaviour
                         if (itemtimes[i] == -1)
                         {
                             itemtimes[i] = ProcessTime - ProcessLevel[i / 3];
+
+                            // 가공
+                            Debug.Log("---가공---" + itemslots[i].itemNumber.ToString());
+                            GameManager.Instance.dicManager.SettingHerbProcessedCount(itemslots[i]); // 약초 가공 횟수
                         }
                     }
                 }
@@ -79,6 +84,7 @@ public class ProcessController : MonoBehaviour
                 {
                     Slots[i].gameObject.SetActive(false);
                 }
+              
             }
             else
             {
@@ -153,5 +159,6 @@ public class ProcessController : MonoBehaviour
         nowitem.Get = true;
         nowitem.Item = newitem;
         slotProcessIcon[number].fillAmount = 1;
+
     }
 }
