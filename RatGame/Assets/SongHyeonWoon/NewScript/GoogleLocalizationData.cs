@@ -114,14 +114,14 @@ public class GoogleLocalizationData : MonoBehaviour
     public void SetHerbData(int i, string[] itemdata)
     {
         HerbData herb = Datas.items[i] as HerbData;
-        herb.itemProcessedWay = new List<int>();
+        //herb.itemProcessedWay = new List<int>();
 
         for (int j = 5; j < itemdata.Length; j++)
         {
             if (!string.IsNullOrEmpty(itemdata[j]) && itemdata[j].Trim() != "null")
             {
 
-                herb.itemProcessedWay.Add(int.Parse(itemdata[j].Trim()));
+                //herb.itemProcessedWay.Add(int.Parse(itemdata[j].Trim()));
 
             }
         }
