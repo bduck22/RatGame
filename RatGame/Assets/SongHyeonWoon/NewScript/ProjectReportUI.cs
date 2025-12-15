@@ -5,11 +5,16 @@ using UnityEngine.UI;
 public class ProjectReportUI : MonoBehaviour
 {
     public ProjectReport report;
+    [Header("Day Line UI")]
     public Slider[] dayLine;
     public TextMeshProUGUI[] dayText;
     public Image[] dayLineRenderer;
     public int MinValue;
     public int MaxValue;
+
+
+    [Header("Warring Text")]
+    public TextMeshProUGUI warringText;
 
 
     private void Start()
@@ -85,6 +90,14 @@ public class ProjectReportUI : MonoBehaviour
         }
     }
 
+    public void AllUiOn()
+    {
+        for (int i = 0; i < dayLine.Length; i++)
+        {
+            dayLine[i].gameObject.SetActive(true); // 화면 초기화
+        }
+    }
+
     public void AllUiOff()
     {
         for (int i = 0; i < dayLine.Length; i++)
@@ -96,5 +109,7 @@ public class ProjectReportUI : MonoBehaviour
         {
             dayLineRenderer[i].gameObject.SetActive(true);
         }
+
+        warringText.gameObject.SetActive(false);
     }
 }

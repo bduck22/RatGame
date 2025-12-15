@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 
 public enum Room
@@ -99,12 +100,18 @@ public class GameManager : MonoBehaviour
 
 
     [Header("암시장 스폰 확률")]
-    public int darkstoreRisk = 0;
     public int OpenProbably = 40;           // 기본 확률 40%
     int DarkstoreConfirmedDayCount = 0;
     public int DarkstoreConfirmedDay = 3;       // 반드시 암시장 오픈되는 날
     public Store store;
-    public bool DarkStoreIsOpen {
+
+
+    [Header("게임 패배")]
+    public int _WarringCount = 0; // 경고가 3회 이상 쌓이면 게임 오버
+    public int darkstoreRisk = 0;           // 위험도
+
+    public bool DarkStoreIsOpen
+    {
         get { return darkStoreIsOpen; }
         set
         {
@@ -123,8 +130,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    
-    
+
+
     }
     bool darkStoreIsOpen;
 
@@ -155,8 +162,8 @@ public class GameManager : MonoBehaviour
         Day++;
         DarkStoreIsOpen = (Random.RandomRange(0, 101) <= OpenProbably);
 
-        if (store != null)  store.DarkStore(); // 암시장의 아이템 판매
-       
+        if (store != null) store.DarkStore(); // 암시장의 아이템 판매
+
 
         ProcessController.SetProcessTime(30, false, 0);
 
@@ -358,10 +365,30 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void WarringEvent()
+    {
+        if (Random.Range(0, 101) <= darkstoreRisk)
+        {
+            _WarringCount++; // 위험도에 따라 경고 횟수 증가
+                             // report.reportUI?.warringText.gameObject.SetActive(true); // 경고 텍스트 활성화
+            report.reportUI?.warringText.gameObject.SetActive(true);
+        }
+
+        if (_WarringCount >= 3)
+        {
+            // 게임 오버 처리
+            Debug.Log("게임 오버!");
+        }
+    }
+
     public void CreateReport()
     {
         Debug.Log("리포트 생성");
-        report.GenerateReport();
+
+
+
+        report.GenerateReport(); // 리보트 생성
+        WarringEvent();          // 경고 이벤트 체크
         dayani.SetTrigger("ReportDay"); // ----------
         //SkipReport();
     }
@@ -373,6 +400,8 @@ public class GameManager : MonoBehaviour
         dayani.SetTrigger("ReoprtQuit");
         OnScreen(5);
         StartDay();
+
+        darkstoreRisk = 0; // 리포트 날에 리스크 초기화
     }
 
     public void AddDayData()
@@ -384,7 +413,7 @@ public class GameManager : MonoBehaviour
         reportList.UseMoney = (int)Money;
         Debug.Log("다음날");
         report.SetDayList = reportList;
-        
+
     }
     public void NextDay()
     {

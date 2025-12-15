@@ -91,7 +91,6 @@ public class ProjectReport : MonoBehaviour
     [Header("보고서")]
     public string ProjectReportText;
 
-
     // 매일 아침 내역서 ----------------------------------------------------------------
 
     // 상점
@@ -102,7 +101,7 @@ public class ProjectReport : MonoBehaviour
     public int BestDarkAmount;
 
 
-    private ProjectReportUI reportUI;
+    public ProjectReportUI reportUI;
 
     private void Start()
     {
@@ -177,9 +176,13 @@ public class ProjectReport : MonoBehaviour
         Debug.Log("보고서 체출 완료");
         RatTestCount = 0;
         SellPotion.Clear();
+        
         ProjectReportText = null;
         SeccessfulExperiments = 0;
         reportUI.AllUiOff();
+
+        DarkStoreCheese.Clear();
+        StoreCheese.Clear();
     }
 
 

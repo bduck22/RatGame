@@ -32,7 +32,7 @@ public class StoreUI : MonoBehaviour
     public Store store;
 
     public Image PotionInfoSlot;
-
+    public TextMeshProUGUI SellMouseCountText;
 
 
     [TextArea]

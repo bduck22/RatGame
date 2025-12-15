@@ -17,6 +17,7 @@ public class LabController : MonoBehaviour
     [Header("세포실험")]
     public int CellTestMoney = 500;
     public int CellTestLevel = 1;
+    public int DefaultRate = 20; // 성공 실패 확률
 
     void Start()
     {
@@ -48,7 +49,7 @@ public class LabController : MonoBehaviour
         else { Slot.transform.GetChild(0).gameObject.SetActive(false); }
 
         // 세포 실험
-        if(CellSlot.Item.itemNumber != -1)
+        if (CellSlot.Item.itemNumber != -1)
         {
             CellSlot.transform.GetChild(0).gameObject.SetActive(true);
             PotionData data = ItemDatas.items[CellSlot.Item.itemNumber] as PotionData;
@@ -77,16 +78,15 @@ public class LabController : MonoBehaviour
 
     DicManager dicManager;
 
-    // 쥐 실험 진행
-    public void Confirm()
+    public void Confirm()     // 쥐 실험 진행
     {
-        if (GameManager.Instance.MouseCount > 0&& Slot.Item.itemNumber!=-1)
+        if (GameManager.Instance.MouseCount > 0 && Slot.Item.itemNumber != -1)
         {
             GameManager.Instance.MouseCount--;
             GameManager.Instance.report.RatTestCount++;
             int DictioNum = Slot.Item.itemNumber - 13;
 
-            
+
 
             if (DictioNum == 5)
             {
@@ -123,38 +123,48 @@ public class LabController : MonoBehaviour
     {
         if (GameManager.Instance.MouseCount > 0 && CellSlot.Item.itemNumber != -1)
         {
-            GameManager.Instance.Money -= CellTestMoney;
-            GameManager.Instance.report.RatTestCount++;
-            int DictioNum = CellSlot.Item.itemNumber - 13;
-
-
-
-            if (DictioNum == 5)
+            if (Random.RandomRange(0, 101) >= DefaultRate)
             {
-                int num = Random.Range(0, dicManager.OpenedPer.Count);
-                dicManager.OpenedPer[num] += 2;
-                if (dicManager.OpenedPer[num] > 100)
+
+
+
+                GameManager.Instance.Money -= CellTestMoney;
+                GameManager.Instance.report.RatTestCount++;
+                int DictioNum = CellSlot.Item.itemNumber - 13;
+
+
+
+                if (DictioNum == 5)
                 {
-                    dicManager.OpenedPer[num] = 100;
+                    int num = Random.Range(0, dicManager.OpenedPer.Count);
+                    dicManager.OpenedPer[num] += 2;
+                    if (dicManager.OpenedPer[num] > 100)
+                    {
+                        dicManager.OpenedPer[num] = 100;
+                    }
+                }
+                else
+                {
+                    PotionData potion = ItemDatas.items[CellSlot.Item.itemNumber] as PotionData;
+
+                    dicManager.OpenedPer[DictioNum] += (int)((potion.Persents[nowtype] / 10) * CellTestLevel);
+                    if (potion.NonWater == CellSlot.Item.shap)
+                    {
+                        dicManager.OpenedPer[DictioNum] += 1;
+                    }
+
+                    if (dicManager.OpenedPer[DictioNum] > 100)
+                    {
+                        dicManager.OpenedPer[DictioNum] = 100;
+                    }
                 }
             }
             else
             {
-                PotionData potion = ItemDatas.items[CellSlot.Item.itemNumber] as PotionData;
-
-                dicManager.OpenedPer[DictioNum] += (int)((potion.Persents[nowtype]/10) * CellTestLevel);
-                if (potion.NonWater == CellSlot.Item.shap)
-                {
-                    dicManager.OpenedPer[DictioNum] += 1;
-                }
-
-                if (dicManager.OpenedPer[DictioNum] > 100)
-                {
-                    dicManager.OpenedPer[DictioNum] = 100;
-                }
+                               Debug.Log("세포 실험 실패");
             }
 
-            CellSlot.DeleteItem();
+                CellSlot.DeleteItem();
             LoadImage();
         }
     }
