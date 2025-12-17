@@ -34,6 +34,9 @@ public class StoreUI : MonoBehaviour
     public Image PotionInfoSlot;
     public TextMeshProUGUI SellMouseCountText;
 
+    [Header("아이템 업그래이드 이미지")]
+    public Sprite[] Proccessed_Image = new Sprite[3];
+    public Sprite RatBuy_Image;
 
     [TextArea]
     public string[] Exs;

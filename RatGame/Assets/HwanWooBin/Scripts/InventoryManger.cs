@@ -25,6 +25,7 @@ public class InventoryManger : MonoBehaviour
     public Sprite[] ProcessIcon;
 
     public int[] deliverycounts = new int[5];
+    public int ratDeliverycounts = 0;
     public void UpdateInventory()
     {
         bannedItemCount = 0;

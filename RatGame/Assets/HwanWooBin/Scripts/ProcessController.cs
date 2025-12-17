@@ -103,11 +103,14 @@ public class ProcessController : MonoBehaviour
             {
                 if (onetype)
                 {
-                    if(i/ 3 == type)
+                    
+                    if (i/ 3 == type)
                     {
+
                         itemtimes[i] -= Time;
                         if (itemtimes[i] <= 0)
                         {
+
                             Done(i);
                         }
                     }
@@ -126,6 +129,7 @@ public class ProcessController : MonoBehaviour
 
     public void Done(int number)
     {
+        Debug.Log("¾Æ¸¶µÎ");
         itemtimes[number] = -1;
         bool correct = false;
         HerbData herbData = ItemDatas.items[itemslots[number].itemNumber] as HerbData;

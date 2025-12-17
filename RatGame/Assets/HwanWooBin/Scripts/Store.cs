@@ -29,6 +29,8 @@ public class Store : MonoBehaviour
     }
     int mouseSellCount = 1;
 
+    
+
     private void Start()
     {
         ItemDatas = GameManager.Instance.itemDatas;
@@ -63,15 +65,20 @@ public class Store : MonoBehaviour
             {
 
                 GameManager.Instance.darkstoreRisk += 10;
-                GameManager.Instance.mouseCount += mouseSellCount;
-                GameManager.Instance.MouseCount += mouseSellCount;
+                for(int ii = 0; ii<mouseSellCount; ii++)
+                GameManager.Instance.report.UseCoinInStore(number.ToString(), false, Prices[number], uis.RatBuy_Image); // 업그래이드 가공
+
                 GameManager.Instance.IsBuyed(Prices[number] * (mouseSellCount -1)); // 쥐 수 만큼 돈 차감
+                GameManager.Instance.inventoryManager.ratDeliverycounts += mouseSellCount;
+
+
             }
             else
             {
                 GameManager.Instance.ProcessController.ProcessLevel[number]++;
-
+                GameManager.Instance.report.UseCoinInStore(number.ToString(), true, Prices[number] , uis.Proccessed_Image[number]); // 업그래이드 가공
                 GameManager.Instance.ProcessController.SetProcessTime(1, true, number);
+              
             }
             uis.Reload();
         }

@@ -9,7 +9,7 @@ public class ProjectReportUI : MonoBehaviour
     public GameObject ReportUIs;
     public GameObject MorningReport;
 
-    [Header("Day Line UI")]
+    [Header("리포트 UI")]
     public Slider[] dayLine;
     public TextMeshProUGUI[] dayText;
     public Image[] dayLineRenderer;
@@ -40,7 +40,7 @@ public class ProjectReportUI : MonoBehaviour
   
     public void DayLineUpdate()
     {
-        AllUiOn();
+
         for (int i = 0; i < report.dayLists.Length; i++) // 최대 최고값 조절
         {
 
@@ -92,7 +92,7 @@ public class ProjectReportUI : MonoBehaviour
 
     public void AllUiOn()
     {
-        if (GameManager.Instance.Day <= 2) return;
+        //if (GameManager.Instance.Day <= 2) return;
         for (int i = 0; i < dayLineRenderer.Length; i++)
         {
             dayLineRenderer[i].gameObject.SetActive(true);
@@ -100,4 +100,5 @@ public class ProjectReportUI : MonoBehaviour
 
         warringText.gameObject.SetActive(false);
     }
+
 }

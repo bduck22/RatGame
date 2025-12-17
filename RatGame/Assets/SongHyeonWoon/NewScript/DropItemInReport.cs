@@ -32,6 +32,10 @@ public class DropItemInReport : MonoBehaviour
     [ContextMenu("인벤토리 초기화")]
     public void InitializeSellPoints()
     {
+        for(int i = 0; i< InvContentPos.childCount; i++)
+        {
+            InvContentPos.GetChild(i).gameObject.SetActive(false);
+        }
 
         bannedItemCount = 0;
         for (int i = 0; i < inventoryManager.inventory.Count; i++)

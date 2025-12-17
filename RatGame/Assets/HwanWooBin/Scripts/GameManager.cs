@@ -174,12 +174,16 @@ public class GameManager : MonoBehaviour
             inventoryManager.deliverycounts[i] = 0;
         }
 
+        mouseCount += inventoryManager.ratDeliverycounts;
+        MouseCount += inventoryManager.ratDeliverycounts;
+        Debug.Log("하루 시작");
         uimanager.UpdateDayText();
 
         //if (Day == 6)
         //{
         //    EndGame.gameObject.SetActive(true);
         //}
+
     }
 
     public void RestartGame()

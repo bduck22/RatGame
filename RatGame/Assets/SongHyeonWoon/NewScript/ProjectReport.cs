@@ -11,6 +11,7 @@ public class DayList
     public int DayNumder = -1;  // 날짜
     public int UseMoney = -1; // 사용한 금액
 
+
     public void Reset()
     {
         DayNumder = -1;
@@ -23,10 +24,10 @@ public class CheeseMoneyUse
 {
     public string FromItemName;
     public int ItemCount = 0;
+    public Sprite Image;
 
     public void Reset()
     {
-        ItemCount = -1;
         ItemCount = 0;
     }
 
@@ -34,8 +35,15 @@ public class CheeseMoneyUse
     {
         FromItemName = useFrom.itemName;
         ItemCount = 1;
+        Image = useFrom.itemImage;
     }
-    public void MoreBuyOrSelle(ItemBase useFrom)
+
+    public void BuyOrSelle_isNotItemBase(ItemClass useFrom)
+    {
+        FromItemName = useFrom.itemName;
+        ItemCount = 1;
+    }
+    public void MoreBuyOrSelle()
     {
         ItemCount++;
     }
@@ -88,9 +96,6 @@ public class ProjectReport : MonoBehaviour
     public int SeccessfulExperiments;
 
 
-    [Header("보고서")]
-    public string ProjectReportText;
-
     // 매일 아침 내역서 ----------------------------------------------------------------
 
     [Header("상점")]
@@ -99,6 +104,10 @@ public class ProjectReport : MonoBehaviour
     [Header("암시장")]
     public List<CheeseMoneyUse> DarkStoreCheese;
     public int BestDarkAmount;
+
+    [Header("아침 보고때 업그래이드도 표시")]
+    public bool isNotProccessed_ReportUpdata;
+    public bool isNotRat_ReportUpdata;
 
 
     public ProjectReportUI reportUI;
@@ -117,12 +126,12 @@ public class ProjectReport : MonoBehaviour
         StoreCheese = new List<CheeseMoneyUse>();
         DarkStoreCheese = new List<CheeseMoneyUse>();
 
-        RemoveDinnerReport += () =>        
+        RemoveDinnerReport += () =>
         {
             RatTestCount = 0;
             SellPotion.Clear();
-            ProjectReportText = null;
             SeccessfulExperiments = 0;
+            reportUI.AllUiOn();
             reportUI.ReportUIs.SetActive(false);
         };
 
@@ -132,6 +141,7 @@ public class ProjectReport : MonoBehaviour
             BestStoreAmount = 0;
             StoreCheese.Clear();
             BestDarkAmount = 0;
+            reportUI.MorningReport.SetActive(false);
         };
     }
 
@@ -140,10 +150,9 @@ public class ProjectReport : MonoBehaviour
     [ContextMenu("보고서 생성")]
     public void GenerateReport()
     {
-        GetComponent<ProjectReportUI>().DayLineUpdate();
 
         // 실험 횟수------------------------------------------------------------------
-        ProjectReportText += $"\n실험 횟수: {RatTestCount}회\n";
+       // ProjectReportText += $"\n실험 횟수: {RatTestCount}회\n";
 
 
         // 도감 완성도----------------------------------------------------------------
@@ -154,7 +163,7 @@ public class ProjectReport : MonoBehaviour
             // ProjectReportText += $"{GameManager.Instance.itemDatas.items[DicManager.PotionData[i]]}: 도감 완성도 {DicManager.OpenedPer[i]}%\n";
         }
 
-        ProjectReportText += $"도감 완성도 : {Mathf.RoundToInt(put / DicManager.OpenedPer.Count * 100f)}%";
+       // ProjectReportText += $"도감 완성도 : {Mathf.RoundToInt(put / DicManager.OpenedPer.Count * 100f)}%";
 
 
 
@@ -178,7 +187,9 @@ public class ProjectReport : MonoBehaviour
 
         }
 
-        GameManager.Instance.darkstoreRisk += GameManager.Instance.Money < 0? 100 : 0; // 돈이 마이너스면 경고
+        reportUI.DayLineUpdate();
+
+        GameManager.Instance.darkstoreRisk += GameManager.Instance.Money < 0 ? 100 : 0; // 돈이 마이너스면 경고
 
 
     }
@@ -225,7 +236,7 @@ public class ProjectReport : MonoBehaviour
             Debug.Log($"{DarkStoreCheese[i].FromItemName} / {DarkStoreCheese[i].ItemCount}\n");
         }
 
-      
+
     }
 
     // 아침 보고, 매일 아침 구매한 목록들 표시 ----------------------------------------------------------------
@@ -239,7 +250,7 @@ public class ProjectReport : MonoBehaviour
             {
                 if (StoreCheese[i].FromItemName == useFrom.itemName)
                 {
-                    StoreCheese[i].MoreBuyOrSelle(useFrom);
+                    StoreCheese[i].MoreBuyOrSelle();
                     BestStoreAmount += (int)useFrom.Price;
                     return;
                 }
@@ -254,7 +265,7 @@ public class ProjectReport : MonoBehaviour
             {
                 if (DarkStoreCheese[i].FromItemName == useFrom.itemName)
                 {
-                    DarkStoreCheese[i].MoreBuyOrSelle(useFrom);
+                    DarkStoreCheese[i].MoreBuyOrSelle();
                     BestDarkAmount += (int)useFrom.Price;
                     return;
                 }
@@ -268,7 +279,54 @@ public class ProjectReport : MonoBehaviour
 
     }
 
+    public void UseCoinInStore(string itemName, bool isLegal, int Pay, Sprite image)
+    {
+        CheeseMoneyUse ss = new CheeseMoneyUse();
+        ItemClass howbuy = new ItemClass();
+        if (isLegal)
+        {
+            if (isNotProccessed_ReportUpdata) return;
 
+            for (int i = 0; i < StoreCheese.Count; i++)
+            {
+                if (StoreCheese[i].FromItemName == itemName)
+                {
+
+                    StoreCheese[i].MoreBuyOrSelle();
+                    BestStoreAmount += Pay;
+                    return;
+                }
+            }
+            howbuy.itemName = itemName;
+            howbuy.ItemCount = 1;
+            ss.BuyOrSelle_isNotItemBase(howbuy);
+            ss.Image = image;
+            BestStoreAmount += Pay;
+            StoreCheese.Add(ss);
+        }
+        else
+        {
+
+            if (isNotRat_ReportUpdata) return;
+            for (int i = 0; i < DarkStoreCheese.Count; i++)
+            {
+                if (DarkStoreCheese[i].FromItemName == itemName)
+                {
+
+                    DarkStoreCheese[i].MoreBuyOrSelle();
+                    BestDarkAmount += Pay;
+                    return;
+                }
+            }
+            howbuy.itemName = itemName;
+            howbuy.ItemCount = 1;
+
+            ss.BuyOrSelle_isNotItemBase(howbuy);
+            BestDarkAmount += Pay;
+            DarkStoreCheese.Add(ss);
+        }
+
+    }
 
 
 }
