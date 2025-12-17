@@ -539,10 +539,10 @@ TextureImporter:
       name: "\uC950"
       rect:
         serializedVersion: 2
-        x: 3041
-        y: 4728
+        x: 5923
+        y: 2079
         width: 478
-        height: 207
+        height: 478
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
