@@ -12,7 +12,7 @@ public class MorningReport : MonoBehaviour
     [Header("생성할 오브젝트")]
     public GameObject showUIObjectPre;
 
-    private void OnEnable()
+    private void OnEnable() // 활성화 시 오브젝트들 다시 정렬
     {
         ShowReportInMorning();
     }

@@ -328,5 +328,8 @@ public class ProjectReport : MonoBehaviour
 
     }
 
-
+    public void RemoveMorningData() // 아침 보고서 끄기
+    {
+        RemoveMorningReport.Invoke();
+    }
 }

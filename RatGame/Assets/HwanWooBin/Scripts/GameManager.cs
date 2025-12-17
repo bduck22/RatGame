@@ -184,6 +184,10 @@ public class GameManager : MonoBehaviour
         //    EndGame.gameObject.SetActive(true);
         //}
 
+        if(Day > 1)
+        {
+            report.reportUI.MorningReport.SetActive(true);
+        }
     }
 
     public void RestartGame()
