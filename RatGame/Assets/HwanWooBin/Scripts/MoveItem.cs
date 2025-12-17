@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 [Serializable]
 public class ExampleBoad
@@ -41,7 +42,11 @@ public class MoveItem : MonoBehaviour
 
     private void OnEnable()
     {
-        itemIndex = int.Parse(transform.parent.name);
+        if (int.TryParse(transform.parent.name, out int value))
+        {
+            itemIndex = int.Parse(transform.parent.name);
+        }
+
     }
 
 

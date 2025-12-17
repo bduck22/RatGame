@@ -93,16 +93,17 @@ public class ProjectReport : MonoBehaviour
 
     // 매일 아침 내역서 ----------------------------------------------------------------
 
-    // 상점
+    [Header("상점")]
     public List<CheeseMoneyUse> StoreCheese;
     public int BestStoreAmount;
-    // 암시장
+    [Header("암시장")]
     public List<CheeseMoneyUse> DarkStoreCheese;
     public int BestDarkAmount;
 
 
     public ProjectReportUI reportUI;
-
+    public Action RemoveDinnerReport;
+    public Action RemoveMorningReport;
     private void Start()
     {
 
@@ -115,6 +116,23 @@ public class ProjectReport : MonoBehaviour
 
         StoreCheese = new List<CheeseMoneyUse>();
         DarkStoreCheese = new List<CheeseMoneyUse>();
+
+        RemoveDinnerReport += () =>        
+        {
+            RatTestCount = 0;
+            SellPotion.Clear();
+            ProjectReportText = null;
+            SeccessfulExperiments = 0;
+            reportUI.ReportUIs.SetActive(false);
+        };
+
+        RemoveMorningReport += () =>
+        {
+            DarkStoreCheese.Clear();
+            BestStoreAmount = 0;
+            StoreCheese.Clear();
+            BestDarkAmount = 0;
+        };
     }
 
     // 성과 보고, 7일에 한번 ----------------------------------------------------------------
@@ -152,10 +170,6 @@ public class ProjectReport : MonoBehaviour
 
                     nowMoney += Mathf.RoundToInt((SellPotion[i].Completeness * 0.01f) * GameManager.Instance.itemDatas.items[DicManager.PotionData[ii]].Price);
                     nowMoney += Mathf.RoundToInt(ii - 1 <= -1 ? DicManager.OpenedPer[DicManager.OpenedPer.Count - 1] * 10 : DicManager.OpenedPer[ii - 1] * 10);
-
-                    ProjectReportText += $"제출한 물약 : {GameManager.Instance.itemDatas.items[DicManager.PotionData[ii]].itemName} 금액 : (도감 완성도[{Mathf.RoundToInt(ii - 1 <= -1 ? DicManager.OpenedPer[DicManager.OpenedPer.Count - 1] * 10 : DicManager.OpenedPer[ii - 1] * 10)}] * 약물 가격[{GameManager.Instance.itemDatas.items[DicManager.PotionData[ii]].Price}])\n";
-                    string moneyText = nowMoney.ToString("#,##0");
-                    ProjectReportText += "총 금액 : " + moneyText + "\n";
                     SeccessfulExperiments += nowMoney;
                     break;
                 }
@@ -171,28 +185,54 @@ public class ProjectReport : MonoBehaviour
 
     public void ResetReport() // 보고서 확인 버튼을 누르면 자동으로 초기화
     {
+        GameManager.Instance.Money += SeccessfulExperiments; // 성과금 지급
+        RemoveDinnerReport.Invoke();
 
+        //Debug.Log("보고서 체출 완료");
+        //RatTestCount = 0;
+        //SellPotion.Clear();
 
-        Debug.Log("보고서 체출 완료");
-        RatTestCount = 0;
-        SellPotion.Clear();
-        
-        ProjectReportText = null;
-        SeccessfulExperiments = 0;
-        reportUI.AllUiOff();
+        //ProjectReportText = null;
+        //SeccessfulExperiments = 0;
+        //reportUI.AllUiOff();
 
-        DarkStoreCheese.Clear();
-        StoreCheese.Clear();
+        //DarkStoreCheese.Clear();
+        //StoreCheese.Clear();
     }
 
 
-    // 아침 보고, 매일 아침 구매한 목록들 표시 ----------------------------------------------------------------
+    [ContextMenu("아침 보고서 생성")] // UI 적용시 추가할 예정-----------------------------------------------------------------------
+    public void CheeseListReport()
+    {
 
+
+        // 치즈 내역서----------------------------------------------------------------
+        if (StoreCheese == null) return;
+
+        Debug.Log($"최종 자산 : {BestStoreAmount}\n");
+        for (int i = 0; i < StoreCheese.Count; i++)
+        {
+            Debug.Log($"{StoreCheese[i].FromItemName} / {StoreCheese[i].ItemCount}\n");
+        }
+
+
+        if (DarkStoreCheese == null) return;
+
+        Debug.Log($"\n최종 자산 : {BestDarkAmount}\n");
+
+        for (int i = 0; i < DarkStoreCheese.Count; i++)
+        {
+            Debug.Log($"{DarkStoreCheese[i].FromItemName} / {DarkStoreCheese[i].ItemCount}\n");
+        }
+
+      
+    }
+
+    // 아침 보고, 매일 아침 구매한 목록들 표시 ----------------------------------------------------------------
     public void UseCoinInStore(ItemBase useFrom, bool isLegal)
     {
 
         CheeseMoneyUse ss = new CheeseMoneyUse();
-        //Debug.Log($"{useFrom.itemName} 구매/판매 기록 추가");
         if (isLegal)
         {
             for (int i = 0; i < StoreCheese.Count; i++)
@@ -226,34 +266,6 @@ public class ProjectReport : MonoBehaviour
         }
 
 
-    }
-
-
-    [ContextMenu("아침 보고서 생성")] // UI 적용시 추가할 예정-----------------------------------------------------------------------
-    public void CheeseListReport()
-    {
-
-
-        // 치즈 내역서----------------------------------------------------------------
-        if (StoreCheese == null) return;
-
-        Debug.Log($"최종 자산 : {BestStoreAmount}\n");
-        for (int i = 0; i < StoreCheese.Count; i++)
-        {
-            Debug.Log($"{StoreCheese[i].FromItemName} / {StoreCheese[i].ItemCount}\n");
-        }
-
-
-        if (DarkStoreCheese == null) return;
-
-        Debug.Log($"\n최종 자산 : {BestDarkAmount}\n");
-
-        for (int i = 0; i < DarkStoreCheese.Count; i++)
-        {
-            Debug.Log($"{DarkStoreCheese[i].FromItemName} / {DarkStoreCheese[i].ItemCount}\n");
-        }
-
-      
     }
 
 

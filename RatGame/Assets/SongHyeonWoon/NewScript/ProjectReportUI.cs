@@ -5,6 +5,10 @@ using UnityEngine.UI;
 public class ProjectReportUI : MonoBehaviour
 {
     public ProjectReport report;
+    [Header("ReportUIs")]
+    public GameObject ReportUIs;
+    public GameObject MorningReport;
+
     [Header("Day Line UI")]
     public Slider[] dayLine;
     public TextMeshProUGUI[] dayText;
@@ -28,7 +32,6 @@ public class ProjectReportUI : MonoBehaviour
             
             dayLine[i].maxValue = MaxValue;
             dayLine[i].minValue = MinValue;
-            dayLine[i].gameObject.SetActive(false); // 화면 초기화
            
         }
     }
@@ -37,7 +40,7 @@ public class ProjectReportUI : MonoBehaviour
   
     public void DayLineUpdate()
     {
-
+        AllUiOn();
         for (int i = 0; i < report.dayLists.Length; i++) // 최대 최고값 조절
         {
 
@@ -54,10 +57,7 @@ public class ProjectReportUI : MonoBehaviour
 
         for (int i = 0; i < report.dayLists.Length; i++)
         {
-            if (report.dayLists[i].DayNumder == -1) continue;
-
-            dayLine[i].gameObject.SetActive(true); // 화면 초기화
-            
+            if (report.dayLists[i].DayNumder == -1) continue;         
           
 
 
@@ -92,19 +92,7 @@ public class ProjectReportUI : MonoBehaviour
 
     public void AllUiOn()
     {
-        for (int i = 0; i < dayLine.Length; i++)
-        {
-            dayLine[i].gameObject.SetActive(true); // 화면 초기화
-        }
-    }
-
-    public void AllUiOff()
-    {
-        for (int i = 0; i < dayLine.Length; i++)
-        {
-            dayLine[i].gameObject.SetActive(false); // 화면 초기화
-        }
-
+        if (GameManager.Instance.Day <= 2) return;
         for (int i = 0; i < dayLineRenderer.Length; i++)
         {
             dayLineRenderer[i].gameObject.SetActive(true);

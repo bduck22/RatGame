@@ -21,6 +21,7 @@ public class DropItemInReport : MonoBehaviour
     private void Awake()
     {
         inventoryManager = GameManager.Instance.inventoryManager;
+        report.RemoveDinnerReport += DistroyedSwllObjects;
     }
 
     public void OnEnable()
@@ -103,6 +104,14 @@ public class DropItemInReport : MonoBehaviour
         slot.transform.SetParent(InvContentPos);
         slot.GetComponent<Button>().onClick.RemoveAllListeners();
         slot.GetComponent<Button>().onClick.AddListener(() => AddItemInReportList(item, slot));
+    }
+
+    public void DistroyedSwllObjects() // 제출창 초기화
+    {
+        for (int i = 0; i < submitContentPos.childCount; i++)
+        {
+            submitContentPos.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
 
