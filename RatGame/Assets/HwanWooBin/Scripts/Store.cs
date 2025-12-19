@@ -14,7 +14,7 @@ public class Store : MonoBehaviour
     //public ItemClass selectPotion;
     public int selectpotionnumber;
 
-    public List<ItemClass> selectPotionList;
+    //public List<ItemClass> selectPotionList;
 
     [Header("구매할 쥐의 수")]
     public int MouseCountUp
@@ -105,17 +105,17 @@ public class Store : MonoBehaviour
     public void DarkStore()
     {
 
-        for (int i = 0; i < selectPotionList.Count; i++)
+        for (int i = 0; i < GameManager.Instance.selectPotionList.Count; i++)
         {
-            GameManager.Instance.Money += (selectPotionList[i].Completeness * 0.01f) * GameManager.Instance.itemDatas.items[selectPotionList[i].itemNumber].Price * Random.Range(0.5f, 2f); // 약마다 랜덤한 가격으로 판매 가능
+            GameManager.Instance.Money += (GameManager.Instance.selectPotionList[i].Completeness * 0.01f) * GameManager.Instance.itemDatas.items[GameManager.Instance.selectPotionList[i].itemNumber].Price * Random.Range(0.5f, 2f); // 약마다 랜덤한 가격으로 판매 가능
             GameManager.Instance.darkstoreRisk += 5;
 
-            ItemBase itembase = ItemDatas.items[selectPotionList[i].itemNumber];
+            ItemBase itembase = ItemDatas.items[GameManager.Instance.selectPotionList[i].itemNumber];
             GameManager.Instance.report.UseCoinInStore(itembase, false);
-            GameManager.Instance.report.SellPotion.Add(selectPotionList[i]);
+            GameManager.Instance.report.SellPotion.Add(GameManager.Instance.selectPotionList[i]);
 
         }
-        selectPotionList.Clear();
+        GameManager.Instance.selectPotionList.Clear();
 
         for (int i = uis.DropInvenPos.childCount - 1; i >= 0; i--) // 오브젝트 재활용
         {

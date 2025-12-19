@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,8 +24,6 @@ public class ProjectReportUI : MonoBehaviour
 
     private void Start()
     {
-        MaxValue = 5000;
-        MinValue = 0;
 
 
         for (int i = 0; i < dayLine.Length; i++)
@@ -32,7 +31,7 @@ public class ProjectReportUI : MonoBehaviour
             
             dayLine[i].maxValue = MaxValue;
             dayLine[i].minValue = MinValue;
-           
+            dayLine[i].gameObject.SetActive(false);
         }
     }
 
@@ -52,7 +51,6 @@ public class ProjectReportUI : MonoBehaviour
             {
                 MinValue = report.dayLists[i].UseMoney;
             }
-
         }
 
         for (int i = 0; i < report.dayLists.Length; i++)
@@ -69,22 +67,31 @@ public class ProjectReportUI : MonoBehaviour
 
         }
 
+
         for (int i = 0; i < dayLine.Length; i++)
         {
             if (report.dayLists[i].DayNumder == -1) continue;
+            dayLine[i].gameObject.SetActive(true);
             Transform point1 = dayLine[i].transform.GetChild(2).GetChild(0);
             Transform point2 = i + 1 != dayLine.Length ?dayLine[i + 1].transform.GetChild(2).GetChild(0) :null;
+
+
+
 
             if (point1 != null && point2 != null)
             {
                 Vector2 dir = point2.position - point1.position;
                 
+
+                Debug.Log(point1.position);
+                Debug.Log(point2.position);
+
                 dayLineRenderer[i].rectTransform.rotation = Quaternion.FromToRotation(Vector3.right, dir.normalized);
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 float tipy = Mathf.Abs(angle) / 90;
 
                 dayLineRenderer[i].rectTransform.localScale = new Vector2(Mathf.Clamp((tipy+0.85f),1,1.4f), dayLineRenderer[i].rectTransform.localScale.y);
-
+                Debug.Log(tipy + "\n---------");
             }
            
         }

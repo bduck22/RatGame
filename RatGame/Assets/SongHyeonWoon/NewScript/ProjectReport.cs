@@ -194,6 +194,7 @@ public class ProjectReport : MonoBehaviour
 
     }
 
+   
     public void ResetReport() // 보고서 확인 버튼을 누르면 자동으로 초기화
     {
         GameManager.Instance.Money += SeccessfulExperiments; // 성과금 지급
@@ -237,9 +238,9 @@ public class ProjectReport : MonoBehaviour
         }
 
 
-    }
+    } // 아직 사용하는지 애매함
 
-    // 아침 보고, 매일 아침 구매한 목록들 표시 ----------------------------------------------------------------
+    // 아침 보고, 매일 아침 구매한 목록들 표시
     public void UseCoinInStore(ItemBase useFrom, bool isLegal)
     {
 
@@ -328,7 +329,7 @@ public class ProjectReport : MonoBehaviour
 
     }
 
-    public void RemoveMorningData() // 아침 보고서 끄기
+    public void RemoveMorningData()  // 나중에 EventTrigger사용 가능함 -------------------------------------------------와우와우
     {
         RemoveMorningReport.Invoke();
     }

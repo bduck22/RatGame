@@ -202,7 +202,7 @@ public class StoreUI : MonoBehaviour
     public void DropSellPotion(GameObject slot, ItemClass item)
     {
         slot.transform.SetParent(DropInvenPos);
-        store.selectPotionList.Add(item);
+        GameManager.Instance.selectPotionList.Add(item);
 
         for (int i = 0; i < inventoryManager.inventory.Count; i++)
         {
@@ -233,7 +233,7 @@ public class StoreUI : MonoBehaviour
             }
         }
 
-        store.selectPotionList.Remove(index);
+        GameManager.Instance.selectPotionList.Remove(index);
 
 
         slot.GetComponent<Button>().onClick.AddListener(() => DropSellPotion(slot, index));

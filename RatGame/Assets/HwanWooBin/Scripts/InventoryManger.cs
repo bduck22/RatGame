@@ -80,7 +80,9 @@ public class InventoryManger : MonoBehaviour
                 }
                 else
                 {
+                  
                     slot.transform.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
+
                 }
             }
             else
@@ -95,7 +97,7 @@ public class InventoryManger : MonoBehaviour
                 }
                 else
                 {
-                    slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+                    slot.transform.GetChild(0).GetChild(0)?.gameObject.SetActive(false);
                 }
             }
             slot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (inventory[i].ItemCount <= 1 ? "" : inventory[i].ItemCount.ToString("#,###"));

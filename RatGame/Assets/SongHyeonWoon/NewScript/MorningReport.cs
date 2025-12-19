@@ -20,7 +20,12 @@ public class MorningReport : MonoBehaviour
     public void ShowReportInMorning()
     {
         // 전원 활성화 종료 -----------------------------------------------------------
-        for(int i = 0; i < NormalStore_MPos.childCount; i++)
+        if (report.StoreCheese.Count + report.DarkStoreCheese.Count <= 0) // 구매 내역이 없으면 리스트 생성 X
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        for (int i = 0; i < NormalStore_MPos.childCount; i++)
         {
             NormalStore_MPos.GetChild(i).gameObject.SetActive(false);
         }
@@ -28,6 +33,7 @@ public class MorningReport : MonoBehaviour
         {
             DarkStore_MPos.GetChild(i).gameObject.SetActive(false);
         }
+
 
         // rpeort를 통해 아이템 생성 여부 판단
         // 일반 상점
@@ -40,7 +46,7 @@ public class MorningReport : MonoBehaviour
     public void ShowReportbeforeDay(int reportCount, bool isNormalStore)
     {
         GameObject slot = null;
-        Transform tt = isNormalStore? NormalStore_MPos : DarkStore_MPos;
+        Transform tt = isNormalStore ? NormalStore_MPos : DarkStore_MPos;
 
 
         for (int i = 0; i < reportCount; i++)

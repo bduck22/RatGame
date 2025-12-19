@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
     public int OpenProbably = 40;           // 기본 확률 40%
     int DarkstoreConfirmedDayCount = 0;
     public int DarkstoreConfirmedDay = 3;       // 반드시 암시장 오픈되는 날
+    public List<ItemClass> selectPotionList; // 판매 약물
     public Store store;
 
 
@@ -170,7 +172,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < inventoryManager.deliverycounts.Length; i++)
         {
             int count = inventoryManager.deliverycounts[i];
-            AddItem(i, count);
+            if (count > 0)
+            {
+                AddItem(i, count);
+            }
             inventoryManager.deliverycounts[i] = 0;
         }
 
