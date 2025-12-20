@@ -32,8 +32,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8056401493835711593}
+  m_Children: []
   m_Father: {fileID: 1492360207103692117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
@@ -168,12 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1791f60ccaf422b409203a3c725ada0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exampleBoad:
-    Image: {fileID: 0}
-    text:
-    - {fileID: 0}
-    - {fileID: 0}
-    boadMaterial: {fileID: 0}
   moving: 0
   itemIndex: 0
 --- !u!114 &3863029567408890188
@@ -223,6 +216,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 464710150500471485}
+  - {fileID: 8056401493835711593}
   - {fileID: 8279505668827480869}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -314,12 +308,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 464710150500471485}
+  m_Father: {fileID: 1492360207103692117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.56111103, y: 0.5711111}
+  m_AnchorMin: {x: 0.56111103, y: 0.5644444}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15.50001, y: 15.00001}
-  m_SizeDelta: {x: 13.316164, y: 14.016169}
+  m_AnchoredPosition: {x: 0.5000305, y: 0.000022888184}
+  m_SizeDelta: {x: 0.1494999, y: 0.1494999}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &709715608592814315
 CanvasRenderer:
