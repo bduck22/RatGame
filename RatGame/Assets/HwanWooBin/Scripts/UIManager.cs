@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI roomName;
-
     public TextMeshProUGUI Day;
 
     void Start()

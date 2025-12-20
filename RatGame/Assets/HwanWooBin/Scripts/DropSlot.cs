@@ -17,7 +17,6 @@ public class DropSlot : MonoBehaviour
         {
             Get = false;
             GameManager.Instance.AddItem(Item, true);
-            Debug.Log("È¹µæ" + transform.name);
             Item = new ItemClass();
             Load();
         }

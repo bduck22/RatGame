@@ -268,16 +268,20 @@ public class GameManager : MonoBehaviour
         ItemBase itemdata = GameManager.Instance.itemDatas.items[item.itemNumber];
         if (isnewget)
         {
+
             Transform GetSlot = GetItem.transform.GetChild(0);
-            Transform Icon = GetItem.transform.GetChild(0).GetChild(0);
-            Transform Potioninfo = GetSlot.GetChild(3);
+            Transform Icon = GetItem.transform.GetChild(0).GetChild(0); // 약초 아이콘
+            Transform Potioninfo = GetSlot.GetChild(3); // 아이템이 포션일 때
             Transform HerbInfo = GetSlot.GetChild(4);
             Potioninfo.gameObject.SetActive(false);
             HerbInfo.gameObject.SetActive(false);
+
+
+
             Icon.GetComponent<Image>().sprite = item.itemType == ItemType.Potion ? inventoryManager.PotionCase : inventoryManager.HerbCase;
             if (item.itemType == ItemType.Potion)
             {
-                Icon.GetChild(0).GetChild(0).gameObject.SetActive(false);
+                Icon.GetChild(1).gameObject.SetActive(false);
 
                 var Itemdata = itemdata as PotionData;
                 if (Itemdata.NonWater == item.shap)
@@ -307,25 +311,25 @@ public class GameManager : MonoBehaviour
             {
                 Icon.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
 
-                GetSlot.GetChild(1).GetComponent<TextMeshProUGUI>().text = itemdata.name;
+                GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = itemdata.name;
 
                 if (item.ProcessWay != -1 && item.ProcessWay != 3)
                 {
-                    Icon.GetChild(0).GetChild(0).gameObject.SetActive(true);
-                    Icon.GetChild(0).GetChild(0).GetComponent<Image>().sprite = inventoryManager.ProcessIcon[item.ProcessWay];
+                    Icon.GetChild(1).gameObject.SetActive(true);
+                    Icon.GetChild(1).GetComponent<Image>().sprite = inventoryManager.ProcessIcon[item.ProcessWay];
                 }
                 else
                 {
-                    Icon.GetChild(0).GetChild(0).gameObject.SetActive(false);
+                    Icon.GetChild(1).gameObject.SetActive(false);
                 }
 
                 HerbInfo.gameObject.SetActive(true);
 
                 HerbInfo.GetComponentInChildren<TextMeshProUGUI>().text = "가공 상태 : " + (item.ProcessWay == 0 ? "달이기" : item.ProcessWay == 1 ? "빻기" : item.ProcessWay == 2 ? "말리기" : "X");
             }
-            Icon.GetComponentInChildren<TextMeshProUGUI>().text = (item.ItemCount <= 1 ? "" : item.ItemCount.ToString("#,###"));
+            //Icon.GetComponentInChildren<TextMeshProUGUI>().text = (item.ItemCount <= 1 ? "" : item.ItemCount.ToString("#,###"));
 
-            GetSlot.GetChild(2).GetComponent<TextMeshProUGUI>().text = itemdata.Explanation;
+            //GetSlot.GetChild(2).GetComponent<TextMeshProUGUI>().text = itemdata.Explanation;
 
             GetItem.Play("GetItem");
         }

@@ -82,12 +82,14 @@ public class ProcessController : MonoBehaviour
                 }
                 else
                 {
+                 
                     Slots[i].gameObject.SetActive(false);
                 }
               
             }
             else
             {
+                
                 Slots[i].sprite = GameManager.Instance.inventoryManager.NeedLevel;
                 slotProcessIcon[i].gameObject.SetActive(false);
                 continue;
@@ -127,9 +129,8 @@ public class ProcessController : MonoBehaviour
         }
     }
 
-    public void Done(int number)
+    public void Done(int number) // 가공 완료
     {
-        Debug.Log("아마두");
         itemtimes[number] = -1;
         bool correct = false;
         HerbData herbData = ItemDatas.items[itemslots[number].itemNumber] as HerbData;
@@ -152,10 +153,10 @@ public class ProcessController : MonoBehaviour
         }
         else
         {
-            newitem.itemNumber = 7;
+            newitem.itemNumber = 11;
             newitem.itemType = ItemType.Herb;
             newitem.ProcessWay = 3;
-            Slots[number].sprite = ItemDatas.items[7].itemImage;
+            Slots[number].sprite = ItemDatas.items[11].itemImage;
             slotProcessIcon[number].gameObject.SetActive(false);
         }
 
