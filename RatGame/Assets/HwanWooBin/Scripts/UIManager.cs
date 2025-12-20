@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         Fade = GetComponent<Animator>();
-        roomName = UIs[0].GetComponent<TextMeshProUGUI>();
+        //roomName = UIs[0].GetComponent<TextMeshProUGUI>();
     }
 
 

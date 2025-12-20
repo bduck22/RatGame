@@ -80,13 +80,14 @@ public class ProjectReport : MonoBehaviour
         }
     }
     public DayList[] dayLists = new DayList[7];
-
+    public int TodayuseMoney = 0; // 오늘 사용한 금액
 
     [Header("실험 횟수")]
     public int RatTestCount;
 
     [Header("도감 내역")]
     public DicManager DicManager;
+    public int DicSuccessCount = 0;
 
 
     [Header("약물 제출")]
@@ -131,6 +132,7 @@ public class ProjectReport : MonoBehaviour
             RatTestCount = 0;
             SellPotion.Clear();
             SeccessfulExperiments = 0;
+            DicSuccessCount = 0;
             reportUI.AllUiOn();
             reportUI.ReportUIs.SetActive(false);
         };
@@ -160,9 +162,9 @@ public class ProjectReport : MonoBehaviour
         for (int i = 0; i < DicManager.OpenedPer.Count; i++)
         {
             put += DicManager.OpenedPer[i] * 0.01f;
-            // ProjectReportText += $"{GameManager.Instance.itemDatas.items[DicManager.PotionData[i]]}: 도감 완성도 {DicManager.OpenedPer[i]}%\n";
+            //ProjectReportText += $"{GameManager.Instance.itemDatas.items[DicManager.PotionData[i]]}: 도감 완성도 {DicManager.OpenedPer[i]}%\n";
         }
-
+        DicSuccessCount = Mathf.RoundToInt(put / DicManager.OpenedPer.Count * 100f);
        // ProjectReportText += $"도감 완성도 : {Mathf.RoundToInt(put / DicManager.OpenedPer.Count * 100f)}%";
 
 
@@ -187,7 +189,7 @@ public class ProjectReport : MonoBehaviour
 
         }
 
-        reportUI.DayLineUpdate();
+        reportUI.RestUIUpdate();
 
         GameManager.Instance.darkstoreRisk += GameManager.Instance.Money < 0 ? 100 : 0; // 돈이 마이너스면 경고
 
@@ -295,6 +297,7 @@ public class ProjectReport : MonoBehaviour
 
                     StoreCheese[i].MoreBuyOrSelle();
                     BestStoreAmount += Pay;
+                    TodayuseMoney += Pay;
                     return;
                 }
             }
@@ -303,6 +306,7 @@ public class ProjectReport : MonoBehaviour
             ss.BuyOrSelle_isNotItemBase(howbuy);
             ss.Image = image;
             BestStoreAmount += Pay;
+            TodayuseMoney += Pay;
             StoreCheese.Add(ss);
         }
         else
@@ -315,7 +319,8 @@ public class ProjectReport : MonoBehaviour
                 {
 
                     DarkStoreCheese[i].MoreBuyOrSelle();
-                    BestDarkAmount += Pay;
+                    BestDarkAmount -= Pay;
+                    TodayuseMoney += Pay;
                     return;
                 }
             }
@@ -323,7 +328,8 @@ public class ProjectReport : MonoBehaviour
             howbuy.ItemCount = 1;
 
             ss.BuyOrSelle_isNotItemBase(howbuy);
-            BestDarkAmount += Pay;
+            BestDarkAmount -= Pay;
+            TodayuseMoney += Pay;
             DarkStoreCheese.Add(ss);
         }
 
@@ -333,4 +339,12 @@ public class ProjectReport : MonoBehaviour
     {
         RemoveMorningReport.Invoke();
     }
+
+
+    public void RemoveTodayData()
+    {
+
+        TodayuseMoney = 0;
+    }
+
 }

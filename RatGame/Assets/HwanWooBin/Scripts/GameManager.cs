@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     private int usingMouse;
 
     public int Day;
+    public int LastDay = 30;
 
     [Header("하위 관리스크립트")]
     public ItemDatas itemDatas;
@@ -145,7 +146,10 @@ public class GameManager : MonoBehaviour
             Destroy(Instance);
         }
         Instance = this;
+    }
 
+    private void Start()
+    {
         InitGame();
     }
 
@@ -163,6 +167,7 @@ public class GameManager : MonoBehaviour
         MouseCount = mouseCount;
         Day++;
         DarkStoreIsOpen = (Random.RandomRange(0, 101) <= OpenProbably);
+        report.RemoveTodayData();
 
         if (store != null) store.DarkStore(); // 암시장의 아이템 판매
 
@@ -384,7 +389,7 @@ public class GameManager : MonoBehaviour
         {
             _WarringCount++; // 위험도에 따라 경고 횟수 증가
                              // report.reportUI?.warringText.gameObject.SetActive(true); // 경고 텍스트 활성화
-            report.reportUI?.warringText.gameObject.SetActive(true);
+            //report.reportUI?.warringLog.gameObject.SetActive(true);
         }
 
         if (_WarringCount >= 3)

@@ -18,10 +18,10 @@ public class ExampleBoad
 }
 public class MoveItem : MonoBehaviour
 {
-    [SerializeField] ExampleBoad exampleBoad; // 설명 보드
+   // [SerializeField] ExampleBoad exampleBoad; // 설명 보드
     [SerializeField] bool moving;
     Image image;
-    Coroutine cc;
+    //Coroutine cc;
     RaycastResult selectUI;
     Transform OrigionPos;
     Transform LastParent;
@@ -36,7 +36,7 @@ public class MoveItem : MonoBehaviour
         OrigionPos = transform.parent;
         retPos = GetComponent<RectTransform>();
         inventoryManager = GameManager.Instance.inventoryManager;
-        exampleBoad.boadMaterial = exampleBoad.Image.material;
+        //exampleBoad.boadMaterial = exampleBoad.Image.material;
 
     }
 
@@ -70,17 +70,17 @@ public class MoveItem : MonoBehaviour
     public void OnClick()
     {
         //Debug.Log("--클릭 시작--");
-        if (cc != null) StopCoroutine(cc);
-        cc = StartCoroutine(WaitActiveTime());
+       // if (cc != null) StopCoroutine(cc);
+       // cc = StartCoroutine(WaitActiveTime());
     }
 
     public void OnExit()
     {
         //Debug.Log("--클릭 종료--");
-        if(LastParent != null)
-        exampleBoad.Image.transform.SetParent(LastParent);
-        if (cc != null) StopCoroutine(cc);
-        exampleBoad.Image.gameObject.SetActive(false);
+        //if(LastParent != null)
+       // exampleBoad.Image.transform.SetParent(LastParent);
+        //if (cc != null) StopCoroutine(cc);
+        //exampleBoad.Image.gameObject.SetActive(false);
     }
 
     public void MoveOn()
@@ -172,18 +172,18 @@ public class MoveItem : MonoBehaviour
         retPos.localPosition = Vector3.zero;
     }
 
-    IEnumerator WaitActiveTime()
-    {
-        yield return new WaitForSeconds(0.8f);
-        exampleBoad.Image.gameObject.SetActive(true); // 설명창 보이기
-        exampleBoad.text[0].text = "<color=orange>" + (inventoryManager.inventory[itemIndex].itemName)+ "</color>";
-        exampleBoad.text[1].text = inventoryManager.inventory[itemIndex].itemDescription;
+    //IEnumerator WaitActiveTime()
+    //{
+    //    yield return new WaitForSeconds(0.8f);
+    //    exampleBoad.Image.gameObject.SetActive(true); // 설명창 보이기
+    //    exampleBoad.text[0].text = "<color=orange>" + (inventoryManager.inventory[itemIndex].itemName)+ "</color>";
+    //    exampleBoad.text[1].text = inventoryManager.inventory[itemIndex].itemDescription;
 
-        exampleBoad.boadMaterial.SetFloat("_OnAnima", inventoryManager.inventory[itemIndex].itemType == ItemType.Potion ? 1 : 0);
+    //    exampleBoad.boadMaterial.SetFloat("_OnAnima", inventoryManager.inventory[itemIndex].itemType == ItemType.Potion ? 1 : 0);
 
-       LastParent = transform.parent;
-        exampleBoad.Image.transform.SetParent(transform.root);
-        exampleBoad.Image.transform.SetAsLastSibling(); // 맨앞으로
-        //Debug.Log("손닿음");
-    }
+    //   LastParent = transform.parent;
+    //    exampleBoad.Image.transform.SetParent(transform.root);
+    //    exampleBoad.Image.transform.SetAsLastSibling(); // 맨앞으로
+    //    //Debug.Log("손닿음");
+    //}
 }

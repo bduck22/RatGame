@@ -18,9 +18,20 @@ public class ProjectReportUI : MonoBehaviour
     public int MaxValue;
 
 
-    [Header("Warring Text")]
-    public TextMeshProUGUI warringText;
-
+    [Header("여러가지 텍스트")]
+    public TextMeshProUGUI WeekText;
+    public TextMeshProUGUI D_DayText;
+    public TextMeshProUGUI ResultScoreText;
+    public TextMeshProUGUI SaveWarringText; // 누적 경고 횟수
+    public TextMeshProUGUI RemainingBudget; // 남은 예산
+    public TextMeshProUGUI PlusBudget; // 증가 예산
+    public TextMeshProUGUI RiskText; // 이거는 딱히 안건들여도 될듯
+    [TextArea]
+    public string resultReportLog;
+    public TextMeshProUGUI ResultReportText;
+    [TextArea] 
+    public string warringLog;
+    public TextMeshProUGUI WarringLogText;
 
     private void Start()
     {
@@ -37,7 +48,7 @@ public class ProjectReportUI : MonoBehaviour
 
 
   
-    public void DayLineUpdate()
+    public void RestUIUpdate()
     {
 
         for (int i = 0; i < report.dayLists.Length; i++) // 최대 최고값 조절
@@ -95,6 +106,32 @@ public class ProjectReportUI : MonoBehaviour
             }
            
         }
+
+        // 리스트 작성
+        WeekText.text = (Mathf.FloorToInt(GameManager.Instance.Day / 7)).ToString() + "주차 보고서 제출 결과";
+        D_DayText.text = "마지막 날 D - " + (GameManager.Instance.LastDay - GameManager.Instance.Day).ToString();
+        ResultScoreText.text = "성과\n" + ((report.SeccessfulExperiments != 0) ? report.SeccessfulExperiments.ToString("#,###") : "0");
+        SaveWarringText.text = "현재\n누적 경고\n" + GameManager.Instance._WarringCount.ToString() + "회";
+
+        RemainingBudget.text = GameManager.Instance.Money.ToString("#,###");
+        PlusBudget.text = "예산 +\n" + ((report.SeccessfulExperiments  != 0) ? report.SeccessfulExperiments.ToString("#,###") : "0");
+
+
+
+        // 이건 나중에
+        int dy = GameManager.Instance.Day % 7 == 0 ? 7 : 2;
+        resultReportLog =
+            dy.ToString() + " 일간 실험 횟수 : " + report.RatTestCount.ToString() + "회\n" +
+            "도감 완성도 : " + report.DicSuccessCount.ToString() + "%\n" +
+            "제출한 약물 : " + report.SellPotion.Count.ToString() + "개\n\n";
+
+
+        //warringLog
+
+
+        ResultReportText.text = resultReportLog;
+        WarringLogText.text = warringLog;
+
     }
 
     public void AllUiOn()
@@ -105,7 +142,7 @@ public class ProjectReportUI : MonoBehaviour
             dayLineRenderer[i].gameObject.SetActive(true);
         }
 
-        warringText.gameObject.SetActive(false);
+        //Text.gameObject.SetActive(false);
     }
 
 }

@@ -26,7 +26,7 @@ public class ProcessController : MonoBehaviour
         {
             itemtimes[i] = -1f;
             Slots[i].transform.parent.GetComponent<DropSlot>().Load += UpdateHerb;
-            slotProcessIcon[i] = Slots[i].transform.GetChild(0).GetComponent<Image>();
+            slotProcessIcon[i] = Slots[i].transform.parent.GetChild(1).GetComponent<Image>();
         }
         UpdateHerb();
     }

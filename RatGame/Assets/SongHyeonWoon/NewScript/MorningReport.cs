@@ -5,9 +5,15 @@ using UnityEngine.UI;
 public class MorningReport : MonoBehaviour
 {
     public ProjectReport report;
-    [Header("아침 구매내역 UI")]
+    [Header("아이템 배치 Pos")]
     public Transform NormalStore_MPos;
     public Transform DarkStore_MPos;
+
+    [Header("아침 구매내역 UI")]
+    public TextMeshProUGUI DayText;
+    public TextMeshProUGUI NormalStore_Price;
+    public TextMeshProUGUI DarkStore_Price;
+    public TextMeshProUGUI TotalPrice;
 
     [Header("생성할 오브젝트")]
     public GameObject showUIObjectPre;
@@ -19,12 +25,8 @@ public class MorningReport : MonoBehaviour
 
     public void ShowReportInMorning()
     {
-        // 전원 활성화 종료 -----------------------------------------------------------
-        if (report.StoreCheese.Count + report.DarkStoreCheese.Count <= 0) // 구매 내역이 없으면 리스트 생성 X
-        {
-            gameObject.SetActive(false);
-            return;
-        }
+        DayText.text = GameManager.Instance.Day.ToString() + "일차";
+
         for (int i = 0; i < NormalStore_MPos.childCount; i++)
         {
             NormalStore_MPos.GetChild(i).gameObject.SetActive(false);
@@ -38,9 +40,14 @@ public class MorningReport : MonoBehaviour
         // rpeort를 통해 아이템 생성 여부 판단
         // 일반 상점
         ShowReportbeforeDay(report.StoreCheese.Count, true);
+        NormalStore_Price.text = (-report.BestStoreAmount).ToString();
+
         // 다크 상점
         ShowReportbeforeDay(report.DarkStoreCheese.Count, false);
+        DarkStore_Price.text = (report.BestDarkAmount).ToString();
 
+        int total = -report.BestStoreAmount + report.BestDarkAmount;
+        TotalPrice.text = "총 " + (total >= 0 ? "+" : "") + ((total != 0)?total.ToString("#,###") : "0");
     }
 
     public void ShowReportbeforeDay(int reportCount, bool isNormalStore)

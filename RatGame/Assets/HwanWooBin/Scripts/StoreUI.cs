@@ -90,9 +90,10 @@ public class StoreUI : MonoBehaviour
         switch (tabnumber)
         {
             case 0:
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 11; i++)
                 {
                     ItemBase data = ItemDatas.items[i];
+
 
                     prices[i].text = data.Explanation + "가격 : <color=\"yellow\">" + data.Price.ToString("#,##0") + " 치즈코인</color>";
                     deliverys[i].text = inventoryManager.deliverycounts[i].ToString("#,##0") + "개 배송예정";
@@ -186,10 +187,12 @@ public class StoreUI : MonoBehaviour
                     var Itemdata = itemdata as PotionData;
                     if (Itemdata.NonWater == inventoryManager.inventory[i].shap)
                     {
+                        Debug.Log("포션 판매창으로 이동");
                         slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
                     }
                     else
                     {
+                        Debug.Log("포션 판매창으로 이동");
                         slot.transform.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
                     }
 
@@ -209,7 +212,7 @@ public class StoreUI : MonoBehaviour
             if (inventoryManager.inventory[i] == item)
             {
                 inventoryManager.inventory.Remove(item); // 인벤토리에서 제거
-                Debug.Log("포션 판매창으로 이동");
+               
             }
         }
 
