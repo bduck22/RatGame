@@ -77,8 +77,8 @@ public class MoveItem : MonoBehaviour
     public void OnExit()
     {
         //Debug.Log("--클릭 종료--");
-        //if(LastParent != null)
-       // exampleBoad.Image.transform.SetParent(LastParent);
+        //if (LastParent != null)
+        //    exampleBoad.Image.transform.SetParent(LastParent);
         //if (cc != null) StopCoroutine(cc);
         //exampleBoad.Image.gameObject.SetActive(false);
     }
@@ -119,6 +119,8 @@ public class MoveItem : MonoBehaviour
         transform.SetParent(LastParent);
         transform.SetSiblingIndex(0);
         transform.localPosition = Vector3.zero;
+        retPos.localPosition = Vector3.zero;
+        retPos.anchoredPosition = Vector3.zero;
         Checking();
     }
 
@@ -170,6 +172,7 @@ public class MoveItem : MonoBehaviour
         }
         transform.SetParent(OrigionPos);
         retPos.localPosition = Vector3.zero;
+        retPos.anchoredPosition = Vector3.zero;
     }
 
     //IEnumerator WaitActiveTime()

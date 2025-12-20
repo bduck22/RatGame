@@ -19,6 +19,7 @@ public class FacturingController : MonoBehaviour
 
     public TextMeshProUGUI WaterText;
 
+    [Header("약물 상태 결정")]
     public bool NonWater;
     public Animator WaterSlider;
     private void Start()
@@ -35,7 +36,7 @@ public class FacturingController : MonoBehaviour
         Image.gameObject.SetActive(true);
         Image.GetComponent<Image>().sprite = ItemDatas.items[slot.Item.itemNumber].itemImage;
 
-        if (slot.Item.itemNumber == 7)
+        if (slot.Item.itemNumber == 11)
         {
             Image.GetChild(0).gameObject.SetActive(false);
         }
@@ -157,18 +158,19 @@ public class FacturingController : MonoBehaviour
         }
     }
 
+    [ContextMenu("전환")]
     public void ChangeShape()
     {
         NonWater = !NonWater;
-        WaterSlider.SetBool("water", NonWater);
-        if (NonWater)
-        {
-            WaterText.text = "고체";
-        }
-        else
-        {
-            WaterText.text = "액체";
-        }
+        //WaterSlider.SetBool("water", NonWater);
+        //if (NonWater)
+        //{
+        //    WaterText.text = "고체";
+        //}
+        //else
+        //{
+        //    WaterText.text = "액체";
+        //}
             WillLoad();
     }
 

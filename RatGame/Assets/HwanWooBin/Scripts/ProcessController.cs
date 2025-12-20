@@ -82,8 +82,8 @@ public class ProcessController : MonoBehaviour
                 }
                 else
                 {
-                 
                     Slots[i].gameObject.SetActive(false);
+                    slotProcessIcon[i].gameObject.SetActive(false);
                 }
               
             }

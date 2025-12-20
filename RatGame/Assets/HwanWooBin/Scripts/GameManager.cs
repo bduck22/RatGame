@@ -269,8 +269,10 @@ public class GameManager : MonoBehaviour
         if (isnewget)
         {
 
-            Transform GetSlot = GetItem.transform.GetChild(0);
+            Transform GetSlot = GetItem.transform.GetChild(0); // background부분
             Transform Icon = GetItem.transform.GetChild(0).GetChild(0); // 약초 아이콘
+            TextMeshProUGUI PlusText = GetSlot.GetChild(6).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI TypeText = GetSlot.GetChild(5).GetComponent<TextMeshProUGUI>();
             Transform Potioninfo = GetSlot.GetChild(3); // 아이템이 포션일 때
             Transform HerbInfo = GetSlot.GetChild(4);
             Potioninfo.gameObject.SetActive(false);
@@ -279,39 +281,73 @@ public class GameManager : MonoBehaviour
 
 
             Icon.GetComponent<Image>().sprite = item.itemType == ItemType.Potion ? inventoryManager.PotionCase : inventoryManager.HerbCase;
+
+            Icon.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
+            GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = itemdata.itemName;
+            GetSlot.GetChild(2).GetComponentInChildren<TextMeshProUGUI>().text = itemdata.Explanation;
+            TypeText.text = "약물";
+
             if (item.itemType == ItemType.Potion)
             {
                 Icon.GetChild(1).gameObject.SetActive(false);
-
                 var Itemdata = itemdata as PotionData;
                 if (Itemdata.NonWater == item.shap)
                 {
-                    Icon.GetChild(0).GetComponent<Image>().sprite = Itemdata.itemImage;
-                    GetSlot.GetChild(1).GetComponent<TextMeshProUGUI>().text = Itemdata.itemName;
+                    PlusText.text = "약물";
+                    Icon.GetChild(1).GetComponent<Image>().sprite = Itemdata.itemImage;
+                    GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = Itemdata.itemName;
+                  
+
                 }
                 else
                 {
-                    Icon.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
-                    GetSlot.GetChild(1).GetComponent<TextMeshProUGUI>().text = Itemdata.NonShapeName;
+                    PlusText.text = "환약";
+                    Icon.GetChild(1).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
+                    GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = Itemdata.NonShapeName;
+
                 }
 
 
-                //허브 전용 데이터 출력
+                //약물 전용 데이터 출력
                 Potioninfo.gameObject.SetActive(true);
 
-                Potioninfo.GetComponentInChildren<TextMeshProUGUI>().text = "등급 : <color=" + (Itemdata.itemLevel == 3 ? "red>전설" :
-                Itemdata.itemLevel == 2 ? "blue>희귀" : Itemdata.itemLevel == 1 ? "#DA9659>일반" : "black>??") +
-                "</color>\n완성도 : " + item.Completeness.ToString() + "%\n\n" +
-                "<size=80>제작법</size>\n" +
-                item.herb1.name + "(" + (item.process1 == 0 ? "달" : item.process1 == 1 ? "빻" : item.process1 == 2 ? "말" : "?") + ") " + item.amount1.ToString() + " : " +
-                item.herb2.name + "(" + (item.process2 == 0 ? "달" : item.process2 == 1 ? "빻" : item.process2 == 2 ? "말" : "?") + ") " + item.amount2.ToString() + "\n" +
-                "형태 : " + (item.shap ? "고체" : "액체");
-            }
-            else
-            {
-                Icon.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
+                if (Itemdata.Herb1 != null && Itemdata.Herb2 != null)
+                {
+                    string proccess1 = "달인 ";
+                    string proccess2 = "달인 ";
 
-                GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = itemdata.name;
+                    if (Itemdata.process1 == 1) proccess1 = "빻은 ";
+                    if (Itemdata.process1 == 2) proccess1 = "말린 ";
+                    if (Itemdata.process2 == 1) proccess2 = "빻은 ";
+                    if (Itemdata.process2 == 2) proccess2 = "말린 ";
+
+                    Potioninfo.GetChild(0).GetComponent<TextMeshProUGUI>().text = "재료 1 : " + proccess1 + Itemdata.Herb1.itemName;
+                    Potioninfo.GetChild(1).GetComponent<TextMeshProUGUI>().text = "재료 2 : " + proccess2 + Itemdata.Herb2.itemName;
+                }
+                else
+                {
+                    Potioninfo.GetChild(0).GetComponent<TextMeshProUGUI>().text = "재료 1 : X";
+                    Potioninfo.GetChild(1).GetComponent<TextMeshProUGUI>().text = "재료 2 : X";
+                }
+
+                // 나중에 이미지도 들어갈 수 있음
+
+                //Potioninfo.GetComponentInChildren<TextMeshProUGUI>().text = "등급 : <color=" + (Itemdata.itemLevel == 3 ? "red>전설" :
+                //Itemdata.itemLevel == 2 ? "blue>희귀" : Itemdata.itemLevel == 1 ? "#DA9659>일반" : "black>??") +
+                //"</color>\n완성도 : " + item.Completeness.ToString() + "%\n\n" +
+                //"<size=80>제작법</size>\n" +
+                //item.herb1.name + "(" + (item.process1 == 0 ? "달" : item.process1 == 1 ? "빻" : item.process1 == 2 ? "말" : "?") + ") " + item.amount1.ToString() + " : " +
+                //item.herb2.name + "(" + (item.process2 == 0 ? "달" : item.process2 == 1 ? "빻" : item.process2 == 2 ? "말" : "?") + ") " + item.amount2.ToString() + "\n" +
+                //"형태 : " + (item.shap ? "고체" : "액체");
+            }
+            else // 허브일 때
+            {
+                //Icon.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
+                // GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = itemdata.name;
+
+                Transform ccc = HerbInfo.GetChild(1).transform;
+                GameObject[] proccessedState = { ccc.GetChild(0).gameObject, ccc.GetChild(1).gameObject, ccc.GetChild(2).gameObject, ccc.GetChild(3).gameObject };
+                TypeText.text = "약초";
 
                 if (item.ProcessWay != -1 && item.ProcessWay != 3)
                 {
@@ -324,13 +360,27 @@ public class GameManager : MonoBehaviour
                 }
 
                 HerbInfo.gameObject.SetActive(true);
+                for (int i = 0; i < proccessedState.Length; i++)
+                {
+                    proccessedState[i].gameObject.SetActive(false);
 
+                }
+
+                PlusText.text = (item.ProcessWay == 0 ? "달이기" : item.ProcessWay == 1 ? "빻기" : item.ProcessWay == 2 ? "말리기" : "없음");
                 HerbInfo.GetComponentInChildren<TextMeshProUGUI>().text = "가공 상태 : " + (item.ProcessWay == 0 ? "달이기" : item.ProcessWay == 1 ? "빻기" : item.ProcessWay == 2 ? "말리기" : "X");
+                switch (item.ProcessWay)
+                {
+                    case 0: proccessedState[1].gameObject.SetActive(true); break;
+                    case 1: proccessedState[2].gameObject.SetActive(true); break;
+                    case 2: proccessedState[3].gameObject.SetActive(true); break;
+                    default: proccessedState[0].gameObject.SetActive(true); break;
+                }
+               
+
             }
             //Icon.GetComponentInChildren<TextMeshProUGUI>().text = (item.ItemCount <= 1 ? "" : item.ItemCount.ToString("#,###"));
 
             //GetSlot.GetChild(2).GetComponent<TextMeshProUGUI>().text = itemdata.Explanation;
-
             GetItem.Play("GetItem");
         }
 

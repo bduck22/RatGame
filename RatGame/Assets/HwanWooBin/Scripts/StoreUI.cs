@@ -95,9 +95,9 @@ public class StoreUI : MonoBehaviour
                     ItemBase data = ItemDatas.items[i];
 
 
-                    prices[i].text = data.Explanation + "가격 : <color=\"yellow\">" + data.Price.ToString("#,##0") + " 치즈코인</color>";
-                    deliverys[i].text = inventoryManager.deliverycounts[i].ToString("#,##0") + "개 배송예정";
-                    counts[i].text = inventoryManager.ItemCount(i).ToString("#,##0");
+                    //prices[i].text = data.Explanation + "가격 : <color=\"yellow\">" + data.Price.ToString("#,##0") + " 치즈코인</color>";
+                    //deliverys[i].text = inventoryManager.deliverycounts[i].ToString("#,##0") + "개 배송예정";
+                   // counts[i].text = inventoryManager.ItemCount(i).ToString("#,##0");
                 }
                 break;
             case 1:
