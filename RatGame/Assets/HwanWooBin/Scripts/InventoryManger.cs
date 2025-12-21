@@ -34,6 +34,7 @@ public class InventoryManger : MonoBehaviour
     public Transform[] page;
     public int pageMaxSlot = 9;
     public int nowPage = 1;
+    int bestpage = 1;
     public TextMeshProUGUI pageText;
 
     public int NowPage
@@ -42,7 +43,7 @@ public class InventoryManger : MonoBehaviour
         set
         {
             nowPage += value;
-            nowPage = Mathf.Clamp(nowPage, 1, page.Length);
+            nowPage = Mathf.Clamp(nowPage, 1, bestpage);
         }
     }
 
@@ -55,21 +56,24 @@ public class InventoryManger : MonoBehaviour
             for (int j = 0; j < page[i].childCount; j++)
             {
                 page[i].GetChild(j).gameObject.SetActive(false);
-
+               
             }
-
+            page[i].gameObject.SetActive(false);
         }
 
 
-        int index = 0;
         for (int i = 0; i < inventory.Count; i++)//4
         {
             GameObject slot;
             int slotIndex = i - bannedItemCount;
             int pageIndex = slotIndex / pageMaxSlot;
 
-            if (slotIndex % pageMaxSlot == 0 && slotIndex != 0) { index++; Debug.Log("페이지 넘기기"); }
-
+            page[nowPage-1].gameObject.SetActive(true);
+            bestpage = pageIndex + 1;
+            //if (slotIndex % pageMaxSlot == 0 && slotIndex != 0)
+            //{
+            //    Debug.Log("페이지 넘기기");
+            //}
 
             if (page[pageIndex].childCount <= i - bannedItemCount)
             {
@@ -78,10 +82,12 @@ public class InventoryManger : MonoBehaviour
 
             }
             else
-            {
+            { 
                 slot = page[pageIndex].GetChild(slotIndex % pageMaxSlot).gameObject;
                 slot.SetActive(true);
             }
+
+            pageText.text = NowPage.ToString() + " / " + bestpage.ToString(); // text설정
 
 
             ItemBase itemdata = GameManager.Instance.itemDatas.items[inventory[i].itemNumber];
@@ -127,15 +133,15 @@ public class InventoryManger : MonoBehaviour
 
                 if (inventory[i].ProcessWay != -1 && inventory[i].ProcessWay != 3)
                 {
-                    slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-                    slot.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = ProcessIcon[inventory[i].ProcessWay];
+                    slot.transform.GetChild(1).gameObject.SetActive(true);
+                    slot.transform.GetChild(1).GetComponent<Image>().sprite = ProcessIcon[inventory[i].ProcessWay];
                 }
                 else
                 {
-                    slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+                    slot.transform.GetChild(1).gameObject.SetActive(false);
                 }
             }
-            slot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (inventory[i].ItemCount <= 1 ? "" : inventory[i].ItemCount.ToString("#,###"));
+            slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (inventory[i].ItemCount <= 1 ? "" : inventory[i].ItemCount.ToString("#,###"));
         }
 
     }
@@ -157,7 +163,7 @@ public class InventoryManger : MonoBehaviour
 
    void MovePage()
     {
-        for (int i = 0; i < page.Length; i++)
+        for (int i = 0; i < bestpage; i++)
         {
             page[i].gameObject.SetActive(false);
             if (i+1 == NowPage) { page[i].gameObject.SetActive(true); }
@@ -169,7 +175,7 @@ public class InventoryManger : MonoBehaviour
     public void movePage(bool pageUp)
     {
         NowPage = pageUp ? 1 : -1; // 오른쪽 왼쪽
-        pageText.text = NowPage.ToString() +" / " + page.Length.ToString();
+        pageText.text = NowPage.ToString() +" / " + bestpage.ToString();
         MovePage();
     }
 }

@@ -162,7 +162,7 @@ public class FacturingController : MonoBehaviour
     public void ChangeShape()
     {
         NonWater = !NonWater;
-        //WaterSlider.SetBool("water", NonWater);
+        WaterSlider.SetBool("water", NonWater);
         //if (NonWater)
         //{
         //    WaterText.text = "고체";
@@ -171,7 +171,7 @@ public class FacturingController : MonoBehaviour
         //{
         //    WaterText.text = "액체";
         //}
-            WillLoad();
+        WillLoad();
     }
 
     public void ChangeAmount()

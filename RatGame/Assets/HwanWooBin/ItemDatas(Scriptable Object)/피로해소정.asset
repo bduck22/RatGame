@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62e04aec333bb641b1be87df4bf0501, type: 3}
   m_Name: "\uD53C\uB85C\uD574\uC18C\uC815"
   m_EditorClassIdentifier: 
-  itemName: "\uD53C\uB85C\uD574\uC18C\uC815"
+  itemName: "\uD53C\uB85C\uD574\uC18C \uC815"
   itemImage: {fileID: 21300000, guid: 385aae949f6725b4bb76d1083f09fa57, type: 3}
   itemType: 1
   Explanation: "\uBA39\uC73C\uBA74 \uD53C\uB85C\uAC00 \uD68C\uBCF5\uB418\uB294 \uC57D,
@@ -28,5 +28,5 @@ MonoBehaviour:
   itemLevel: 1
   NonWater: 1
   NonShapeImage: {fileID: 21300000, guid: a18ecd30f13c3eb46a39095d2ce15958, type: 3}
-  NonShapeName: "\uD53C\uB85C\uD574\uC18C\uC758 \uBB3C"
+  NonShapeName: "\uD53C\uB85C\uD574\uC18C\uC758 \uBB3C\uC57D"
   Persents: 14000000050000001e00000032000000

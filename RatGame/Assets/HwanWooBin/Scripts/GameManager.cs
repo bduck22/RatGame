@@ -294,15 +294,15 @@ public class GameManager : MonoBehaviour
                 if (Itemdata.NonWater == item.shap)
                 {
                     PlusText.text = "약물";
-                    Icon.GetChild(1).GetComponent<Image>().sprite = Itemdata.itemImage;
+                    Icon.GetChild(0).GetComponent<Image>().sprite = Itemdata.itemImage;
                     GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = Itemdata.itemName;
                   
 
                 }
                 else
                 {
-                    PlusText.text = "환약";
-                    Icon.GetChild(1).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
+                    PlusText.text = "약물";
+                    Icon.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
                     GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = Itemdata.NonShapeName;
 
                 }

@@ -14864,7 +14864,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bannedItemCount: 0
-  InvenPos: {fileID: 1527505907}
   InvenPre: {fileID: 3127558147954117072, guid: c61473a65299ebd4e9e17096ba52818e, type: 3}
   inventory: []
   Sawherb: 1
@@ -14880,6 +14879,10 @@ MonoBehaviour:
   - {fileID: -6394693877505957640, guid: b00ee866ac2077446824130aab3a6d5f, type: 3}
   deliverycounts: 0200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
   ratDeliverycounts: 0
+  page: []
+  pageMaxSlot: 9
+  nowPage: 1
+  pageText: {fileID: 0}
 --- !u!4 &335006551
 Transform:
   m_ObjectHideFlags: 0
@@ -35794,7 +35797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &903536278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56586,7 +56589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1491487273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -79311,7 +79314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2056997382
 RectTransform:
   m_ObjectHideFlags: 0
