@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     {
         foreach ( Animator ani in UIs)
         {
-            ani.SetTrigger("Play");
+            ani.SetTrigger("Close");
         }
     }
 
@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
         roomName.text = GameManager.Instance.room.ToString();
         foreach ( Animator ani in UIs)
         {
-            ani.SetTrigger("Back");
+            ani.SetTrigger("Open");
         }
     }
 

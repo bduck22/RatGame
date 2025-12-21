@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 
 public enum Room
@@ -16,14 +14,22 @@ public enum Room
 
 public enum ScreenType
 {
-    가공전체,
+    제조실,
     가공,
     제조,
-    실험전체,
+    실험실,
     실험,
-    침실전체,
+    침실,
     상점,
-    침대
+    침대,
+    설정,
+    도감,
+    가공상태,
+    내역서,
+    인벤토리,
+    제출,
+    영수증,
+    보고서
 }
 
 [DefaultExecutionOrder(-51)]
@@ -100,6 +106,9 @@ public class GameManager : MonoBehaviour
 
     public Animator GetItem;
 
+    public Transform Background;
+
+    public Transform X;
 
     [Header("암시장 스폰 확률")]
     public int OpenProbably = 40;           // 기본 확률 40%
@@ -194,7 +203,7 @@ public class GameManager : MonoBehaviour
         //    EndGame.gameObject.SetActive(true);
         //}
 
-        if(Day > 1)
+        if (Day > 1)
         {
             report.reportUI.MorningReport.SetActive(true);
         }
@@ -296,7 +305,7 @@ public class GameManager : MonoBehaviour
                     PlusText.text = "약물";
                     Icon.GetChild(0).GetComponent<Image>().sprite = Itemdata.itemImage;
                     GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = Itemdata.itemName;
-                  
+
 
                 }
                 else
@@ -375,7 +384,7 @@ public class GameManager : MonoBehaviour
                     case 2: proccessedState[3].gameObject.SetActive(true); break;
                     default: proccessedState[0].gameObject.SetActive(true); break;
                 }
-               
+
 
             }
             //Icon.GetComponentInChildren<TextMeshProUGUI>().text = (item.ItemCount <= 1 ? "" : item.ItemCount.ToString("#,###"));
@@ -443,7 +452,7 @@ public class GameManager : MonoBehaviour
         {
             _WarringCount++; // 위험도에 따라 경고 횟수 증가
                              // report.reportUI?.warringText.gameObject.SetActive(true); // 경고 텍스트 활성화
-            //report.reportUI?.warringLog.gameObject.SetActive(true);
+                             //report.reportUI?.warringLog.gameObject.SetActive(true);
         }
 
         if (_WarringCount >= 3)
@@ -506,7 +515,7 @@ public class GameManager : MonoBehaviour
             nowscreen = screen1;
             stopping = true;
 
-            ScreenFade.SetTrigger("Play");
+            ScreenFade.SetTrigger("On");
         }
     }
 
@@ -523,11 +532,17 @@ public class GameManager : MonoBehaviour
     {
         foreach (Transform t in Screens)
         {
-            t.gameObject.SetActive(false);
+            if (t != null)
+            {
+                t.gameObject.SetActive(false);
+            }
         }
 
+        X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
 
-        RoomControler.gameObject.SetActive(nowscreen == ScreenType.가공전체 || nowscreen == ScreenType.실험전체 || nowscreen == ScreenType.침실전체);
+        Background.gameObject.SetActive(nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
+
+        RoomControler.gameObject.SetActive(nowscreen == ScreenType.제조실 || nowscreen == ScreenType.실험실 || nowscreen == ScreenType.침실);
 
         InventoryUI.gameObject.SetActive(false);
 
@@ -558,7 +573,10 @@ public class GameManager : MonoBehaviour
 
         SetOb.gameObject.SetActive(!SetOb.gameObject.activeSelf);
 
-        Screens[(int)nowscreen].gameObject.SetActive(true);
+        if(Screens[(int)nowscreen] != null)
+        {
+            Screens[(int)nowscreen].gameObject.SetActive(true);
+        }
     }
 
 
