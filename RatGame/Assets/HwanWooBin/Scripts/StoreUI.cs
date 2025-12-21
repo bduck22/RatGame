@@ -3,6 +3,51 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public class HerdTab
+{
+    public Transform Herd;
+    public string itemName;
+    public int itemNumder;
+    public int count;
+    public int price;
+    public TextMeshProUGUI countText;
+    public TextMeshProUGUI priceText;
+    public Image itemImage;
+
+    public Button up;
+    public Button down;
+
+  
+    public void HerdTabUpdate()
+    {
+        count = 1;
+        countText = Herd.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
+        priceText = Herd.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        up = Herd.transform.GetChild(1).GetChild(1).GetComponent<Button>();
+        down = Herd.transform.GetChild(1).GetChild(2).GetComponent<Button>();
+        itemImage = Herd.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+
+        countText.text = count.ToString();
+        priceText.text = itemName + " " + price.ToString("#,###");
+
+
+        up.onClick.AddListener(upper);
+        down.onClick.AddListener(under);
+    }
+    public void upper()
+    {
+        count = Mathf.Clamp(count + 1, 1, 5);
+        countText.text = count.ToString();
+    }
+
+    public void under()
+    {
+        count = Mathf.Clamp(count - 1, 1, 5);
+        countText.text = count.ToString();
+    }
+}
+
 public class StoreUI : MonoBehaviour
 {
     public int tabnumber;
@@ -11,11 +56,12 @@ public class StoreUI : MonoBehaviour
 
     public Transform[] tabs;
 
-    public Transform potioninfo;
-
-    public TextMeshProUGUI[] counts;
-    public TextMeshProUGUI[] deliverys;
-    public TextMeshProUGUI[] prices;
+    
+    public HerdTab[] herdTabs;
+    // public Transform potioninfo;
+    //public TextMeshProUGUI[] counts;
+    //public TextMeshProUGUI[] deliverys;
+    //public TextMeshProUGUI[] prices;
 
     public TextMeshProUGUI[] levels;
 
@@ -44,11 +90,23 @@ public class StoreUI : MonoBehaviour
     {
         inventoryManager = GameManager.Instance.inventoryManager;
         ItemDatas = GameManager.Instance.itemDatas;
+        for (int i = 0; i < herdTabs.Length; i++)
+        {
+            herdTabs[i].itemName = ItemDatas.items[i].itemName;
+            //herdTabs[i].itemImage.sprite = ItemDatas.items[i].itemImage;
+            herdTabs[i].itemNumder = i;
+            herdTabs[i].price = (int)ItemDatas.items[i].Price;
+            herdTabs[i].HerdTabUpdate();
+        }
+
     }
 
     private void OnEnable()
     {
+
         movetab(0);
+        
+      
     }
 
     public void movetab(int number)
@@ -61,10 +119,7 @@ public class StoreUI : MonoBehaviour
         {
             return;
         }
-        else
-        {
-            potioninfo.gameObject.SetActive(false);
-        }
+ 
 
 
         for (int i = 0; i < 3; i++)
@@ -90,14 +145,14 @@ public class StoreUI : MonoBehaviour
         switch (tabnumber)
         {
             case 0:
-                for (int i = 0; i < 11; i++)
+                for (int i = 0; i < herdTabs.Length; i++)
                 {
                     ItemBase data = ItemDatas.items[i];
 
-
+                   // herdTabs[i].priceText.text = 
                     //prices[i].text = data.Explanation + "가격 : <color=\"yellow\">" + data.Price.ToString("#,##0") + " 치즈코인</color>";
                     //deliverys[i].text = inventoryManager.deliverycounts[i].ToString("#,##0") + "개 배송예정";
-                   // counts[i].text = inventoryManager.ItemCount(i).ToString("#,##0");
+                    // counts[i].text = inventoryManager.ItemCount(i).ToString("#,##0");
                 }
                 break;
             case 1:
@@ -126,7 +181,7 @@ public class StoreUI : MonoBehaviour
                     {
                         levels[i].text += GameManager.Instance.ProcessController.ProcessLevel[i].ToString("#,##0");
                     }
-                    prices[i + 5].text = Exs[i] + "가격 : <color=\"yellow\">" + store.Prices[i].ToString("#,##0") + " 치즈코인</color>";
+                    //prices[i + 5].text = Exs[i] + "가격 : <color=\"yellow\">" + store.Prices[i].ToString("#,##0") + " 치즈코인</color>";
                 }
                 break;
             case 2:
