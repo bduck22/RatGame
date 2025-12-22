@@ -189,6 +189,8 @@ public class GameManager : MonoBehaviour
 
         ProcessController.SetProcessTime(30, false, 0);
 
+       
+
         for (int i = 0; i < inventoryManager.deliverycounts.Length; i++)
         {
             int count = inventoryManager.deliverycounts[i];
@@ -198,7 +200,7 @@ public class GameManager : MonoBehaviour
             }
             inventoryManager.deliverycounts[i] = 0;
         }
-
+        store?.Selling();
         mouseCount += inventoryManager.ratDeliverycounts;
         MouseCount += inventoryManager.ratDeliverycounts;
         Debug.Log("하루 시작");
@@ -236,7 +238,7 @@ public class GameManager : MonoBehaviour
 
     public void AddItem(int number, int count) // 처음 시작 and 배달한 아이템 획득
     {
-        //Debug.Log("AddItem함수 실행됨 - 아이템 번호: " + number + ", 개수: " + count);
+       // Debug.Log("AddItem함수 실행됨 - 아이템 번호1: " + number + ", 개수1: " + count);
         ItemBase data = itemDatas.items[number];
 
         ItemClass item = new ItemClass();
@@ -276,7 +278,7 @@ public class GameManager : MonoBehaviour
     public void AddItem(ItemClass Item, bool isnewget) // 가공 된 아이템 획득
     {
 
-        // Debug.Log("AddItem함수 실행됨 - 아이템 번호: " + Item + ", 개수: " + isnewget);
+       // Debug.Log("AddItem함수 실행됨 - 아이템 번호2: " + Item + ", 개수2: " + isnewget);
         ItemClass item = new ItemClass();
         item.itemName = Item.itemName;
         item.itemDescription = Item.itemDescription;
@@ -455,7 +457,6 @@ public class GameManager : MonoBehaviour
     public void playingday()
     {
         AddDayData();
-        store?.Selling(); // 모든 물품 판매
         if (ReportDayChick()) // 리포트 날
         {
             
@@ -465,7 +466,7 @@ public class GameManager : MonoBehaviour
 
         OnScreen(5);
         StartDay();
-
+        
     }
 
     public void WarringEvent()
@@ -611,6 +612,22 @@ public class GameManager : MonoBehaviour
                 inventoryManager.UpdateInventory();
                 InventoryUI.gameObject.SetActive(true);
                 break;
+            case ScreenType.인벤토리:
+                inventoryManager.NotFaildPotion = true;
+                inventoryManager.SawPotion = true;
+                inventoryManager.Sawherb = true;
+                inventoryManager.SawProcessed = true;
+                inventoryManager.UpdateInventory();
+                InventoryUI.gameObject.SetActive(true);
+                break;
+            case ScreenType.도감:
+                inventoryManager.NotFaildPotion = true;
+                inventoryManager.SawPotion = true;
+                inventoryManager.Sawherb = true;
+                inventoryManager.UpdateInventory();
+                InventoryUI.gameObject.SetActive(true);
+                break;
+
         }
 
         SetOb.gameObject.SetActive(!SetOb.gameObject.activeSelf);

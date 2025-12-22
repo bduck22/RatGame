@@ -74,6 +74,7 @@ public class ShowList : MonoBehaviour
             HerbItems[i].ItemCount = manager.inventoryManager.deliverycounts[i]; // 구매 횟수 결정
         }
 
+       
         if (GameManager.Instance.DarkStoreIsOpen)
         {
             DarkStoreOpen.GetChild(4).gameObject.SetActive(false);
@@ -85,14 +86,16 @@ public class ShowList : MonoBehaviour
             DarkStoreOpen.GetChild(3).gameObject.SetActive(false);
             DarkStoreOpen.GetChild(4).gameObject.SetActive(true);
 
-            
-        }
 
-        DarkStoreOpen.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "확정 오픈까지 D-" + (manager.DarkstoreConfirmedDay - manager.DarkstoreConfirmedDayCount).ToString();
-        for (int i = 0; i < PotionItems.Length; i++)
-        {
-            PotionItems[i].itemObject.SetActive(false);
         }
+        DarkStoreOpen.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "확정 오픈까지 D-" + (manager.DarkstoreConfirmedDay - manager.DarkstoreConfirmedDayCount).ToString();
+        if (DarkStoreOpen.GetChild(3).gameObject.activeSelf == true)
+            DarkStoreOpen.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "판매 예정 약품";
+
+        for (int i = 0; i < PotionItems.Length; i++)
+            {
+                PotionItems[i].itemObject.SetActive(false);
+            }
 
         for (int i = 0; i < manager.selectPotionList.Count; i++)
         {

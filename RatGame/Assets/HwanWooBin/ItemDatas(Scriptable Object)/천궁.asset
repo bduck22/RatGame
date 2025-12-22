@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984c2973d8523bb4fbd4e8342c59992c, type: 3}
   m_Name: "\uCC9C\uAD81"
   m_EditorClassIdentifier: 
-  itemName: 
-  itemImage: {fileID: 0}
+  itemName: "\uCC9C\uAD81"
+  itemImage: {fileID: -3601538372703888944, guid: 3789dfea864397947ade1d291622913a, type: 3}
   itemType: 0
-  Explanation: 
-  Price: 0
-  itemProcessedWay: 
+  Explanation: "\uD558\uB298\uC5D0\uC11C \uB0B4\uB824\uC628 \uC57D\uCD08"
+  Price: 430
+  itemProcessedWay: 0100000002000000

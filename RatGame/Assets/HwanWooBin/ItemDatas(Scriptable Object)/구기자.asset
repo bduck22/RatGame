@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "\uAD6C\uAE30\uC790"
   m_EditorClassIdentifier: 
   itemName: "\uAD6C\uAE30\uC790"
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 7957221072384642544, guid: 28892557029ae3a4e92adb395e068bff, type: 3}
   itemType: 0
-  Explanation: 
-  Price: 0
-  itemProcessedWay: 
+  Explanation: "\uAD6C\uAE30\uC790\uB97C \uAD6C\uAE30\uC790"
+  Price: 120
+  itemProcessedWay: 00000000

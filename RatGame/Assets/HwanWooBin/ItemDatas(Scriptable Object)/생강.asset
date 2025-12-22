@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984c2973d8523bb4fbd4e8342c59992c, type: 3}
   m_Name: "\uC0DD\uAC15"
   m_EditorClassIdentifier: 
-  itemName: 
-  itemImage: {fileID: 0}
+  itemName: "\uC0DD\uAC15"
+  itemImage: {fileID: 7137342201105265109, guid: 7ea564bf3e77bc54fadfdc4de1df0533, type: 3}
   itemType: 0
-  Explanation: 
-  Price: 0
-  itemProcessedWay: 
+  Explanation: "\uC0DD\uAC15\uC0DD\uAC15"
+  Price: 200
+  itemProcessedWay: 0000000002000000

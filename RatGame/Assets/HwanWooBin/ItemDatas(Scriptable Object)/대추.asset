@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984c2973d8523bb4fbd4e8342c59992c, type: 3}
   m_Name: "\uB300\uCD94"
   m_EditorClassIdentifier: 
-  itemName: 
-  itemImage: {fileID: 0}
+  itemName: "\uB300\uCD94"
+  itemImage: {fileID: 5320985994638840762, guid: 8f30c6040f2c7e24e84260f5e3f9be23, type: 3}
   itemType: 0
-  Explanation: 
-  Price: 0
-  itemProcessedWay: 
+  Explanation: "\uC131\uBAA8\uC528\uC758 \uD560\uC544\uBC84\uC9C0 \uC9D1\uC5D0\uC11C
+    \uCC44\uC9D1\uD55C \uB300\uCD94, \uC544\uC8FC \uB9DB\uC788\uB2E4"
+  Price: 370
+  itemProcessedWay: 0000000002000000

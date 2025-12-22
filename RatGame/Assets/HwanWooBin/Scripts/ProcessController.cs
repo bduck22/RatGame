@@ -1,6 +1,22 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
+[Serializable]
+public class ProcessControllerCopy
+{
+    public Image[] SlotsCopy = new Image[9];
+    public Image[] slotProcessIconCopy = new Image[9];
+
+    public void StartCopy()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            slotProcessIconCopy[i] = SlotsCopy[i].transform.parent.GetChild(1).GetComponent<Image>();
+        }
+    }
+}
 
 public class ProcessController : MonoBehaviour
 {
@@ -16,6 +32,8 @@ public class ProcessController : MonoBehaviour
 
     public Image[] Slots = new Image[9];
     public Image[] slotProcessIcon = new Image[9];
+    public ProcessControllerCopy proccessCopy;
+
 
     public float ProcessTime;
     void Start()
@@ -28,6 +46,7 @@ public class ProcessController : MonoBehaviour
             Slots[i].transform.parent.GetComponent<DropSlot>().Load += UpdateHerb;
             slotProcessIcon[i] = Slots[i].transform.parent.GetChild(1).GetComponent<Image>();
         }
+        proccessCopy.StartCopy();
         UpdateHerb();
     }
 
@@ -49,6 +68,7 @@ public class ProcessController : MonoBehaviour
                         continue;
                     }
                     slotProcessIcon[i].fillAmount = (itemtimes[i] / (ProcessTime - ProcessLevel[i / 3]));
+                    proccessCopy.slotProcessIconCopy[i].fillAmount = (itemtimes[i] / (ProcessTime - ProcessLevel[i / 3]));
                 }
             }
         }
@@ -63,13 +83,19 @@ public class ProcessController : MonoBehaviour
             {
                 itemslots[i] = Slots[i].transform.parent.GetComponent<DropSlot>().Item;
                 Slots[i].gameObject.SetActive(true);
+                proccessCopy.SlotsCopy[i].gameObject.SetActive(true);
+
                 if (itemslots[i].itemNumber != -1)
                 {
                     Slots[i].sprite = ItemDatas.items[itemslots[i].itemNumber].itemImage;
-                    if(itemslots[i].ProcessWay == -1)
+                    proccessCopy.SlotsCopy[i].sprite = ItemDatas.items[itemslots[i].itemNumber].itemImage;
+                    if (itemslots[i].ProcessWay == -1)
                     {
                         slotProcessIcon[i].gameObject.SetActive(true);
+                        proccessCopy.slotProcessIconCopy[i].gameObject.SetActive(true);
+
                         slotProcessIcon[i].sprite = ProcessTypeIcon;
+                        proccessCopy.slotProcessIconCopy[i].sprite = ProcessTypeIcon;
                         if (itemtimes[i] == -1)
                         {
                             itemtimes[i] = ProcessTime - ProcessLevel[i / 3];
@@ -83,7 +109,9 @@ public class ProcessController : MonoBehaviour
                 else
                 {
                     Slots[i].gameObject.SetActive(false);
-                    slotProcessIcon[i].gameObject.SetActive(false);
+                    proccessCopy.SlotsCopy[i].gameObject.SetActive(false);
+                   slotProcessIcon[i].gameObject.SetActive(false);
+                    proccessCopy.slotProcessIconCopy[i].gameObject.SetActive(false);
                 }
               
             }
@@ -91,7 +119,9 @@ public class ProcessController : MonoBehaviour
             {
                 
                 Slots[i].sprite = GameManager.Instance.inventoryManager.NeedLevel;
+                proccessCopy.SlotsCopy[i].sprite = GameManager.Instance.inventoryManager.NeedLevel;
                 slotProcessIcon[i].gameObject.SetActive(false);
+                proccessCopy.slotProcessIconCopy[i].gameObject.SetActive(false);
                 continue;
             }
         }
@@ -150,6 +180,7 @@ public class ProcessController : MonoBehaviour
             newitem.itemType = nowitem.Item.itemType;
             newitem.ProcessWay = (number / 3);
             slotProcessIcon[number].sprite = GameManager.Instance.inventoryManager.ProcessIcon[number / 3];
+            proccessCopy.slotProcessIconCopy[number].sprite = GameManager.Instance.inventoryManager.ProcessIcon[number / 3];
         }
         else
         {
@@ -157,13 +188,17 @@ public class ProcessController : MonoBehaviour
             newitem.itemType = ItemType.Herb;
             newitem.ProcessWay = 3;
             Slots[number].sprite = ItemDatas.items[11].itemImage;
+            proccessCopy.SlotsCopy[number].sprite = ItemDatas.items[11].itemImage;
             slotProcessIcon[number].gameObject.SetActive(false);
+            proccessCopy.slotProcessIconCopy[number].gameObject.SetActive(false);
+
         }
 
         newitem.ItemCount = 1;
         nowitem.Get = true;
         nowitem.Item = newitem;
         slotProcessIcon[number].fillAmount = 1;
+        proccessCopy.slotProcessIconCopy[number].fillAmount = 1;
 
     }
 }
