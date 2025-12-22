@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI MoneyText;
     public TextMeshProUGUI MouseText;
+    public TextMeshProUGUI DayText;
+    public TextMeshProUGUI RoomText;
+    public TextMeshProUGUI weekText;
+    public TextMeshProUGUI NextDayText;
+    public TextMeshProUGUI NextNextText;
 
     public UIManager uimanager;
 
@@ -175,6 +180,7 @@ public class GameManager : MonoBehaviour
     {
         MouseCount = mouseCount;
         Day++;
+ 
         DarkStoreIsOpen = (Random.RandomRange(0, 101) <= OpenProbably);
         report.RemoveTodayData();
 
@@ -196,6 +202,20 @@ public class GameManager : MonoBehaviour
         mouseCount += inventoryManager.ratDeliverycounts;
         MouseCount += inventoryManager.ratDeliverycounts;
         Debug.Log("하루 시작");
+        //UI적 요소들 --------------------------------------------------------------------
+        DayText.text = Day.ToString() + "일차";
+        switch (Day % 7) 
+        {
+            case 0: weekText.text = "일"; break;
+            case 1: weekText.text = "월"; break;
+            case 2: weekText.text = "화"; break;
+            case 3: weekText.text = "수"; break;
+            case 4: weekText.text = "목"; break;
+            case 5: weekText.text = "금"; break;
+            case 6: weekText.text = "토"; break;
+            default: weekText.text = "???"; break;
+        }
+
         uimanager.UpdateDayText();
 
         //if (Day == 6)
@@ -434,9 +454,11 @@ public class GameManager : MonoBehaviour
 
     public void playingday()
     {
+        store?.Selling(); // 모든 물품 판매
         AddDayData();
-        if ((Day - 2) % 7 == 0) // 리포트 날
+        if (ReportDayChick()) // 리포트 날
         {
+            
             CreateReport();
             return;
         }
@@ -451,8 +473,8 @@ public class GameManager : MonoBehaviour
         if (Random.Range(0, 101) <= darkstoreRisk)
         {
             _WarringCount++; // 위험도에 따라 경고 횟수 증가
-                             // report.reportUI?.warringText.gameObject.SetActive(true); // 경고 텍스트 활성화
-                             //report.reportUI?.warringLog.gameObject.SetActive(true);
+            report.reportUI?.RiskText.gameObject.SetActive(true);
+            //report.reportUI?.warringLog.gameObject.SetActive(true);
         }
 
         if (_WarringCount >= 3)
@@ -466,11 +488,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("리포트 생성");
 
-
-
         report.GenerateReport(); // 리보트 생성
         WarringEvent();          // 경고 이벤트 체크
-        dayani.SetTrigger("ReportDay"); // ----------
+        //dayani.SetTrigger("ReportDay"); // ----------
         //SkipReport();
     }
 
@@ -478,7 +498,7 @@ public class GameManager : MonoBehaviour
     public void SkipReport() // 나중에는 button으로
     {
         report.ResetReport();
-        dayani.SetTrigger("ReoprtQuit");
+        dayani.SetTrigger("Close");
         OnScreen(5);
         StartDay();
 
@@ -499,11 +519,32 @@ public class GameManager : MonoBehaviour
     public void NextDay()
     {
         dayani.gameObject.SetActive(true);
-        dayani.SetTrigger("Play");
+        dayani.SetTrigger("Open");
+
+        if (!ReportDayChick()) // 리포트 날
+        {
+            dayani.SetTrigger("Close");
+        }
+           
+    }
+    public bool ReportDayChick()
+    {
+        if ((Day - 2) % 7 == 0) // 리포트 날 확인
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public void NextDaying()
+    {
+        NextDayText.text = Day.ToString() + "일차";
+        NextNextText.text = weekText.text;
     }
 
     public void NextDayEnd()
     {
+        //dayani.SetTrigger("Close");
         dayani.gameObject.SetActive(false);
     }
 
@@ -538,9 +579,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
+       X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
 
         Background.gameObject.SetActive(nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
+
 
         RoomControler.gameObject.SetActive(nowscreen == ScreenType.제조실 || nowscreen == ScreenType.실험실 || nowscreen == ScreenType.침실);
 
@@ -588,6 +630,7 @@ public class GameManager : MonoBehaviour
             nowRoom = (3 + nowRoom) % 3;//0  3
             room = (Room)nowRoom;
             stopping = true;
+            RoomText.text = room.ToString(); // UI적 요소들
         }
     }
 

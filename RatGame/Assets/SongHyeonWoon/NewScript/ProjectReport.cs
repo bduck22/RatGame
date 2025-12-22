@@ -152,9 +152,10 @@ public class ProjectReport : MonoBehaviour
     [ContextMenu("보고서 생성")]
     public void GenerateReport()
     {
+        reportUI.ReportUIs.SetActive(true);
 
         // 실험 횟수------------------------------------------------------------------
-       // ProjectReportText += $"\n실험 횟수: {RatTestCount}회\n";
+       //ProjectReportText += $"\n실험 횟수: {RatTestCount}회\n";
 
 
         // 도감 완성도----------------------------------------------------------------

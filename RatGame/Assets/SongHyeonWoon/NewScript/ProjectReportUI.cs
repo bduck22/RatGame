@@ -83,8 +83,8 @@ public class ProjectReportUI : MonoBehaviour
         {
             if (report.dayLists[i].DayNumder == -1) continue;
             dayLine[i].gameObject.SetActive(true);
-            Transform point1 = dayLine[i].transform.GetChild(2).GetChild(0);
-            Transform point2 = i + 1 != dayLine.Length ?dayLine[i + 1].transform.GetChild(2).GetChild(0) :null;
+            Transform point1 = dayLine[i].transform.GetChild(0).GetChild(0);
+            Transform point2 = i + 1 != dayLine.Length ?dayLine[i + 1].transform.GetChild(0).GetChild(0) :null;
 
 
 

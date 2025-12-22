@@ -13,23 +13,35 @@ public class Store : MonoBehaviour
 
     //public ItemClass selectPotion;
     public int selectpotionnumber;
+   
 
     //public List<ItemClass> selectPotionList;
 
-    [Header("구매할 쥐의 수")]
-    public int MouseCountUp
+    [Header("암시장")]
+    public int MaxRatCount = 5;
+    private int ratCount = 0;
+    public int SellRatCount
     {
-        get { return mouseSellCount; }
+        get { return ratCount; }
         set
         {
-            mouseSellCount = value;
-            mouseSellCount = Mathf.Clamp(mouseSellCount, 1, 5); // 1~5마리 사이로 설정
-            uis.SellMouseCountText.text = "마리 수 : " + mouseSellCount.ToString();
+            ratCount = Mathf.Clamp(ratCount + value, 0, MaxRatCount);
+            uis.SellRatCountText.text = ratCount.ToString();
+            GameManager.Instance.inventoryManager.ratDeliverycounts = ratCount;
         }
     }
-    int mouseSellCount = 1;
-
-    
+    public int SellHerbRisk = 5;
+    public int SellRatRisk = 10;
+    int expertationMoney = 0;
+    public int ExpectationMoney
+    {
+        get { return expertationMoney; }
+        set
+        {
+            expertationMoney = value;
+            uis.ExpectationMoneyText.text = "예상 사용 금액 : " + ExpectationMoney.ToString("#,###");
+        }
+    }
 
     private void Start()
     {
@@ -42,17 +54,28 @@ public class Store : MonoBehaviour
         uis.Reload();
     }
 
-    public void BuyHerb(int number)
+    [ContextMenu("BuyHerb")]
+    public void Selling()
     {
-        ItemBase data = ItemDatas.items[number];
+        BuyHerb();
+        Upgrade(3);
+        ExpectationMoney = 0;
+    }
 
-        if (GameManager.Instance.IsBuyed((int)data.Price))
+    public void BuyHerb() // 나중에 날 넘어갈 때 사용
+    {
+        for(int i = 0; i < uis.herdTabs.Length; i++)
         {
-            GameManager.Instance.inventoryManager.deliverycounts[number]++;
-            GameManager.Instance.report.UseCoinInStore(data, true);
+            ItemBase data = ItemDatas.items[uis.herdTabs[i].itemNumder];
+                if (GameManager.Instance.IsBuyed((int)data.Price * uis.herdTabs[i].ItemCount) && uis.herdTabs[i].ItemCount > 0)
+                {
+                for (int j = 0; j < uis.herdTabs[i].ItemCount; j++) {
+                    GameManager.Instance.report.UseCoinInStore(data, true);
+                }
+                uis.herdTabs[i].Reset();
+                uis.Reload();
+                }
 
-
-            uis.Reload();
         }
     }
 
@@ -64,18 +87,19 @@ public class Store : MonoBehaviour
             if (number == 3)
             {
 
-                GameManager.Instance.darkstoreRisk += 10;
-                for(int ii = 0; ii<mouseSellCount; ii++)
+                GameManager.Instance.darkstoreRisk += SellRatRisk;
+                for(int ii = 0; ii< SellRatCount; ii++)
                 GameManager.Instance.report.UseCoinInStore(number.ToString(), false, Prices[number], uis.RatBuy_Image); // 업그래이드 가공
-
-                GameManager.Instance.IsBuyed(Prices[number] * (mouseSellCount -1)); // 쥐 수 만큼 돈 차감
-                GameManager.Instance.inventoryManager.ratDeliverycounts += mouseSellCount;
+                GameManager.Instance.IsBuyed(Prices[number] * (SellRatCount - 1)); // 쥐 수 만큼 돈 차감
+                //GameManager.Instance.inventoryManager.ratDeliverycounts += SellRatCount;
+                SellRatCount = 0;
 
 
             }
             else
             {
                 GameManager.Instance.ProcessController.ProcessLevel[number]++;
+                ExpectationMoney += Prices[number];
                 GameManager.Instance.report.UseCoinInStore(number.ToString(), true, Prices[number] , uis.Proccessed_Image[number]); // 업그래이드 가공
                 GameManager.Instance.ProcessController.SetProcessTime(1, true, number);
               
@@ -84,21 +108,24 @@ public class Store : MonoBehaviour
         }
     }
 
-    //public void Setpotion(int number)
-    //{
-    //    selectpotionnumber = number;
-
-    //    selectPotion = GameManager.Instance.inventoryManager.inventory[selectpotionnumber];
-    //}
-
     // 쥐 판매 수 조절
     public void MouseCountUpper(bool isUpper)
     {
 
         if (isUpper)
-            MouseCountUp += 1;
+        {
+            if (SellRatCount < MaxRatCount)
+                ExpectationMoney += Prices[3];
+            SellRatCount = 1;
+            
+        }
         else
-            MouseCountUp -= 1;
+        {
+            if (SellRatCount > 0)
+                ExpectationMoney -= Prices[3];
+            SellRatCount = -1;
+           
+        }
     }
 
 
@@ -108,7 +135,7 @@ public class Store : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.selectPotionList.Count; i++)
         {
             GameManager.Instance.Money += (GameManager.Instance.selectPotionList[i].Completeness * 0.01f) * GameManager.Instance.itemDatas.items[GameManager.Instance.selectPotionList[i].itemNumber].Price * Random.Range(0.5f, 2f); // 약마다 랜덤한 가격으로 판매 가능
-            GameManager.Instance.darkstoreRisk += 5;
+            GameManager.Instance.darkstoreRisk += SellHerbRisk;
 
             ItemBase itembase = ItemDatas.items[GameManager.Instance.selectPotionList[i].itemNumber];
             GameManager.Instance.report.UseCoinInStore(itembase, false);
@@ -117,12 +144,12 @@ public class Store : MonoBehaviour
         }
         GameManager.Instance.selectPotionList.Clear();
 
-        for (int i = uis.DropInvenPos.childCount - 1; i >= 0; i--) // 오브젝트 재활용
-        {
+        //for (int i = uis.DropInvenPos.childCount - 1; i >= 0; i--) // 오브젝트 재활용
+        //{
 
-            uis.DropInvenPos.GetChild(i).gameObject.SetActive(false);
-            uis.DropInvenPos.GetChild(i).transform.SetParent(uis.InvenPos);
-        }
+        //    uis.DropInvenPos.GetChild(i).gameObject.SetActive(false);
+        //    uis.DropInvenPos.GetChild(i).transform.SetParent(uis.InvenPos);
+        //}
 
         uis.Reload();
     }

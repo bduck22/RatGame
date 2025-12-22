@@ -7,9 +7,6 @@ public class UIManager : MonoBehaviour
     Animator Fade;
 
     public Animator[] UIs;
-
-    [SerializeField]
-    TextMeshProUGUI roomName;
     public TextMeshProUGUI Day;
 
     void Start()
@@ -29,7 +26,6 @@ public class UIManager : MonoBehaviour
 
     public void OnUi()
     {
-        roomName.text = GameManager.Instance.room.ToString();
         foreach ( Animator ani in UIs)
         {
             ani.SetTrigger("Open");

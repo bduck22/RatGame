@@ -37811,6 +37811,7 @@ MonoBehaviour:
   - {fileID: 573680877}
   - {fileID: 1066879223}
   - {fileID: 1219526021}
+  MainTabs: {fileID: 0}
   herdTabs:
   - Herd: {fileID: 394300256}
     itemName: 
@@ -37929,8 +37930,6 @@ MonoBehaviour:
   - {fileID: 1539316870}
   inventoryManager: {fileID: 0}
   ItemDatas: {fileID: 0}
-  InvenPos: {fileID: 1079867282}
-  DropInvenPos: {fileID: 1796572367}
   InvenPre: {fileID: 2255268588030415952, guid: f2e465f167fcf3c499061eec6db678f7, type: 3}
   store: {fileID: 978430707}
   PotionInfoSlot: {fileID: 0}
@@ -37941,9 +37940,13 @@ MonoBehaviour:
   - {fileID: -2919830285101005366, guid: f770011071301324e9faaa2a4bbf3f16, type: 3}
   RatBuy_Image: {fileID: 2240633314778001084, guid: f770011071301324e9faaa2a4bbf3f16, type: 3}
   Exs:
-  - "\uAC00\uACF5 \uC2DC\uAC04 - 1\uCD08\n\uAC00\uACF5 \uC2AC\uB86F + 1\uCE78"
-  - "\uAC00\uACF5 \uC2DC\uAC04 - 1\uCD08\n\uAC00\uACF5 \uC2AC\uB86F + 1\uCE78"
-  - "\uAC00\uACF5 \uC2DC\uAC04 - 1\uCD08\n\uAC00\uACF5 \uC2AC\uB86F + 1\uCE78"
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  OnOpen: []
+  InvenPos: {fileID: 1079867282}
+  DropInvenPos:
+  - {fileID: 0}
 --- !u!1001 &979723133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62593,6 +62596,9 @@ MonoBehaviour:
   report: {fileID: 1123748118}
   MoneyText: {fileID: 186991014}
   MouseText: {fileID: 689678608}
+  DayText: {fileID: 0}
+  RoomText: {fileID: 0}
+  weekText: {fileID: 0}
   uimanager: {fileID: 15668928}
   ScreenFade: {fileID: 2014592649}
   Screens:

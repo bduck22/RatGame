@@ -28,6 +28,11 @@ public class animeFunc : MonoBehaviour
         
         GameManager.Instance.playingday();
     }
+    public void Dayplaying_Run()
+    {
+
+        GameManager.Instance.NextDaying();
+    }
     public void EndDay()
     {
         GameManager.Instance.NextDayEnd();
