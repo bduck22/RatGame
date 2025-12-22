@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [Serializable]
@@ -36,6 +37,7 @@ public class ShowList : MonoBehaviour
 {
     public ShowItem[] HerbItems = new ShowItem[11];
     public ShowItem[] PotionItems = new ShowItem[5];
+    public Transform DarkStoreOpen;
 
     public TextMeshProUGUI EstimatedTotalMoneyCountText;
     public TextMeshProUGUI CurrentRistPoint;
@@ -49,7 +51,7 @@ public class ShowList : MonoBehaviour
         for (int i = 0; i < HerbItems.Length; i++) // 정보 초기화
         {
             HerbItems[i].itemCountText = HerbItems[i].itemObject?.GetComponentInChildren<TextMeshProUGUI>();
-
+            HerbItems[i].itemObject.transform.GetChild(0).GetComponent<Image>().sprite = ItemDatas.instance.items[i]?.itemImage;
         }
     }
 
@@ -71,5 +73,33 @@ public class ShowList : MonoBehaviour
         {
             HerbItems[i].ItemCount = manager.inventoryManager.deliverycounts[i]; // 구매 횟수 결정
         }
+
+        if (GameManager.Instance.DarkStoreIsOpen)
+        {
+            DarkStoreOpen.GetChild(4).gameObject.SetActive(false);
+            DarkStoreOpen.GetChild(3).gameObject.SetActive(true);
+           
+        }
+        else
+        {
+            DarkStoreOpen.GetChild(3).gameObject.SetActive(false);
+            DarkStoreOpen.GetChild(4).gameObject.SetActive(true);
+
+            
+        }
+
+        DarkStoreOpen.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "확정 오픈까지 D-" + (manager.DarkstoreConfirmedDay - manager.DarkstoreConfirmedDayCount).ToString();
+        for (int i = 0; i < PotionItems.Length; i++)
+        {
+            PotionItems[i].itemObject.SetActive(false);
+        }
+
+        for (int i = 0; i < manager.selectPotionList.Count; i++)
+        {
+            Debug.Log("보여;주기");
+            PotionItems[i].itemObject.SetActive(true);
+            PotionItems[i].itemObject.transform.GetChild(0).GetComponent<Image>().sprite = ItemDatas.instance.items[manager.selectPotionList[i].itemNumber]?.itemImage;
+        }
+
     }
 }

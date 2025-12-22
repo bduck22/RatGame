@@ -32,6 +32,7 @@ public class LabController : MonoBehaviour
 
     public Image TestKindIcon;
     public Sprite[] IconsImage;
+    DicManager dicManager;
 
     int page = 0;
     public int TestKindPage
@@ -145,7 +146,7 @@ public class LabController : MonoBehaviour
         TestKindIcon.sprite = IconsImage[TestKindPage];
     }
 
-    DicManager dicManager;
+ 
 
 
     public void ConfirmStart()
@@ -167,11 +168,11 @@ public class LabController : MonoBehaviour
         {
             GameManager.Instance.MouseCount--;
             GameManager.Instance.report.RatTestCount++;
-            int DictioNum = Slot.Item.itemNumber - 13;
+            int DictioNum = Slot.Item.itemNumber - 12;
+            Debug.Log(DictioNum);
 
 
-
-            if (DictioNum == 5)
+            if (DictioNum == 15)
             {
                 int num = Random.Range(0, dicManager.OpenedPer.Count);
                 dicManager.OpenedPer[num] += 5;
@@ -179,11 +180,14 @@ public class LabController : MonoBehaviour
                 {
                     dicManager.OpenedPer[num] = 100;
                 }
+                Debug.Log("---11");
             }
             else
             {
                 PotionData potion = ItemDatas.items[Slot.Item.itemNumber] as PotionData;
 
+                
+                Debug.Log(dicManager.OpenedPer[DictioNum]);
                 dicManager.OpenedPer[DictioNum] += potion.Persents[nowtype];
                 if (potion.NonWater == Slot.Item.shap)
                 {
@@ -213,11 +217,11 @@ public class LabController : MonoBehaviour
 
                 GameManager.Instance.Money -= CellTestMoney;
                 GameManager.Instance.report.RatTestCount++;
-                int DictioNum = Slot.Item.itemNumber - 13;
+                int DictioNum = Slot.Item.itemNumber - 12;
 
 
 
-                if (DictioNum == 5)
+                if (DictioNum == 15)
                 {
                     int num = Random.Range(0, dicManager.OpenedPer.Count);
                     dicManager.OpenedPer[num] += 2;

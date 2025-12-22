@@ -26,7 +26,7 @@ public class DropItemInReport : MonoBehaviour
 
     public void OnEnable()
     {
-        InitializeSellPoints();
+       InitializeSellPoints();
     }
 
     [ContextMenu("인벤토리 초기화")]
@@ -64,7 +64,7 @@ public class DropItemInReport : MonoBehaviour
 
             slot.gameObject.name = (i).ToString();
             slot.GetComponent<Image>().sprite = inventoryManager.PotionCase;
-            slot.GetComponent<Button>().onClick.RemoveAllListeners(); // 모든 호출 삭제
+            slot.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners(); // 모든 호출 삭제
 
             var Itemdata = itemdata as PotionData;
             if (Itemdata.NonWater == inventoryManager.inventory[i].shap)
@@ -76,15 +76,15 @@ public class DropItemInReport : MonoBehaviour
                 slot.transform.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
             }
 
-            slot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (inventoryManager.inventory[i].ItemCount <= 1 ? "" : inventoryManager.inventory[i].ItemCount.ToString("#,###"));
+            //slot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (inventoryManager.inventory[i].ItemCount <= 1 ? "" : inventoryManager.inventory[i].ItemCount.ToString("#,###"));
 
             // 나중에 약이 판매 슬롯에 있을 때 다시 인벤토리로 돌아가는 기능 추가해야함
 
             ItemClass itemdataindex = inventoryManager.inventory[i];
 
-            slot.GetComponent<Button>().onClick.AddListener(() => AddItemInReportList(itemdataindex, slot));   // 아이템 제가 기능
+            slot.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => AddItemInReportList(itemdataindex, slot));   // 아이템 제가 기능
 
-            slot.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+            slot.transform.GetChild(1).gameObject.SetActive(false);
 
           
         }
@@ -97,8 +97,8 @@ public class DropItemInReport : MonoBehaviour
         report.SellPotion.Add(item);
         inventoryManager.inventory.Remove(item);
         slot.transform.SetParent(submitContentPos);
-        slot.GetComponent<Button>().onClick.RemoveAllListeners();
-        slot.GetComponent<Button>().onClick.AddListener(() => RemoveItemInReportList(item, slot));
+        slot.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+        slot.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => RemoveItemInReportList(item, slot));
     }
 
     public void RemoveItemInReportList(ItemClass item, GameObject slot)
@@ -106,8 +106,8 @@ public class DropItemInReport : MonoBehaviour
         report.SellPotion.Remove(item);
         inventoryManager.inventory.Add(item);
         slot.transform.SetParent(InvContentPos);
-        slot.GetComponent<Button>().onClick.RemoveAllListeners();
-        slot.GetComponent<Button>().onClick.AddListener(() => AddItemInReportList(item, slot));
+        slot.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+        slot.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => AddItemInReportList(item, slot));
     }
 
     public void DistroyedSwllObjects() // 제출창 초기화

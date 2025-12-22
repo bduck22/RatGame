@@ -152,7 +152,7 @@ public class MoveItem : MonoBehaviour
                     }
 
                     inventoryManager.UpdateInventory();
-                    dropSlot.Load();
+                    dropSlot?.Load();
                 }
             }
             else if (!dropSlot.Lock)
@@ -167,7 +167,7 @@ public class MoveItem : MonoBehaviour
                 }
 
                 inventoryManager.UpdateInventory();
-                dropSlot.Load();
+                dropSlot?.Load();
             }
         }
         transform.SetParent(OrigionPos);

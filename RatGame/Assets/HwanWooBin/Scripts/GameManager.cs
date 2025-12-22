@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
 
     [Header("암시장 스폰 확률")]
     public int OpenProbably = 40;           // 기본 확률 40%
-    int DarkstoreConfirmedDayCount = 0;
+    public int DarkstoreConfirmedDayCount = 0;
     public int DarkstoreConfirmedDay = 3;       // 반드시 암시장 오픈되는 날
     public List<ItemClass> selectPotionList; // 판매 약물
     public Store store;
@@ -360,14 +360,14 @@ public class GameManager : MonoBehaviour
                 }
 
                 // 나중에 이미지도 들어갈 수 있음
+                Potioninfo.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Itemdata.Herb1?.itemImage;
+                Potioninfo.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Itemdata.Herb2?.itemImage;
 
-                //Potioninfo.GetComponentInChildren<TextMeshProUGUI>().text = "등급 : <color=" + (Itemdata.itemLevel == 3 ? "red>전설" :
-                //Itemdata.itemLevel == 2 ? "blue>희귀" : Itemdata.itemLevel == 1 ? "#DA9659>일반" : "black>??") +
-                //"</color>\n완성도 : " + item.Completeness.ToString() + "%\n\n" +
-                //"<size=80>제작법</size>\n" +
-                //item.herb1.name + "(" + (item.process1 == 0 ? "달" : item.process1 == 1 ? "빻" : item.process1 == 2 ? "말" : "?") + ") " + item.amount1.ToString() + " : " +
-                //item.herb2.name + "(" + (item.process2 == 0 ? "달" : item.process2 == 1 ? "빻" : item.process2 == 2 ? "말" : "?") + ") " + item.amount2.ToString() + "\n" +
-                //"형태 : " + (item.shap ? "고체" : "액체");
+               // Potioninfo.GetChild(1).GetChild(0).GetComponent<Image>().sprite = inventoryManager.ProcessIcon[Itemdata.Herb1.itemProcessedWay];    
+
+
+
+
             }
             else // 허브일 때
             {
@@ -454,8 +454,8 @@ public class GameManager : MonoBehaviour
 
     public void playingday()
     {
-        store?.Selling(); // 모든 물품 판매
         AddDayData();
+        store?.Selling(); // 모든 물품 판매
         if (ReportDayChick()) // 리포트 날
         {
             
@@ -505,7 +505,7 @@ public class GameManager : MonoBehaviour
         darkstoreRisk = 0; // 리포트 날에 리스크 초기화
     }
 
-    public void AddDayData()
+    public void AddDayData() //Day리스트 추가
     {
 
 
@@ -579,7 +579,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-       X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
+       X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실 && nowscreen != ScreenType.제조 && nowscreen != ScreenType.상점);
 
         Background.gameObject.SetActive(nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
 

@@ -132,7 +132,7 @@ public class Store : MonoBehaviour
     public void DarkStore()
     {
 
-        for (int i = 0; i < GameManager.Instance.selectPotionList.Count; i++)
+        for (int i = 0; i < GameManager.Instance.selectPotionList.Count; i++) // 야굼ㄹ 판매
         {
             GameManager.Instance.Money += (GameManager.Instance.selectPotionList[i].Completeness * 0.01f) * GameManager.Instance.itemDatas.items[GameManager.Instance.selectPotionList[i].itemNumber].Price * Random.Range(0.5f, 2f); // 약마다 랜덤한 가격으로 판매 가능
             GameManager.Instance.darkstoreRisk += SellHerbRisk;
@@ -144,12 +144,12 @@ public class Store : MonoBehaviour
         }
         GameManager.Instance.selectPotionList.Clear();
 
-        //for (int i = uis.DropInvenPos.childCount - 1; i >= 0; i--) // 오브젝트 재활용
-        //{
+        for (int i = 0; i < uis.DropInvenPos.Length; i++) // 오브젝트 재활용
+        {
 
-        //    uis.DropInvenPos.GetChild(i).gameObject.SetActive(false);
-        //    uis.DropInvenPos.GetChild(i).transform.SetParent(uis.InvenPos);
-        //}
+            uis.DropInvenPos[i].gameObject.SetActive(false);
+          
+        }
 
         uis.Reload();
     }

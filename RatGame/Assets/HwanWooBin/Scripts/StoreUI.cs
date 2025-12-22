@@ -122,7 +122,7 @@ public class StoreUI : MonoBehaviour
     public TextMeshProUGUI CurrentRatCount;
     public TextMeshProUGUI SellRatCountText;
     public TextMeshProUGUI MaxRatCountText;
- 
+    public TextMeshProUGUI DarkStoryOpenDay;
 
     private void Awake()
     {
@@ -159,12 +159,11 @@ public class StoreUI : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        if (number == 2 && !GameManager.Instance.DarkStoreIsOpen) 
+        if(!GameManager.Instance.DarkStoreIsOpen) 
         {
             OnOpen[0].SetActive(true);
             OnOpen[1].SetActive(false);
-
-            return;         
+            DarkStoryOpenDay.text = "확정 오픈까지 D-" + (GameManager.Instance.DarkstoreConfirmedDay - GameManager.Instance.DarkstoreConfirmedDayCount).ToString();
         }
         else
         {
@@ -172,7 +171,8 @@ public class StoreUI : MonoBehaviour
             OnOpen[1].SetActive(true);
         }
 
-            tabnumber = number;
+
+        tabnumber = number;
         float pos = -tabs[number].anchoredPosition.x;
         Vector2 moveing  = new Vector2(pos, MainTabs.anchoredPosition.y);
 
