@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uCC9C\uAD81"
   m_EditorClassIdentifier: 
   itemName: "\uCC9C\uAD81"
-  itemImage: {fileID: -3601538372703888944, guid: 3789dfea864397947ade1d291622913a, type: 3}
+  itemImage: {fileID: 21300000, guid: 3789dfea864397947ade1d291622913a, type: 3}
   itemType: 0
   Explanation: "\uD558\uB298\uC5D0\uC11C \uB0B4\uB824\uC628 \uC57D\uCD08"
   Price: 430

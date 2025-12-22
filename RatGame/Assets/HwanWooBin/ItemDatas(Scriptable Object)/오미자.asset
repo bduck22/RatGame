@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uC624\uBBF8\uC790"
   m_EditorClassIdentifier: 
   itemName: "\uC624\uBBF8\uC790"
-  itemImage: {fileID: 4837057838994273117, guid: f14e7694afafa3a45882e7de48058eaa, type: 3}
+  itemImage: {fileID: 21300000, guid: f14e7694afafa3a45882e7de48058eaa, type: 3}
   itemType: 0
   Explanation: "\uC54C\uD504\uC2A4 \uC0B0\uB9E5\uC5D0\uC11C \uCC44\uC9D1\uD55C 3\uAC1C\uC6D4\uC0B0
     \uC2E0\uC120\uD55C \uC624\uBBF8\uC790\uC774\uB2E4."

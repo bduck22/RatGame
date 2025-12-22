@@ -18,7 +18,7 @@ public class AnimationManager : MonoBehaviour
     {
         foreach(Animator animator in Animators)
         {
-                animator.SetFloat("Speed", (IsDoubleSpeed?2:1));
+            if(animator!=null) animator.SetFloat("Speed", (IsDoubleSpeed?2:1));
         }
     }
 }

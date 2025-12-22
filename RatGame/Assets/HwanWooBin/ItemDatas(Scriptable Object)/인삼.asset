@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uC778\uC0BC"
   m_EditorClassIdentifier: Assembly-CSharp::HerbData
   itemName: "\uC778\uC0BC"
-  itemImage: {fileID: 21300000, guid: 41fe968d2e896e0488f0b8244a1df3dc, type: 3}
+  itemImage: {fileID: 21300000, guid: 0f30f029e065ba044937636906fc817d, type: 3}
   itemType: 0
   Explanation: "\uC0DD\uAE30\uAC00 \uB118\uCE58\uB294 \uD76C\uACE0 \uAD75\uC740 \uBFCC\uB9AC"
   Price: 0

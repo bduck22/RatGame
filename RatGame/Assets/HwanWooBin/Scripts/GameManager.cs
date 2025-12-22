@@ -208,13 +208,13 @@ public class GameManager : MonoBehaviour
         DayText.text = Day.ToString() + "일차";
         switch (Day % 7) 
         {
-            case 0: weekText.text = "일"; break;
-            case 1: weekText.text = "월"; break;
-            case 2: weekText.text = "화"; break;
-            case 3: weekText.text = "수"; break;
-            case 4: weekText.text = "목"; break;
-            case 5: weekText.text = "금"; break;
-            case 6: weekText.text = "토"; break;
+            case 0: weekText.text = "금"; break;
+            case 1: weekText.text = "토"; break;
+            case 2: weekText.text = "일"; break;
+            case 3: weekText.text = "월"; break;
+            case 4: weekText.text = "화"; break;
+            case 5: weekText.text = "수"; break;
+            case 6: weekText.text = "목"; break;
             default: weekText.text = "???"; break;
         }
 
@@ -557,7 +557,18 @@ public class GameManager : MonoBehaviour
             nowscreen = screen1;
             stopping = true;
 
-            ScreenFade.SetTrigger("On");
+            if((int)nowscreen > 7)
+            {
+                RealOnScreen();
+            }
+            else ScreenFade.SetTrigger("On");
+        }
+        else
+        {
+            ScreenType screen1 = (ScreenType)screen;
+            nowscreen = screen1;
+            stopping = false;
+            RealOnScreen();
         }
     }
 
@@ -580,14 +591,18 @@ public class GameManager : MonoBehaviour
             }
         }
 
-       X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실 && nowscreen != ScreenType.제조 && nowscreen != ScreenType.상점);
+       X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실 && nowscreen != ScreenType.상점);
 
         Background.gameObject.SetActive(nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
 
 
-        RoomControler.gameObject.SetActive(nowscreen == ScreenType.제조실 || nowscreen == ScreenType.실험실 || nowscreen == ScreenType.침실);
+        RoomControler.gameObject.SetActive(nowscreen != ScreenType.가공 && nowscreen != ScreenType.제조 && nowscreen != ScreenType.실험&&nowscreen!=ScreenType.상점&&nowscreen!=ScreenType.침대);
 
-        InventoryUI.gameObject.SetActive(false);
+        if (SetOb != InventoryUI)
+        {
+
+            InventoryUI.gameObject.SetActive(false);
+        }
 
         inventoryManager.SawPotion = false;
         inventoryManager.SawProcessed = false;
@@ -606,6 +621,7 @@ public class GameManager : MonoBehaviour
                 inventoryManager.UpdateInventory();
                 InventoryUI.gameObject.SetActive(true);
                 break;
+            case ScreenType.제출:
             case ScreenType.실험:
                 inventoryManager.NotFaildPotion = true;
                 inventoryManager.SawPotion = true;
@@ -618,15 +634,14 @@ public class GameManager : MonoBehaviour
                 inventoryManager.Sawherb = true;
                 inventoryManager.SawProcessed = true;
                 inventoryManager.UpdateInventory();
-                InventoryUI.gameObject.SetActive(true);
                 break;
-            case ScreenType.도감:
-                inventoryManager.NotFaildPotion = true;
-                inventoryManager.SawPotion = true;
-                inventoryManager.Sawherb = true;
-                inventoryManager.UpdateInventory();
-                InventoryUI.gameObject.SetActive(true);
-                break;
+            //case ScreenType.도감:
+            //    inventoryManager.NotFaildPotion = true;
+            //    inventoryManager.SawPotion = true;
+            //    inventoryManager.Sawherb = true;
+            //    inventoryManager.UpdateInventory();
+            //    InventoryUI.gameObject.SetActive(true);
+            //    break;
 
         }
 

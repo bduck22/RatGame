@@ -13,6 +13,16 @@ public class animeFunc : MonoBehaviour
         
     }
 
+    void False()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void falseme()
+    {
+        False();
+    }
+
     public void stoppingfalse()
     {
         GameManager.Instance.falsestop();

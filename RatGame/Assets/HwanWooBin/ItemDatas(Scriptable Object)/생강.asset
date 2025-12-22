@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uC0DD\uAC15"
   m_EditorClassIdentifier: 
   itemName: "\uC0DD\uAC15"
-  itemImage: {fileID: 7137342201105265109, guid: 7ea564bf3e77bc54fadfdc4de1df0533, type: 3}
+  itemImage: {fileID: 21300000, guid: 7ea564bf3e77bc54fadfdc4de1df0533, type: 3}
   itemType: 0
   Explanation: "\uC0DD\uAC15\uC0DD\uAC15"
   Price: 200

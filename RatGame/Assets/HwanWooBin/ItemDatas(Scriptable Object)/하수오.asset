@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uD558\uC218\uC624"
   m_EditorClassIdentifier: 
   itemName: "\uD558\uC624\uC218"
-  itemImage: {fileID: 4640619489982188456, guid: ad22b4b5fe2445849a4054096670d6a9, type: 3}
+  itemImage: {fileID: 21300000, guid: ad22b4b5fe2445849a4054096670d6a9, type: 3}
   itemType: 0
   Explanation: "\uD558\uC624\uD558\uC624"
   Price: 500
