@@ -59,14 +59,14 @@ public class Infomation : MonoBehaviour
     public void ShowInfo(bool isdic, ItemClass item)
     {
         ItemBase iteminfo = ItemDatas.instance.items[item.itemNumber];
-        if (item.itemType == ItemType.Herb)
+        if (iteminfo.itemType == ItemType.Herb)
         {
             HerbPanel.gameObject.SetActive(true);
             PotionPanel.gameObject.SetActive(false);
             HerbData herb = iteminfo as HerbData;
-            Herb_Name.text = item.itemName;
+            Herb_Name.text = iteminfo.itemName;
             LayoutRebuilder.ForceRebuildLayoutImmediate(Herb_Name.transform.parent.parent.GetComponent<RectTransform>());
-            Herb_Description.text = item.itemDescription;
+            Herb_Description.text = iteminfo.Explanation;
             if (isdic)
             {
                 Herb_DicInfo.gameObject.SetActive(true);
@@ -91,7 +91,7 @@ public class Infomation : MonoBehaviour
                     }
                     else
                     {
-                        Herb_Dic_Processes.GetChild(i).GetChild(i).GetComponent<Image>().sprite = WhatThe;
+                        Herb_Dic_Processes.GetChild(i).GetChild(1).GetComponent<Image>().sprite = WhatThe;
                     }
                 }
             }
@@ -191,8 +191,14 @@ public class Infomation : MonoBehaviour
                     Potion_Dic_Herb2Icon.gameObject.SetActive(false);
                 }
 
-                    Potion_Dic_Herb1Process.sprite = ProcessWay[potion.process1];
-                    Potion_Dic_Herb2Process.sprite = ProcessWay[potion.process2];
+                if(potion.process1 <= 0)
+                {
+                    Potion_Dic_Herb1Process.sprite = ProcessWay[3];
+                }
+                if (potion.process2 <= 0)
+                {
+                    Potion_Dic_Herb2Process.sprite = ProcessWay[3];
+                }
 
                 if(openper >= 90)
                 {

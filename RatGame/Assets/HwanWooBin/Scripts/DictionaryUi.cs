@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class DictionaryUi : MonoBehaviour
 {
     public Transform DicPos;
+    public Infomation Infomation;
     public int NowPage
     {
         get { return nowPage; }
@@ -25,11 +26,21 @@ public class DictionaryUi : MonoBehaviour
     }
     public void SetDefault()
     {
-        HerbCount = ItemDatas.instance.items.Length - ItemDatas.instance.PotionIndex;
+        PotionCount = ItemDatas.instance.items.Length - ItemDatas.instance.PotionIndex;
         PotionPageNum = (HerbCount/16 + (HerbCount%16>0?1:0))+1;
 
-        PotionCount = ItemDatas.instance.items.Length - HerbCount;
+        HerbCount = ItemDatas.instance.items.Length - PotionCount;
         MaxPage = PotionPageNum + (PotionCount / 16 + (PotionCount % 16 > 0 ? 1 : 0));
+
+        LoadImage(NowPage);
+    }
+
+    public void SawInfo(int number)
+    {
+        ItemClass item = new ItemClass();
+        item.itemNumber = number + NowPage * 16;
+        Infomation.gameObject.SetActive(true);
+        Infomation.ShowInfo(true, item);
     }
 
     public void LoadImage(int pagenum)
@@ -39,16 +50,19 @@ public class DictionaryUi : MonoBehaviour
             int pivotnum=0;
             if(pagenum >= PotionPageNum)
             {
-                pivotnum = HerbCount + PotionCount - 16 * (pagenum-PotionPageNum);
+                pivotnum = HerbCount + PotionCount - 16 * (pagenum - PotionPageNum);
+            }
+
+            DicPos.GetChild(0).GetChild(1).GetChild(i).gameObject.SetActive(true);
+            DicPos.GetChild(0).GetChild(1).GetChild(i).GetComponent<Image>().sprite = ItemDatas.instance.items[i+pivotnum].itemImage;
+            if(ItemDatas.instance.items.Length - pivotnum - (pagenum>=PotionPageNum?0:PotionCount) > 8)
+            {
+                DicPos.GetChild(1).GetChild(1).GetChild(i).gameObject.SetActive(true);
+                DicPos.GetChild(1).GetChild(1).GetChild(i).GetComponent<Image>().sprite = ItemDatas.instance.items[i + pivotnum+8].itemImage;
             }
             else
             {
-                pivotnum = HerbCount - 16 * pagenum;
-            }
-                DicPos.GetChild(0).GetChild(i).GetComponent<Image>().sprite = ItemDatas.instance.items[i+pivotnum].itemImage;
-            if(ItemDatas.instance.items.Length - pivotnum > 8)
-            {
-                DicPos.GetChild(1).GetChild(i).GetComponent<Image>().sprite = ItemDatas.instance.items[i + pivotnum+8].itemImage;
+                DicPos.GetChild(1).GetChild(1).GetChild(i).gameObject.SetActive(false);
             }
         }
     }

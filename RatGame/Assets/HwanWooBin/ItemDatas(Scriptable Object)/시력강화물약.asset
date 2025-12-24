@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62e04aec333bb641b1be87df4bf0501, type: 3}
   m_Name: "\uC2DC\uB825\uAC15\uD654\uBB3C\uC57D"
   m_EditorClassIdentifier: 
-  itemName: 
-  itemImage: {fileID: 0}
-  itemType: 0
-  Explanation: 
-  Herb1: {fileID: 0}
-  process1: -1
-  Herb2: {fileID: 0}
-  process2: -1
-  HerbAmount1: 0
-  HerbAmount2: 0
-  itemLevel: 0
+  itemName: "\uC2DC\uB825\uAC15\uD654\uBB3C\uC57D"
+  itemImage: {fileID: 21300000, guid: 284ea4be4b40c4c46a9ad6d3a7d644b9, type: 3}
+  itemType: 1
+  Explanation: -------------
+  Price: 1000
+  Herb1: {fileID: 11400000, guid: f54a6f11205eb8e43996a84da715cc44, type: 2}
+  process1: 0
+  Herb2: {fileID: 11400000, guid: c8a19ab244eec464a88efa44e2a5df4b, type: 2}
+  process2: 2
+  HerbAmount1: 3
+  HerbAmount2: 7
+  itemLevel: 1
+  NonWater: 0
+  NonShapeImage: {fileID: 21300000, guid: 472c2460750abcd4f899965f786d259e, type: 3}
+  NonShapeName: 
+  Persents: 05000000050000000500000005000000

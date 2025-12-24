@@ -508,9 +508,16 @@ public class GameManager : MonoBehaviour
         //SkipReport();
     }
 
+    public Transform Ending;
+
     [ContextMenu("리포트 스킵")]
     public void SkipReport() // 나중에는 button으로
     {
+        if (Day == 30)
+        {
+            Ending.gameObject.SetActive(true);
+            return;
+        }
         report.ResetReport();
         dayani.SetTrigger("Close");
         OnScreen(5);

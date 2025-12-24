@@ -198,8 +198,6 @@ public class ItemDatas : MonoBehaviour
                         items[i].SetValue(item);
                     }
                 }
-
-                AssetDatabase.Refresh();
             }
         }
         else

@@ -12,14 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62e04aec333bb641b1be87df4bf0501, type: 3}
   m_Name: "\uC54C\uC544 \uBCFC \uC218 \uC5C6\uB294 \uBB3C\uC57D"
   m_EditorClassIdentifier: 
-  itemName: "\uC54C\uC544 \uBCFC \uC218 \uC5C6\uB294 \uBB3C\uC57D"
-  itemImage: {fileID: 21300000, guid: ae01a01cbb87afe4493eb78a025ac2d6, type: 3}
+  itemName: "\uC54C\uC544\uBCFC \uC218 \uC5C6\uB294 \uBB3C\uC57D"
+  itemImage: {fileID: 21300000, guid: 945a1d615991ef4408c477e052508605, type: 3}
   itemType: 1
-  Explanation: "\uC5B4\uB5A4 \uC57D\uCD08\uAC00 \uB4E4\uC5B4\uAC14\uB294\uC9C0 \uC54C
-    \uC218 \uC5C6\uB294 \uBB3C\uC57D, \uD310\uB9E4\uD560 \uC2DC \uB79C\uB364 \uAE08\uC57D\uC744
-    \uD68D\uB4DD\uD558\uBA70, \uC2E4\uD5D8 \uC2DC \uB79C\uB364 \uC57D\uC758 \uD574\uAE08\uB3C4\uAC00
-    \uC0C1\uC2B9\uD55C\uB2E4."
-  Price: 2000
+  Explanation: ------------
+  Price: 0
   Herb1: {fileID: 11400000, guid: 029570075bc037744a6966353531bce0, type: 2}
   process1: 3
   Herb2: {fileID: 11400000, guid: 029570075bc037744a6966353531bce0, type: 2}
@@ -28,6 +25,6 @@ MonoBehaviour:
   HerbAmount2: 0
   itemLevel: 0
   NonWater: 0
-  NonShapeImage: {fileID: 21300000, guid: 515d951050570904bb2a48ba7999e6cb, type: 3}
-  NonShapeName: "\uC54C\uC544 \uBCFC \uC218 \uC5C6\uB294 \uBB3C\uC57D"
+  NonShapeImage: {fileID: 21300000, guid: 1ab5a5b24561e8d43afb0c74aac48fd9, type: 3}
+  NonShapeName: 
   Persents: 00000000000000000000000000000000
