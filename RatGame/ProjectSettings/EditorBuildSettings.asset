@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/HwanWooBin/Scene/MainScene.unity
     guid: 2f6ace2fb8cf9bb4ea07d9212f833e7f
   - enabled: 1
-    path: Assets/HwanWooBin/Scene/1.unity
-    guid: 67b7488292f66684bbf5bad9cfcb4d0b
+    path: Assets/HwanWooBin/Scene/GameSceneREAL.unity
+    guid: 92ad2e3b602bea54dbdf34e98e3b9c08
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

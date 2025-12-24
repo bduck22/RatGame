@@ -30,11 +30,22 @@ public class InventoryManger : MonoBehaviour
     public int[] deliverycounts = new int[5];
     public int ratDeliverycounts = 0;
 
+    public Transform SortPanel;
+    public Image[] CheckImage;
+
+    public bool IsSubmit;
+
+    public DropItemInReport DropItemInReport;
+
+    public Transform Info;
+    [Header("정보창")]
+    public Infomation Infomation;
+
     [Header("새로운 인벤토리")]
-    public Transform[] page;
+    public Transform page;
     public int pageMaxSlot = 9;
-    public int nowPage = 1;
-    int bestpage = 1;
+    public int nowPage = 0;
+    [SerializeField] int bestpage = 1;
     public TextMeshProUGUI pageText;
 
     public int NowPage
@@ -43,107 +54,124 @@ public class InventoryManger : MonoBehaviour
         set
         {
             nowPage += value;
-            nowPage = Mathf.Clamp(nowPage, 1, bestpage);
+            nowPage = Mathf.Clamp(nowPage, 0, bestpage-1);
         }
     }
 
-  
+    public void SubmitPotion(int number)
+    {
+        DropItemInReport.AddItemInReportList(inventory[number]);
+    }
+
+    public void OpenInfo(bool IsDictio, int index)
+    {
+        Info.gameObject.SetActive(true);
+        Infomation.ShowInfo(IsDictio, inventory[index]);
+    }
+
+
     public void UpdateInventory()
     {
         bannedItemCount = 0;
-        for (int i = 0; i < page.Length; i++)
+        for (int i = 0; i < page.childCount; i++)
         {
-            for (int j = 0; j < page[i].childCount; j++)
-            {
-                page[i].GetChild(j).gameObject.SetActive(false);
-               
-            }
-            page[i].gameObject.SetActive(false);
+                page.GetChild(i).gameObject.SetActive(false);
         }
 
 
-        for (int i = 0; i < inventory.Count; i++)//4
+        for (int i = NowPage*pageMaxSlot; i < (NowPage+1)*pageMaxSlot; i++)//4
         {
             GameObject slot;
-            int slotIndex = i - bannedItemCount;
-            int pageIndex = slotIndex / pageMaxSlot;
+            slot = page.GetChild(i % pageMaxSlot).gameObject;
+            slot.SetActive(false);
+            int itemnumber = i + bannedItemCount;
+            if (itemnumber >= inventory.Count)
+            {
+                break;
+            }
 
-            page[nowPage-1].gameObject.SetActive(true);
-            bestpage = pageIndex + 1;
             //if (slotIndex % pageMaxSlot == 0 && slotIndex != 0)
             //{
             //    Debug.Log("페이지 넘기기");
-            //}
-
-            if (page[pageIndex].childCount <= i - bannedItemCount)
-            {
-                //생성
-                slot = Instantiate(InvenPre, page[pageIndex]);
-
-            }
-            else
-            { 
-                slot = page[pageIndex].GetChild(slotIndex % pageMaxSlot).gameObject;
-                slot.SetActive(true);
-            }
-
-            pageText.text = NowPage.ToString() + " / " + bestpage.ToString(); // text설정
+            //} // text설정
 
 
-            ItemBase itemdata = GameManager.Instance.itemDatas.items[inventory[i].itemNumber];
+            ItemBase itemdata = GameManager.Instance.itemDatas.items[inventory[itemnumber].itemNumber];
 
-            inventory[i].itemName = itemdata.itemName;
-            inventory[i].itemDescription = itemdata.Explanation;
-
-            if ((!Sawherb && itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay == -1) || // 아이템 밴하기
+            if ((!Sawherb && itemdata.itemType == ItemType.Herb && inventory[itemnumber].ProcessWay == -1) || // 아이템 밴하기
                 (!SawPotion && itemdata.itemType == ItemType.Potion) ||
-                (!SawProcessed && itemdata.itemType == ItemType.Herb && inventory[i].ProcessWay != -1) ||
-                (NotFaildPotion && inventory[i].itemNumber == 12)
+                (!SawProcessed && itemdata.itemType == ItemType.Herb && inventory[itemnumber].ProcessWay != -1) ||
+                (NotFaildPotion && inventory[itemnumber].itemNumber == 12)
                 )
             {
                 bannedItemCount++;
-                slot.SetActive(false);
+                i--;
                 continue;
             }
+            slot.SetActive(true);
 
-            slot.gameObject.name = (i).ToString();
-            slot.GetComponent<Image>().sprite = itemdata.itemType == ItemType.Potion ? PotionCase : HerbCase;
-            if (itemdata.itemType == ItemType.Potion)
+            SetIconInfo(slot.transform, inventory[itemnumber], itemnumber);
+        }
+
+        bestpage = (inventory.Count-bannedItemCount) / 9 + ((inventory.Count - bannedItemCount) % 9 > 0 ? 1 : (inventory.Count - bannedItemCount)==0?1:0);
+        pageText.text = (NowPage + 1).ToString() + " / " + bestpage.ToString();
+
+    }
+
+    public void LockOnOff(bool On)
+    {
+        for(int i = 0; i < 9; i++)
+        {
+            page.GetChild(i).GetComponentInChildren<MoveItem>().isStop = On;
+        }
+    }
+
+    public void SetIconInfo(Transform slot, ItemClass Item, int itemNumber)
+    {
+        ItemBase itemdata = GameManager.Instance.itemDatas.items[Item.itemNumber];
+
+        slot.gameObject.name = (itemNumber).ToString();
+        slot.GetComponent<Image>().sprite = itemdata.itemType == ItemType.Potion ? PotionCase : HerbCase;
+        if (itemdata.itemType == ItemType.Potion)
+        {
+            slot.transform.GetChild(1).gameObject.SetActive(false);
+
+            var Itemdata = itemdata as PotionData;
+
+
+            if (Itemdata.NonWater == Item.shap)
             {
-                slot.transform.GetChild(1).gameObject.SetActive(false);
-
-                var Itemdata = itemdata as PotionData;
-
-
-                if (Itemdata.NonWater == inventory[i].shap)
-                {
-                    slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
-                }
-                else
-                {
-
-                    slot.transform.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
-
-                }
+                slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
             }
             else
             {
 
-                slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
+                slot.transform.GetChild(0).GetComponent<Image>().sprite = Itemdata.NonShapeImage;
 
-                if (inventory[i].ProcessWay != -1 && inventory[i].ProcessWay != 3)
-                {
-                    slot.transform.GetChild(1).gameObject.SetActive(true);
-                    slot.transform.GetChild(1).GetComponent<Image>().sprite = ProcessIcon[inventory[i].ProcessWay];
-                }
-                else
-                {
-                    slot.transform.GetChild(1).gameObject.SetActive(false);
-                }
             }
-            slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (inventory[i].ItemCount <= 1 ? "" : inventory[i].ItemCount.ToString("#,###"));
         }
+        else
+        {
 
+            slot.transform.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
+
+            if (Item.ProcessWay != -1 && Item.ProcessWay != 3)
+            {
+                slot.transform.GetChild(1).gameObject.SetActive(true);
+                slot.transform.GetChild(1).GetComponent<Image>().sprite = ProcessIcon[Item.ProcessWay];
+            }
+            else
+            {
+                slot.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+        slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (Item.ItemCount <= 1 ? "" : Item.ItemCount.ToString("#,###"));
+        slot.GetComponentInChildren<MoveItem>().LoadIndex();
+    }
+
+    public void OpenPanel()
+    {
+        SortPanel.gameObject.SetActive(!SortPanel.gameObject.activeSelf);
     }
 
     public int ItemCount(int itemnumber)
@@ -160,15 +188,17 @@ public class InventoryManger : MonoBehaviour
         return count;
     }
 
-
-   void MovePage()
+    public void OnOffBan(int type)
     {
-        for (int i = 0; i < bestpage; i++)
+        switch (type)
         {
-            page[i].gameObject.SetActive(false);
-            if (i+1 == NowPage) { page[i].gameObject.SetActive(true); }
-            
+            case 0:Sawherb = !Sawherb; break;
+            case 1:SawProcessed = !SawProcessed; break;
+            case 2:SawPotion = !SawPotion; break;
         }
+
+        CheckImage[type].gameObject.SetActive((type==0?Sawherb:type==1?SawProcessed:SawPotion));
+        UpdateInventory();
     }
 
    
@@ -176,6 +206,6 @@ public class InventoryManger : MonoBehaviour
     {
         NowPage = pageUp ? 1 : -1; // 오른쪽 왼쪽
         pageText.text = NowPage.ToString() +" / " + bestpage.ToString();
-        MovePage();
+        UpdateInventory();
     }
 }

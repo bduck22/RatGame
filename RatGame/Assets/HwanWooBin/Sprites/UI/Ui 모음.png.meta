@@ -2018,7 +2018,7 @@ TextureImporter:
         width: 477
         height: 354
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2027,6 +2027,28 @@ TextureImporter:
       bones: []
       spriteID: 2b26f92acc739594fb061688f10166b6
       internalID: 1624685154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WTF
+      rect:
+        serializedVersion: 2
+        x: 4131
+        y: 759
+        width: 304
+        height: 303
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4a8e0435aaaef4da5cc2bbd83e4ffc
+      internalID: 1351191791
       vertices: []
       indices: 
       edges: []
@@ -2056,6 +2078,7 @@ TextureImporter:
       "Ui \uBAA8\uC74C_21": -6451801045349640243
       "Ui \uBAA8\uC74C_22": 4704231796165476608
       "Ui \uBAA8\uC74C_6": -6584855099634553191
+      WTF: 1351191791
       X: 1220861568698287011
       YES: 489499098466271560
       "\uAC00\uACF5\uC0C1\uD0DC": -2156087686047747542

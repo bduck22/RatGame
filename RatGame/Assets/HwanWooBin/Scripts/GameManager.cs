@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.LookDev;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -27,9 +28,7 @@ public enum ScreenType
     가공상태,
     내역서,
     인벤토리,
-    제출,
-    영수증,
-    보고서
+    제출
 }
 
 [DefaultExecutionOrder(-51)]
@@ -114,6 +113,8 @@ public class GameManager : MonoBehaviour
     public Transform Background;
 
     public Transform X;
+
+    public Transform Filter;
 
     [Header("암시장 스폰 확률")]
     public int OpenProbably = 40;           // 기본 확률 40%
@@ -206,17 +207,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("하루 시작");
         //UI적 요소들 --------------------------------------------------------------------
         DayText.text = Day.ToString() + "일차";
-        switch (Day % 7) 
-        {
-            case 0: weekText.text = "금"; break;
-            case 1: weekText.text = "토"; break;
-            case 2: weekText.text = "일"; break;
-            case 3: weekText.text = "월"; break;
-            case 4: weekText.text = "화"; break;
-            case 5: weekText.text = "수"; break;
-            case 6: weekText.text = "목"; break;
-            default: weekText.text = "???"; break;
-        }
+        weekText.text = GetWeekText(Day);
 
         uimanager.UpdateDayText();
 
@@ -228,12 +219,31 @@ public class GameManager : MonoBehaviour
         if (Day > 1)
         {
             report.reportUI.MorningReport.SetActive(true);
+            Background.gameObject.SetActive(true);
         }
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public string GetWeekText(int day)
+    {
+        string weektext;
+        switch (day % 7)
+        {
+            case 0: weektext = "금"; break;
+            case 1: weektext = "토"; break;
+            case 2: weektext = "일"; break;
+            case 3: weektext = "월"; break;
+            case 4: weektext = "화"; break;
+            case 5: weektext = "수"; break;
+            case 6: weektext = "목"; break;
+            default: weektext = "???"; break;
+        }
+
+        return weektext;
     }
 
     public void AddItem(int number, int count) // 처음 시작 and 배달한 아이템 획득
@@ -315,6 +325,7 @@ public class GameManager : MonoBehaviour
 
             Icon.GetChild(0).GetComponent<Image>().sprite = itemdata.itemImage;
             GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = itemdata.itemName;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(GetSlot.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().transform.parent.parent.GetComponent<RectTransform>());
             GetSlot.GetChild(2).GetComponentInChildren<TextMeshProUGUI>().text = itemdata.Explanation;
             TypeText.text = "약물";
 
@@ -344,9 +355,11 @@ public class GameManager : MonoBehaviour
 
                 if (Itemdata.Herb1 != null && Itemdata.Herb2 != null)
                 {
-                    string proccess1 = "달인 ";
-                    string proccess2 = "달인 ";
+                    string proccess1 = "";
+                    string proccess2 = "";
 
+                    if (Itemdata.process1 == 0) proccess1 = "달인 ";
+                    if (Itemdata.process2 == 0) proccess2 = "달인 ";
                     if (Itemdata.process1 == 1) proccess1 = "빻은 ";
                     if (Itemdata.process1 == 2) proccess1 = "말린 ";
                     if (Itemdata.process2 == 1) proccess2 = "빻은 ";
@@ -412,7 +425,7 @@ public class GameManager : MonoBehaviour
             //Icon.GetComponentInChildren<TextMeshProUGUI>().text = (item.ItemCount <= 1 ? "" : item.ItemCount.ToString("#,###"));
 
             //GetSlot.GetChild(2).GetComponent<TextMeshProUGUI>().text = itemdata.Explanation;
-            GetItem.Play("GetItem");
+            GetItem.SetTrigger("Open");
         }
 
         if (itemDatas.items[item.itemNumber].itemType == ItemType.Potion)
@@ -520,7 +533,6 @@ public class GameManager : MonoBehaviour
     public void NextDay()
     {
         dayani.gameObject.SetActive(true);
-        dayani.SetTrigger("Open");
 
         if (!ReportDayChick()) // 리포트 날
         {
@@ -539,8 +551,8 @@ public class GameManager : MonoBehaviour
 
     public void NextDaying()
     {
-        NextDayText.text = Day.ToString() + "일차";
-        NextNextText.text = weekText.text;
+        NextDayText.text = (Day).ToString() + "일차";
+        NextNextText.text = GetWeekText(Day);
     }
 
     public void NextDayEnd()
@@ -591,10 +603,24 @@ public class GameManager : MonoBehaviour
             }
         }
 
-       X.gameObject.SetActive(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정&& nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실 && nowscreen != ScreenType.상점);
+        if(nowscreen != ScreenType.도감 && nowscreen != ScreenType.설정 && nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실 && nowscreen != ScreenType.상점)
+        {
+            X.gameObject.SetActive(true);
+        }
+        else
+        {
+            X.gameObject.SetActive(false);
+        }
 
-        Background.gameObject.SetActive(nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실);
-
+        if (nowscreen != ScreenType.제조실 && nowscreen != ScreenType.실험실 && nowscreen != ScreenType.침실)
+        {
+            Background.gameObject.SetActive(true);
+            Background.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            Background.gameObject.SetActive(false);
+        }
 
         RoomControler.gameObject.SetActive(nowscreen != ScreenType.가공 && nowscreen != ScreenType.제조 && nowscreen != ScreenType.실험&&nowscreen!=ScreenType.상점&&nowscreen!=ScreenType.침대);
 
@@ -604,10 +630,13 @@ public class GameManager : MonoBehaviour
             InventoryUI.gameObject.SetActive(false);
         }
 
+        Filter.gameObject.SetActive(true);
+        inventoryManager.IsSubmit = false;
         inventoryManager.SawPotion = false;
         inventoryManager.SawProcessed = false;
         inventoryManager.Sawherb = false;
         inventoryManager.NotFaildPotion = false;
+        inventoryManager.LockOnOff(false);
         switch (nowscreen)
         {
             case ScreenType.가공:
@@ -622,6 +651,12 @@ public class GameManager : MonoBehaviour
                 InventoryUI.gameObject.SetActive(true);
                 break;
             case ScreenType.제출:
+                inventoryManager.IsSubmit = true;
+                inventoryManager.NotFaildPotion = true;
+                inventoryManager.SawPotion = true;
+                inventoryManager.UpdateInventory();
+                InventoryUI.gameObject.SetActive(true);
+                break;
             case ScreenType.실험:
                 inventoryManager.NotFaildPotion = true;
                 inventoryManager.SawPotion = true;
@@ -629,6 +664,8 @@ public class GameManager : MonoBehaviour
                 InventoryUI.gameObject.SetActive(true);
                 break;
             case ScreenType.인벤토리:
+                inventoryManager.LockOnOff(true);
+                Filter.gameObject.SetActive(false);
                 inventoryManager.NotFaildPotion = true;
                 inventoryManager.SawPotion = true;
                 inventoryManager.Sawherb = true;
@@ -662,7 +699,7 @@ public class GameManager : MonoBehaviour
             nowRoom = (3 + nowRoom) % 3;//0  3
             room = (Room)nowRoom;
             stopping = true;
-            RoomText.text = room.ToString(); // UI적 요소들
+             // UI적 요소들
         }
     }
 
@@ -675,6 +712,8 @@ public class GameManager : MonoBehaviour
 
     public void RefreshBackground()
     {
+        RoomText.text = room.ToString();
+
         for (int i = 0; i < 3; i++)
         {
             backgrounds[i].gameObject.SetActive(false);

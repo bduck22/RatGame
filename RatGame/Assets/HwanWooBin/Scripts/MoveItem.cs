@@ -20,6 +20,9 @@ public class MoveItem : MonoBehaviour
     public int itemIndex;
     InventoryManger inventoryManager;
 
+    public bool IsDic;
+    public bool IsSubmit;
+
     void Start()
     {
        
@@ -32,13 +35,30 @@ public class MoveItem : MonoBehaviour
 
     private void OnEnable()
     {
+        LoadIndex();
+
+    }
+
+    public void OnItemClick()
+    {
+        if (inventoryManager.IsSubmit)
+        {
+            inventoryManager.SubmitPotion(itemIndex);
+        }
+    }
+
+    public void UndoSubmit()
+    {
+        inventoryManager.DropItemInReport.Undo(itemIndex);
+    }
+
+    public void LoadIndex()
+    {
         if (int.TryParse(transform.parent.name, out int value))
         {
             itemIndex = int.Parse(transform.parent.name);
         }
-
     }
-
 
 
     void Update()
@@ -56,6 +76,11 @@ public class MoveItem : MonoBehaviour
         }
 
 
+    }
+
+    public void OnInfo()
+    {
+        inventoryManager.OpenInfo(IsDic, itemIndex);
     }
 
     public void MoveOn()
@@ -79,6 +104,10 @@ public class MoveItem : MonoBehaviour
     }
     public void MoveOff()
     {
+        if (isStop)
+        {
+            return;
+        }
         PointerEventData pointerData = new PointerEventData(EventSystem.current);
         List<RaycastResult> results = new List<RaycastResult>();
 #if UNITY_EDITOR
