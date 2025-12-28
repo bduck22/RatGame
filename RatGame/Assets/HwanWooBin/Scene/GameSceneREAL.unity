@@ -17470,7 +17470,7 @@ GameObject:
   - component: {fileID: 358824409}
   - component: {fileID: 358824408}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23960,7 +23960,7 @@ GameObject:
   - component: {fileID: 505278207}
   - component: {fileID: 505278206}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24023,7 +24023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71ae8e3c3883c6141acc263d2598f888, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ee773f20b203bf40b72f3168bc23ac4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24673,7 +24673,7 @@ GameObject:
   - component: {fileID: 520730140}
   - component: {fileID: 520730139}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33806,7 +33806,7 @@ GameObject:
   - component: {fileID: 760634014}
   - component: {fileID: 760634013}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34040,7 +34040,7 @@ GameObject:
   - component: {fileID: 782454499}
   - component: {fileID: 782454498}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38988,7 +38988,7 @@ GameObject:
   - component: {fileID: 933105860}
   - component: {fileID: 933105859}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51046,7 +51046,7 @@ GameObject:
   - component: {fileID: 1250815782}
   - component: {fileID: 1250815781}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53159,7 +53159,7 @@ GameObject:
   - component: {fileID: 1304635581}
   - component: {fileID: 1304635580}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60300,8 +60300,9 @@ GameObject:
   - component: {fileID: 1463080443}
   - component: {fileID: 1463080445}
   - component: {fileID: 1463080444}
+  - component: {fileID: 1463080446}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60367,6 +60368,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463080442}
   m_CullTransparentMesh: 1
+--- !u!225 &1463080446
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463080442}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1466619717
 GameObject:
   m_ObjectHideFlags: 0
@@ -67852,7 +67865,7 @@ GameObject:
   - component: {fileID: 1632832839}
   - component: {fileID: 1632832838}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71340,7 +71353,7 @@ GameObject:
   - component: {fileID: 1706943750}
   - component: {fileID: 1706943749}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73778,7 +73791,7 @@ GameObject:
   - component: {fileID: 1755872962}
   - component: {fileID: 1755872961}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73875,7 +73888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1758714191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77116,7 +77129,7 @@ GameObject:
   - component: {fileID: 1864570506}
   - component: {fileID: 1864570505}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88467,7 +88480,7 @@ GameObject:
   - component: {fileID: 2076576459}
   - component: {fileID: 2076576458}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
