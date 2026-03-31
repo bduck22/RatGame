@@ -62,8 +62,8 @@ public class ShowList : MonoBehaviour
     public void ShowListAndUpdate()
     {
         // GameManager의 inventory에서 deliverycounts의 값을 찾아서 쓰기
-        int money = GameManager.Instance.report.TodayuseMoney;
-        EstimatedTotalMoneyCountText.text = "예상 소모 금액 : " + (money != 0 ?money.ToString("#,###"):"0");
+        int money = GameManager.Instance.store.ExpectationMoney;
+        EstimatedTotalMoneyCountText.text = "예상 소모 금액 : " + money.ToString("#,##0");
         CurrentRistPoint.text = "현재 위험도 : " + GameManager.Instance.darkstoreRisk.ToString() +"%";
         int rat = GameManager.Instance.inventoryManager.ratDeliverycounts;
         EstimatedRatCountText.text = "구매 예정\n" + $"<color=red>{rat.ToString()}마리</color>";
@@ -87,7 +87,7 @@ public class ShowList : MonoBehaviour
 
 
         }
-        DarkStoreOpen.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "확정 오픈까지 D-" + (manager.DarkstoreConfirmedDay - manager.DarkstoreConfirmedDayCount).ToString();
+        DarkStoreOpen.GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = "확정 오픈까지 D-" + (GameManager.Instance.DarkstoreConfirmedDay - GameManager.Instance.DarkstoreConfirmedDayCount).ToString();
         if (DarkStoreOpen.GetChild(3).gameObject.activeSelf == true)
             DarkStoreOpen.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "판매 예정 약품";
 
